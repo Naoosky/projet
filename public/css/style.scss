@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'OpenDyslexic';
-    src: url('../fonts/opendys/OpenDyslexic-Regular.woff') format('woff');
+  src: url('../fonts/opendys/OpenDyslexic-Regular.woff') format('woff');
 }
 @font-face {
   font-family: 'OpenDyslexic';
@@ -12,10 +12,16 @@
   src: url('../fonts/opendys/OpenDyslexic-Italic.woff') format('woff');
   font-style: italic;
 }
+:root {
+  --border: 1px solid black;
+  --border-radius: 5px;
+}
+
 /* ************* GENERAL ************* */
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 html {
@@ -28,7 +34,6 @@ body {
   line-height: 1.5;
   color: black;
 }
-
 main {
   background-color: #FAECD7;
 
@@ -42,19 +47,15 @@ main {
     margin: auto;
   }
 }
-
 a {
   text-decoration: none;
 }
-
 ul {
-  list-style-type: none;
+  list-style: none;
 }
-
 img {
   max-width: 100%;
 }
-
 hr{
   width: 75%;
   margin: 1rem auto;
@@ -63,6 +64,7 @@ hr{
   font-family: 'OpenDyslexic', sans-serif;
 }
 /* ************* LAYOUTS ************* */
+
 .header {
   background-image: url(../img/banniereHeader.jpg);
   background-size: cover;
@@ -71,45 +73,34 @@ hr{
     text-align: center;
 
     img {
-      width: 15%;
+      width: 60%;
     }
   }
-
   .header-navigation {
     ul {
+      width: 100%;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
       background-color: black;
-
-      li {
-        padding: 1rem;
-      }
-
-      .header-navigation_routes {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 70%;
-      }
-
-      .header-navigation_connection {
-        display: flex;
-        justify-content: end;
-        align-items: center;
-        width: 30%;
-      }
-
-      a {
-        margin-left: 1rem;
-        color: #fff;
-        font-size: 1.8rem;
-        font-weight: bold;
-        text-transform: uppercase;
-
-        &:hover {
-          color: mediumvioletred;
+      li{
+        a{
+          color: white;
+          padding: 1rem;
+          font-size: 1.8rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          &:hover{
+            color: #ffcc00;
+          }
         }
+      }
+      .header-navigation_routes{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
       }
     }
   }
@@ -129,17 +120,34 @@ hr{
   }
 }
 
-/* ************* FIN LAYOUTS ************* */
+@media screen and (min-width: 767px) {
+  .header{
+    .header-logo {
+      text-align: center;
+      img {
+        width: 35%;
+      }
+    }
+  }
 
-/* ********* PAGE HOME ******** */
-.container-home{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
+@media screen and (min-width: 1200px) {
+  .header{
+    .header-logo {
+      text-align: center;
+      img {
+        width: 15%;
+      }
+    }
+  }
+}
+
+/* ************* PAGES ************* */
+/* ************* HOME ************* */
+
 .home-welcome {
-  width: 48%;
+  width: 100%;
   padding: 1rem 1rem 0 1rem;
 
   h2 {
@@ -156,101 +164,40 @@ hr{
     }
   }
 }
-
 .home-navigation {
-  width: 48%;
+  width: 100%;
   text-align: center;
+  padding: 2rem 0;
 
   .home-navigation_table {
     margin: auto;
-    border: 1px solid black;
+    border: var(--border);
     border-collapse: collapse;
 
     td,
     th {
-      border: 1px solid black;
+      border: var(--border);
       padding: 1rem;
     }
   }
 }
 
-/* ********* FIN PAGE HOME ******** */
+@media screen and (min-width: 1200px) {
 
-/* ********* PAGE DETAILS ******** */
-.container-details{
-  padding-top: 7rem;
-  h1{
-    font-size: 5rem;
-    margin-bottom: 10rem;
-  }
-    
-}
-.header-details-img{
-  width: 90%;
-  height: 35vh;
-  background-image: url(forum-details/articles-head.png);
-  background-size: cover;
-  background-position: 0px -50px;
-  margin: auto;
-  padding-top: 10rem;
-  h1{
-    margin:  0;
-  }
-}
-.body-details-img{
-    width: 90%;
-    height: 60vh;
-    background-image: url(forum-details/articles-body.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat-y;
-    margin: auto;
-    padding-top: 2rem;
-}
-.footer-details-img{
-    width: 90%;
-    height: 50vh;
-    background-image: url(forum-details/articles-footer.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: auto;
-}
-
-.details-article{
-  width: 90%;
-  margin: auto;
-  p{
-    margin: 0 auto 2rem;
-    width: 70%;
-  }
-}
-.details-comments{
-  width: 90%;
-  margin: 5rem auto auto;
-  padding-top: 4rem;
-  padding-bottom: 2rem;
-  text-align: center;
-  h2{
-    text-transform: uppercase;
-    margin-bottom: 5rem;
-  }
-  span{
-    text-transform: uppercase;
-    color: #101765;
-  }
-  hr{
-    width: 60%;
-  }
-}
-.details-form{
-  width: 50%;
-  margin: auto;
-  form{
+  .container-home {
     display: flex;
-    flex-direction: column;
-    textarea{
-      margin-bottom: 2rem;
-    }
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .home-welcome {
+    width: 48%;
+    padding: 1rem 1rem 0 1rem;
+  }
+
+  .home-navigation {
+    width: 48%;
   }
 }
+
+

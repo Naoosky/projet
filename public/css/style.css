@@ -12,10 +12,16 @@
   src: url("../fonts/opendys/OpenDyslexic-Italic.woff") format("woff");
   font-style: italic;
 }
+:root {
+  --border: 1px solid black;
+  --border-radius: 5px;
+}
+
 /* ************* GENERAL ************* */
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 html {
@@ -46,7 +52,7 @@ a {
 }
 
 ul {
-  list-style-type: none;
+  list-style: none;
 }
 
 img {
@@ -71,38 +77,31 @@ hr {
   text-align: center;
 }
 .header .header-logo img {
-  width: 15%;
+  width: 60%;
 }
 .header .header-navigation ul {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   background-color: black;
 }
-.header .header-navigation ul li {
+.header .header-navigation ul li a {
+  color: white;
   padding: 1rem;
-}
-.header .header-navigation ul .header-navigation_routes {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
-}
-.header .header-navigation ul .header-navigation_connection {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  width: 30%;
-}
-.header .header-navigation ul a {
-  margin-left: 1rem;
-  color: #fff;
   font-size: 1.8rem;
   font-weight: bold;
   text-transform: uppercase;
 }
-.header .header-navigation ul a:hover {
-  color: mediumvioletred;
+.header .header-navigation ul li a:hover {
+  color: #ffcc00;
+}
+.header .header-navigation ul .header-navigation_routes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
 
 .footer {
@@ -118,16 +117,26 @@ hr {
   text-decoration: underline;
 }
 
-/* ************* FIN LAYOUTS ************* */
-/* ********* PAGE HOME ******** */
-.container-home {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+@media screen and (min-width: 767px) {
+  .header .header-logo {
+    text-align: center;
+  }
+  .header .header-logo img {
+    width: 35%;
+  }
 }
-
+@media screen and (min-width: 1200px) {
+  .header .header-logo {
+    text-align: center;
+  }
+  .header .header-logo img {
+    width: 15%;
+  }
+}
+/* ************* PAGES ************* */
+/* ************* HOME ************* */
 .home-welcome {
-  width: 48%;
+  width: 100%;
   padding: 1rem 1rem 0 1rem;
 }
 .home-welcome h2 {
@@ -143,102 +152,34 @@ hr {
 }
 
 .home-navigation {
-  width: 48%;
+  width: 100%;
   text-align: center;
+  padding: 2rem 0;
 }
 .home-navigation .home-navigation_table {
   margin: auto;
-  border: 1px solid black;
+  border: var(--border);
   border-collapse: collapse;
 }
 .home-navigation .home-navigation_table td,
 .home-navigation .home-navigation_table th {
-  border: 1px solid black;
+  border: var(--border);
   padding: 1rem;
 }
 
-/* ********* FIN PAGE HOME ******** */
-/* ********* PAGE DETAILS ******** */
-.container-details {
-  padding-top: 7rem;
-}
-.container-details h1 {
-  font-size: 5rem;
-  margin-bottom: 10rem;
-}
-
-.header-details-img {
-  width: 90%;
-  height: 35vh;
-  background-image: url(forum-details/articles-head.png);
-  background-size: cover;
-  background-position: 0px -50px;
-  margin: auto;
-  padding-top: 10rem;
-}
-.header-details-img h1 {
-  margin: 0;
-}
-
-.body-details-img {
-  width: 90%;
-  height: 60vh;
-  background-image: url(forum-details/articles-body.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat-y;
-  margin: auto;
-  padding-top: 2rem;
-}
-
-.footer-details-img {
-  width: 90%;
-  height: 50vh;
-  background-image: url(forum-details/articles-footer.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: auto;
-}
-
-.details-article {
-  width: 90%;
-  margin: auto;
-}
-.details-article p {
-  margin: 0 auto 2rem;
-  width: 70%;
-}
-
-.details-comments {
-  width: 90%;
-  margin: 5rem auto auto;
-  padding-top: 4rem;
-  padding-bottom: 2rem;
-  text-align: center;
-}
-.details-comments h2 {
-  text-transform: uppercase;
-  margin-bottom: 5rem;
-}
-.details-comments span {
-  text-transform: uppercase;
-  color: #101765;
-}
-.details-comments hr {
-  width: 60%;
-}
-
-.details-form {
-  width: 50%;
-  margin: auto;
-}
-.details-form form {
-  display: flex;
-  flex-direction: column;
-}
-.details-form form textarea {
-  margin-bottom: 2rem;
+@media screen and (min-width: 1200px) {
+  .container-home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .home-welcome {
+    width: 48%;
+    padding: 1rem 1rem 0 1rem;
+  }
+  .home-navigation {
+    width: 48%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
