@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="descritpion" content="Site de la guilde eden eternal Kyosei">
+    <title>Guilde Eden Eternal Kyosei</title>
+
+    <!-- Feuilles de style externes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/img/icon.png" />
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<!-- En-tête commune de l'application -->
+<header class="header">
+    <div class="header-logo">
+        <figure>
+            <a href="/"> <img src="/img/logo.png" alt="Logo de la guilde eden eternal Kyosei"> </a>
+        </figure>
+    </div>
+    <div class="header-navigation">
+        <button id="dyslexia">Dyslexique</button>
+        <nav>
+            <ul>
+                <li class="header-navigation_routes">
+                    <a href="/">Accueil</a>
+                    <a href="/forum">Forum</a>
+                    <a href="/auction">Enchères</a>
+                </li>
+                <li class="header-navigation_connection">
+                    <a href="/login">Connexion</a>
+                    <a href="/register">Inscription</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <%- include(template) -%>
+</main>
+
+<!-- Pied de page commun de l'application -->
+<footer class="footer">
+    <p>Site de la guilde Kyosei <a href="#">Retour en haut</a></p>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>

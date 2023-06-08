@@ -1,0 +1,256 @@
+@font-face {
+  font-family: 'OpenDyslexic';
+    src: url('../fonts/opendys/OpenDyslexic-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('../fonts/opendys/OpenDyslexic-Bold.woff') format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('../fonts/opendys/OpenDyslexic-Italic.woff') format('woff');
+  font-style: italic;
+}
+/* ************* GENERAL ************* */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: black;
+}
+
+main {
+  background-color: #FAECD7;
+
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .container {
+    width: 95%;
+    margin: auto;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+hr{
+  width: 75%;
+  margin: 1rem auto;
+}
+.dyslexia{
+  font-family: 'OpenDyslexic', sans-serif;
+}
+/* ************* LAYOUTS ************* */
+.header {
+  background-image: url(../img/banniereHeader.jpg);
+  background-size: cover;
+
+  .header-logo {
+    text-align: center;
+
+    img {
+      width: 15%;
+    }
+  }
+
+  .header-navigation {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: black;
+
+      li {
+        padding: 1rem;
+      }
+
+      .header-navigation_routes {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+      }
+
+      .header-navigation_connection {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        width: 30%;
+      }
+
+      a {
+        margin-left: 1rem;
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        &:hover {
+          color: mediumvioletred;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-around;
+  background-color: #276cd3;
+  color: #fff;
+
+  a {
+    margin-left: 1rem;
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+
+/* ************* FIN LAYOUTS ************* */
+
+/* ********* PAGE HOME ******** */
+.container-home{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.home-welcome {
+  width: 48%;
+  padding: 1rem 1rem 0 1rem;
+
+  h2 {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .home-welcome_article {
+    text-align: justify;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.home-navigation {
+  width: 48%;
+  text-align: center;
+
+  .home-navigation_table {
+    margin: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+
+    td,
+    th {
+      border: 1px solid black;
+      padding: 1rem;
+    }
+  }
+}
+
+/* ********* FIN PAGE HOME ******** */
+
+/* ********* PAGE DETAILS ******** */
+.container-details{
+  padding-top: 7rem;
+  h1{
+    font-size: 5rem;
+    margin-bottom: 10rem;
+  }
+    
+}
+.header-details-img{
+  width: 90%;
+  height: 35vh;
+  background-image: url(../img/articles-head.png);
+  background-size: cover;
+  background-position: 0px -50px;
+  margin: auto;
+  padding-top: 10rem;
+  h1{
+    margin:  0;
+  }
+}
+.body-details-img{
+    width: 90%;
+    height: 60vh;
+    background-image: url(../img/articles-body.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    margin: auto;
+    padding-top: 2rem;
+}
+.footer-details-img{
+    width: 90%;
+    height: 50vh;
+    background-image: url(../img/articles-footer.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+
+.details-article{
+  width: 90%;
+  margin: auto;
+  p{
+    margin: 0 auto 2rem;
+    width: 70%;
+  }
+}
+.details-comments{
+  width: 90%;
+  margin: 5rem auto auto;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  h2{
+    text-transform: uppercase;
+    margin-bottom: 5rem;
+  }
+  span{
+    text-transform: uppercase;
+    color: #101765;
+  }
+  hr{
+    width: 60%;
+  }
+}
+.details-form{
+  width: 50%;
+  margin: auto;
+  form{
+    display: flex;
+    flex-direction: column;
+    textarea{
+      margin-bottom: 2rem;
+    }
+  }
+}

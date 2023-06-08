@@ -1,0 +1,39 @@
+<section class="container-details">
+    <div class="header-details-img">
+    <h1><%= articles[0].title %></h1>
+    </div>
+    <div class="body-details-img">
+    <article class="details-article">
+        <p><%= articles[0].description %></p>
+        <p><%= articles[0].date.toLocaleDateString()%></p>
+    </article>
+    </div>
+    <div class="footer-details-img"></div>
+</section>
+
+<section class="details-comments">
+    <div class="header-comments-img">
+    <h2>Commentaires</h2>
+    </div>
+    <div class="body-comments-img">
+    <% for( let i=0; i < articles.length; i++ ) { %>
+    <h3>Pseudo : <span><%= articles[i].pseudo %></span></h3>
+    <p>Commentaire : <%= articles[i].comment%></p>
+    <hr />
+    <% } %>
+    </div>
+    <div class="footer-comments-img"></div>
+</section>
+<fieldset class="details-form">
+    <legend>Ajoutez un Commentaire</legend>
+    <form
+        action="/add_comment/<%=articles[0].id%>"
+        method="post"
+    >
+        <label>Pseudo</label>
+        <input type="text" name="pseudo" />
+        <label>commentaire</label>
+        <textarea name="comment"></textarea>
+        <input type="submit" name="Enregistrer" />
+    </form>
+</fieldset>
