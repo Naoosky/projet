@@ -166,6 +166,11 @@ hr {
   border: var(--border);
   padding: 1rem;
 }
+.home-navigation .home-navigation_table td a,
+.home-navigation .home-navigation_table th a {
+  color: #0803D2;
+  text-decoration: underline;
+}
 
 @media screen and (min-width: 1200px) {
   .container-home {

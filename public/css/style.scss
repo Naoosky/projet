@@ -178,6 +178,10 @@ hr{
     th {
       border: var(--border);
       padding: 1rem;
+      a{
+        color: #0803D2;
+        text-decoration: underline;
+      }
     }
   }
 }
