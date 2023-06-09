@@ -204,4 +204,52 @@ hr{
   }
 }
 
+/* ************* DETAILS ************* */
+
+.container-details{
+  padding-top: 1rem;
+  .header-details-img{
+    background-image: url(../img/forum-details/articles-head.png);
+    background-size: cover;
+    background-position: 0 -15px;
+    padding: 2rem;
+  }
+  .details-article{
+    padding: 1rem;
+    text-align: center;
+    p{
+      margin: auto auto 0.5rem;
+      width: 85%;
+    }
+  }
+  .body-details-img{
+    background-image: url(../img/forum-details/articles-body.png);
+    background-size: 100%;
+    background-repeat: repeat-y;
+  }
+  .footer-details-img{
+    background-image: url(../img/forum-details/articles-footer.png);
+    background-size: cover;
+    background-position: 0 -100px;
+    padding: 4rem;
+  }
+}
+.details-comments{
+  padding: 1rem;
+  text-align: center;
+  p{
+    margin: auto auto 0.5rem;
+    width: 85%;
+  }
+  .header-comments-img{
+    background-image: url(../img/forum-details/comments-head.png);
+    background-size: cover;
+    background-position: 0 -15px;
+    padding: 2rem;
+  }
+}
+
+
+
+
 
