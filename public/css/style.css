@@ -110,6 +110,8 @@ hr {
   justify-content: space-around;
   background-color: #276cd3;
   color: #fff;
+  background-image: url(../img/banniereFooter.jpg);
+  background-size: cover;
 }
 .footer a {
   margin-left: 1rem;
@@ -186,6 +188,7 @@ hr {
     width: 48%;
   }
 }
+/* ************* PAGES ************* */
 /* ************* DETAILS ************* */
 .container-details {
   padding-top: 1rem;
@@ -224,11 +227,79 @@ hr {
   margin: auto auto 0.5rem;
   width: 85%;
 }
+.details-comments hr {
+  border-color: black;
+}
+.details-comments hr:last-child {
+  display: none;
+}
 .details-comments .header-comments-img {
   background-image: url(../img/forum-details/comments-head.png);
   background-size: cover;
   background-position: 0 -15px;
   padding: 2rem;
+}
+.details-comments .body-comments-img {
+  background-image: url(../img/forum-details/comments-body.png);
+  background-size: 100%;
+  background-repeat: repeat-y;
+  padding-bottom: 0.5rem;
+}
+.details-comments .footer-comments-img {
+  background-image: url(../img/forum-details/comments-footer.png);
+  background-size: cover;
+  background-position: 0 -65px;
+  padding: 2.5rem;
+}
+
+.details-form {
+  margin: 1rem;
+}
+.details-form legend {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.details-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+.details-form form label {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+.details-form form input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: var(--border);
+  border-radius: 5px;
+}
+.details-form form textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: var(--border);
+  border-radius: 5px;
+}
+.details-form form button {
+  width: 100%;
+  padding: 0.5rem;
+  border: var(--border);
+  border-radius: 5px;
+  background-color: #276cd3;
+  color: white;
+  font-weight: bold;
+}
+.details-form form button:hover {
+  background-color: #ffcc00;
 }
 
 /*# sourceMappingURL=style.css.map */
