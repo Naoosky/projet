@@ -19,7 +19,7 @@ router.post('/login', loginSubmit);
 router.get('/register', register);
 router.post('/register', registerSubmit);
 router.get('/logout', logOut);
-router.get('/profile', profile);
+router.get('/profile/:id', profile);
 router.get('/privacyPolicy', privacyPolicy);
 
 

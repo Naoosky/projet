@@ -37,6 +37,7 @@ body {
 
 main {
   background-color: #FAECD7;
+  padding-bottom: 1rem;
 }
 main h1 {
   text-align: center;
@@ -62,6 +63,47 @@ img {
 hr {
   width: 75%;
   margin: 1rem auto;
+}
+
+legend {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+form label {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+form input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: var(--border);
+  border-radius: 5px;
+}
+form button {
+  width: 100%;
+  padding: 0.5rem;
+  border: var(--border);
+  border-radius: 5px;
+  background-color: #276cd3;
+  color: white;
+  font-weight: bold;
+}
+form button:hover {
+  background-color: #ffcc00;
 }
 
 .dyslexia {
@@ -254,52 +296,20 @@ hr {
 
 .details-form {
   margin: 1rem;
+  border-radius: var(--border-radius);
 }
-.details-form legend {
+
+/* ************* PAGES ************* */
+/* ************* LOGIN / REGISTER ************* */
+.page-connect, .page-register {
+  width: 90%;
+  margin: auto;
+  padding-top: 1rem;
   text-align: center;
-  text-transform: uppercase;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
 }
-.details-form form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 1rem;
-}
-.details-form form label {
-  width: 100%;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  font-weight: bold;
-}
-.details-form form input {
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  border: var(--border);
-  border-radius: 5px;
-}
-.details-form form textarea {
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  border: var(--border);
-  border-radius: 5px;
-}
-.details-form form button {
-  width: 100%;
-  padding: 0.5rem;
-  border: var(--border);
-  border-radius: 5px;
-  background-color: #276cd3;
-  color: white;
-  font-weight: bold;
-}
-.details-form form button:hover {
-  background-color: #ffcc00;
+.page-connect .form-login, .page-connect .form-register, .page-register .form-login, .page-register .form-register {
+  margin: 0 1rem 1rem;
+  border-radius: var(--border-radius);
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -33,8 +33,12 @@
                     <a href="/">Accueil</a>
                     <a href="/forum">Forum</a>
                     <a href="/auction">Enchères</a>
+                    <% if(locals.isUser){ %>
+                    <a href="/profile/<%= locals.userId %>">Profil</a>
+                    <a href="/logout">Déconnexion</a>
+                    <% } else { %>
                     <a href="/login">Connexion</a>
-<!--                    <a href="/register">Inscription</a>-->
+                    <% } %>
                 </li>
             </ul>
         </nav>
@@ -47,7 +51,7 @@
 
 <!-- Pied de page commun de l'application -->
 <footer class="footer">
-    <p>Site de la guilde Kyosei <a href="#">Retour en haut</a></p>
+    <p><a href="/privacyPolicy">Politique de confidentialité</a> <a href="#">Retour en haut</a></p>
 </footer>
 <script src="/js/main.js"></script>
 </body>

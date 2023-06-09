@@ -31,6 +31,7 @@ app.set('view options', { pretty: true });
 app.use((req,res,next) =>{
     res.locals.isAdmin = !!req.session.isAdmin;
     res.locals.isUser = !!req.session.isUser;
+	res.locals.userId = req.session.userId;
     next();
 })
 
