@@ -1,4 +1,3 @@
-Checker CDC1.png et Checker CDC2.png Pour voir le cahier des charges avec maquette
 
 Guilde Eden Eternal Kyosei: développement d'un site de renseignement, d'échange et d'enchère entre membres de guilde
 
