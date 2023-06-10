@@ -40,7 +40,7 @@ Guilde Eden Eternal Kyosei : développement d'un site d'information, d'échange 
 
 ⦁ Optimisation du référencement : La plateforme sera optimisée pour le référencement sur les moteurs de recherche.
 
-⦁ Utilisation du module dotenv pour une connexion plus sécurisée à la base de données.
+⦁ Utilisation du module dotenv pour une connexion plus sécurisée à la base de données et xss pour éviter les faille dans les formulaires.
 
 **Contraintes et délais :**
 
@@ -52,4 +52,26 @@ Guilde Eden Eternal Kyosei : développement d'un site d'information, d'échange 
 
 **Organisation :**
 
-Nous commencerons par réaliser une maquette de chaque page du site pour les versions mobile et desktop.
+⦁	Nous commencerons par réaliser une maquette de chaque page du site pour les versions mobile et desktop.
+
+⦁	Ensuite, nous créerons un MCD (Modèle Conceptuel de Données) puis un MPD (Modèle Physique de Données) pour la base de données.
+
+⦁	Nous procéderons à la création de la base de données en fonction du MPD.
+
+⦁	En parallèle, nous mettrons en place la structure du MVC (Modèle-Vue-Contrôleur).
+
+⦁	Ensuite, nous créerons un dossier "public" pour stocker les fichiers statiques tels que les images, le CSS, etc.
+
+⦁	Nous travaillerons sur la construction de la structure HTML, CSS et JS.
+
+⦁	Nous mettrons en place la gestion des utilisateurs, y compris l'inscription, la connexion et la gestion des profils.
+
+⦁	Nous implémenterons également les fonctionnalités d'administration pour gérer le contenu du site.
+
+⦁	La sécurité sera une priorité, nous mettrons en place des mesures pour protéger les données des utilisateurs et prévenir les failles de sécurité.
+
+⦁	Nous effectuerons des tests approfondis du projet pour garantir son bon fonctionnement et sa stabilité.
+
+⦁	Enfin, nous peaufinerons les détails du site, en nous assurant que tout est conforme aux spécifications et en effectuant les ajustements nécessaires.
+
+
