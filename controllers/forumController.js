@@ -12,7 +12,7 @@ export const articlesDetails = (req,res) => {
     SELECT articles.id, articles.title, articles.description, articles.date, category_articles.name as 'category', comments.pseudo, comments.comment, comments.date as 'dateComments'
       FROM articles
            INNER JOIN category_articles ON articles.category_id = category_articles.id
-           LEFT JOIN comments ON comments.article_id  = articles.id
+           LEFT JOIN comments ON comments.article_id  = articles.id 
      WHERE articles.id = ?
            
     `;
@@ -20,6 +20,7 @@ export const articlesDetails = (req,res) => {
         if(error){
             console.error(error)
         }else{
+
             res.render('layout', {template: 'articles', articles: results})
         }
     })

@@ -16,7 +16,6 @@ export const loginSubmit = (req, res) => {
             console.error(error)
             res.status(500).send('erreur de bdd')
         }else{
-            console.log(result)
             if (result.length < 1) {
                 res.redirect('/login')
             }else{
@@ -26,7 +25,7 @@ export const loginSubmit = (req, res) => {
 
                         if(result[0].role === 'Admin'){
                             req.session.isAdmin = true;
-                            res.redirect("/admin")
+                            res.redirect("/")
                         }else{
                             req.session.isUser = true;
                             res.redirect("/")

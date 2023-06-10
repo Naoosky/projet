@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import {home} from '../controllers/homeController.js';
+import {admin} from '../controllers/adminController.js';
 import {forum, articlesDetails, addComments} from '../controllers/forumController.js';
 import {auction} from '../controllers/auctionController.js';
 import {login, loginSubmit} from '../controllers/loginController.js';
@@ -10,6 +11,7 @@ import {profile} from "../controllers/profilController.js";
 import {privacyPolicy} from "../controllers/privacyPolicyController.js";
 
 router.get('/', home);
+router.get('/administration', admin)
 router.get('/forum', forum);
 router.get('/articles/:id', articlesDetails);
 router.post('/add_comment/:id', addComments)

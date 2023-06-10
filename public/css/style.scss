@@ -102,6 +102,17 @@ form {
     width: 30%;
     text-transform: uppercase;
     font-weight: bold;
+    cursor: pointer;
+  }
+  textarea{
+    min-width: 90%;
+    max-width: 90%;
+    min-height: 10rem;
+    max-height: 10rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: var(--border);
+    border-radius: 5px;
   }
 }
 
@@ -216,6 +227,9 @@ form {
     p {
       margin-bottom: 1rem;
     }
+    img {
+      width: 100%;
+    }
   }
 }
 
@@ -269,7 +283,7 @@ form {
   .header-details-img {
     background-image: url(../img/forum-details/articles-head.png);
     background-size: cover;
-    background-position: 0 -15px;
+    background-position: 0 15%;
     padding: 2rem;
   }
 
@@ -292,7 +306,7 @@ form {
   .footer-details-img {
     background-image: url(../img/forum-details/articles-footer.png);
     background-size: cover;
-    background-position: 0 -100px;
+    background-position: 0 -80%;
     padding: 4rem;
   }
 }
@@ -318,28 +332,90 @@ form {
   .header-comments-img {
     background-image: url(../img/forum-details/comments-head.png);
     background-size: cover;
-    background-position: 0 -15px;
-    padding: 2rem;
+    background-position: 0 25%;
+    padding: 5%;
   }
 
   .body-comments-img {
     background-image: url(../img/forum-details/comments-body.png);
     background-size: 100%;
     background-repeat: repeat-y;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.5%;
   }
 
   .footer-comments-img {
     background-image: url(../img/forum-details/comments-footer.png);
     background-size: cover;
-    background-position: 0 -65px;
-    padding: 2.5rem;
+    background-position: 0 -75%;
+    padding: 7%;
   }
 }
 
 .details-form {
   margin: 1rem;
   border-radius: var(--border-radius);
+}
+
+@media screen and (min-width: 767px) {
+
+  .container-details {
+    .header-details-img {
+      background-position: 0 15%;
+      padding: 8%;
+    }
+    .footer-details-img {
+      background-position: 0 -80%;
+      padding: 10.5%;
+    }
+  }
+  .details-comments{
+    .header-comments-img{
+      background-position: 0 25%;
+      padding: 8.5%;
+    }
+    .footer-comments-img {
+      background-position: 0 -75%;
+      padding: 7%;
+    }
+  }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+  .container-details{
+    width: 90%;
+    margin: auto;
+    .header-details-img {
+      background-position: 0 15%;
+      padding: 7.5%;
+      h1{
+        font-size: 5rem;
+        margin: 0;
+      }
+    }
+    .footer-details-img {
+      background-position: 0 -75%;
+      padding: 10%;
+    }
+  }
+  .details-comments{
+    width: 91.4%;
+    margin: auto;
+    .header-comments-img{
+      background-position: 0 20%;
+      padding: 6%;
+      h2{
+        font-size: 5rem;
+        margin: 0;
+      }
+    }
+    .footer-comments-img {
+      background-position: 0 -80%;
+      padding: 7.4%;
+    }
+  }
+
 }
 
 /* ************* PAGES ************* */
