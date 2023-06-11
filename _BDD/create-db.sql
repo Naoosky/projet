@@ -11,6 +11,7 @@ CREATE TABLE category_articles (
 CREATE TABLE users (
     id CHAR(36) NOT NULL PRIMARY KEY,
     pseudo VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(255) NOT NULL
 );
@@ -31,7 +32,9 @@ CREATE TABLE articles (
     title VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     category_id CHAR(36) NOT NULL,
-    FOREIGN KEY (category_id) REFERENCES category_articles(id)
+    user_id CHAR(36) NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES category_articles(id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE comments (
@@ -40,5 +43,7 @@ CREATE TABLE comments (
     pseudo VARCHAR(255) NOT NULL,
     comment TEXT NOT NULL,
     article_id CHAR(36) NOT NULL,
-    FOREIGN KEY (article_id) REFERENCES articles(id)
+    user_id CHAR(36) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE
 );

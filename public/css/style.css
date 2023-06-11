@@ -114,6 +114,7 @@ form textarea {
   font-family: "OpenDyslexic", sans-serif;
 }
 
+/* ************* PAGE ************* */
 /* ************* LAYOUTS ************* */
 .header {
   background-image: url(../img/banniereHeader.jpg);
@@ -151,15 +152,17 @@ form textarea {
 }
 
 .footer {
-  display: flex;
   padding: 1rem;
-  justify-content: space-around;
-  background-color: #276cd3;
   color: #fff;
+  text-align: center;
   background-image: url(../img/banniereFooter.jpg);
   background-size: cover;
 }
-.footer a {
+.footer p {
+  display: flex;
+  flex-direction: column;
+}
+.footer p a {
   margin-left: 1rem;
   color: #fff;
   text-decoration: underline;
@@ -171,6 +174,10 @@ form textarea {
   }
   .header .header-logo img {
     width: 35%;
+  }
+  .footer p {
+    flex-direction: row;
+    justify-content: center;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -369,6 +376,35 @@ form textarea {
 .page-connect .form-login, .page-connect .form-register, .page-register .form-login, .page-register .form-register {
   margin: 0 1rem 1rem;
   border-radius: var(--border-radius);
+}
+
+/* ************* PAGES ************* */
+/* ************* ADMINISTRATION ************* */
+.container-administration {
+  margin: auto;
+  padding-top: 1rem;
+  text-align: center;
+}
+.container-administration .list-users {
+  margin-bottom: 1rem;
+}
+.container-administration .table-users {
+  width: 90%;
+  margin: auto;
+  border: var(--border);
+  border-collapse: collapse;
+}
+.container-administration .table-users td, .container-administration .table-users th {
+  border: var(--border);
+  padding: 1rem;
+}
+.container-administration .table-articles {
+  border: var(--border);
+  border-collapse: collapse;
+}
+.container-administration .table-articles td, .container-administration .table-articles th {
+  border: var(--border);
+  padding: 0.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

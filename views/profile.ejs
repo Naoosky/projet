@@ -1,1 +1,14 @@
 <h1> <%= user.pseudo %> </h1>
+
+<a href="/add/articles/<%= user.id %>">ajouter un article</a>
+
+<% if (articles.length > 0) { %>
+    <ul>
+        <% articles.forEach(function(article) { %>
+            <li>
+                <a href="/articles/<%= article.id %>">
+                    <%= article.title %>
+                </a>
+            </li>
+        <% })} %>
+    </ul>

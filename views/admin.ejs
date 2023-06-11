@@ -1,1 +1,53 @@
-<h1>Page Admin </h1>
+<div class="container-administration">
+    <section class="list-users">
+        <h2>Utilisateurs</h2>
+        <table class="table-users">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>pseudo</th>
+                <th>role</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i = 0; i < users.length; i++) { %>
+            <tr>
+                <td><%= users[i].id %></td>
+                <td><%= users[i].pseudo %></td>
+                <td><%= users[i].role %></td>
+                <td>
+                    <a href="/administration/users/<%= users[i].id %>">Voir</a>
+                </td>
+            </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </section>
+    <section class="list-articles">
+        <h2>Articles</h2>
+        <table class="table-articles js-table-articles">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>titre</th>
+                <th>contenu</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i = 0; i < articles.length; i++) { %>
+            <tr data-id="<%= articles[i].id %>">
+                <td><%= articles[i].id %></td>
+                <td><%= articles[i].title %></td>
+                <td><%= articles[i].description.substring(0, 30) %></td>
+                <td>
+                    <button class="js-article-remove" data-id="<%= articles[i].id %>" ><i class="fa fa-remove"></i></button>
+                </td>
+            </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </section>
+</div>
+<script src="/js/admin.js"></script>

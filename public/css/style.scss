@@ -120,6 +120,7 @@ form {
   font-family: 'OpenDyslexic', sans-serif;
 }
 
+/* ************* PAGE ************* */
 /* ************* LAYOUTS ************* */
 
 .header {
@@ -168,19 +169,21 @@ form {
 }
 
 .footer {
-  display: flex;
   padding: 1rem;
-  justify-content: space-around;
-  background-color: #276cd3;
   color: #fff;
+  text-align: center;
   background-image: url(../img/banniereFooter.jpg);
   background-size: cover;
-
-  a {
-    margin-left: 1rem;
-    color: #fff;
-    text-decoration: underline;
+  p{
+    display: flex;
+    flex-direction: column;
+    a {
+      margin-left: 1rem;
+      color: #fff;
+      text-decoration: underline;
+    }
   }
+
 }
 
 @media screen and (min-width: 767px) {
@@ -191,6 +194,12 @@ form {
       img {
         width: 35%;
       }
+    }
+  }
+  .footer{
+    p{
+      flex-direction: row;
+      justify-content: center;
     }
   }
 
@@ -430,7 +439,35 @@ form {
     border-radius: var(--border-radius);
   }
 }
+/* ************* PAGES ************* */
+/* ************* ADMINISTRATION ************* */
+.container-administration{
+  margin: auto;
+  padding-top: 1rem;
+  text-align: center;
+  .list-users{
+    margin-bottom: 1rem;
+  }
+  .table-users{
+    width: 90%;
+    margin: auto;
+    border: var(--border);
+    border-collapse: collapse;
+    td,th{
+      border: var(--border);
+      padding: 1rem;
+    }
+  }
+  .table-articles{
+    border: var(--border);
+    border-collapse: collapse;
+    td,th{
+      border: var(--border);
+      padding: 0.5rem;
+    }
+  }
 
+}
 
 
 

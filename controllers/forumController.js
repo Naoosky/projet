@@ -44,3 +44,41 @@ export const addComments = (req,res) => {
         }
     })
 }
+
+export const addArticles = (req,res) => {
+    let id = req.params.id
+    const query = `SELECT * FROM category_articles`;
+    pool.query(query, (error,category) => {
+        if(error){
+            console.error(error)
+        }else{
+            const sql = `SELECT * FROM users WHERE id = ?`;
+            pool.query(sql,id, (error,user) => {
+                if(error){
+                    console.error(error)
+                }else{
+                    res.render('layout', {template: 'addArticles', category: category, user: user[0]});
+                }
+            });
+        }
+    });
+}
+
+export const addArticlesSubmit = (req,res) => {
+    const id = req.session.userId
+    const newArticle = {
+        id: uuidv4(),
+        title: req.body.title,
+        description: req.body.description,
+        category_id: req.body.category,
+        user_id: req.body.user
+    }
+    let sql = `INSERT INTO articles SET ?`;
+    pool.query(sql,newArticle, (error,results) =>{
+        if(error){
+            console.error(error)
+        }else{
+            res.redirect('/profile/'+id)
+        }
+    })
+}
