@@ -1,0 +1,29 @@
+<fieldset>
+    <legend>Ajouter votre item</legend>
+    
+    <form action="/add/items/<% user.id %>" method="post" class="form-items">
+        <label for="title">Titre de l'item</label>
+        <input type="text" id="tilte" name="title">
+        <label for="title">Description</label>
+        <textarea id="description" name="description"></textarea>
+        <label for="price">Prix</label>
+        <input type="text" id="price" name="price">
+        <label for="category">Category</label>
+        <select name="category" id="category" required>
+            <option value="">Sélectionnez une catégorie</option>
+            <% for(let i = 0; i < category.length;i++) { %>
+                <option value="<%= category[i].id %>"><%= category[i].name %></option>
+            <% } %>
+        </select>
+        <label for="image">Image</label>
+        <div class="image">
+            <% for(let i = 0; i < images.length; i++){ %>
+                <input type="radio" id="image" name="image">
+                <img src="<%= images[i].url %>" alt="<%= images[i].description %>">
+            <% } %>
+        </div>
+
+        <input type="hidden" name="user" value="<%= user.id %>">
+        <input type="submit" value="Ajoutez">
+    </form>
+</fieldset>

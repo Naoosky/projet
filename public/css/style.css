@@ -713,4 +713,17 @@ form textarea {
   padding: 0.5rem;
 }
 
+/* ************* PAGES ************* */
+/* ************* FORM ENCHERE ************* */
+.form-items div {
+  display: inline-block;
+  margin-right: 10px;
+}
+.form-items img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  /* Ajoutez d'autres styles selon vos besoins */
+}
+
 /*# sourceMappingURL=style.css.map */
