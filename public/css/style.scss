@@ -20,21 +20,17 @@
   --border-radius: 5px;
 }
 
+@import 'normalize';
+
 /* ************* GENERAL ************* */
-* {
-  box-sizing: border-box;
+
+*{
   margin: 0;
   padding: 0;
 }
 
-html {
-  font-size: 62.5%;
-}
-
 body {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.5;
   color: black;
 }
 
@@ -45,6 +41,7 @@ main {
   h1 {
     text-align: center;
     text-transform: uppercase;
+    padding-top: 1rem;
   }
 
   .container {
@@ -129,7 +126,6 @@ form {
 
   .header-logo {
     text-align: center;
-
     img {
       width: 60%;
     }
@@ -147,7 +143,7 @@ form {
         a {
           color: white;
           padding: 1rem;
-          font-size: 1.8rem;
+          font-size: 1.5rem;
           font-weight: bold;
           text-transform: uppercase;
 
@@ -437,6 +433,9 @@ form {
   .form-login,.form-register{
     margin: 0 1rem 1rem;
     border-radius: var(--border-radius);
+  }
+  p{
+    margin-bottom: 0;
   }
 }
 /* ************* PAGES ************* */
