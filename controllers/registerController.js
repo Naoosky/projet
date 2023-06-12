@@ -32,7 +32,7 @@ export const registerSubmit = function (req, res) {
         return res.status(400).send('Le pseudo doit contenir au moins 3 caractères et ne doit pas contenir de caractères spéciaux');
     }
     if (safePassword.length < 8) {
-        return res.status(400).send('Le mot de passe doit contenir au moins 8 caractères et ne doit pas contenir de caractères spéciaux');
+        return res.status(400).send('Le mot de passe doit contenir au moins 8 caractères');
     }
     if (safeConfirmPassword !== safePassword ) {
         return res.status(400).send('La confirmation du mot de passe ne correspond pas ou contient des caractères spéciaux');

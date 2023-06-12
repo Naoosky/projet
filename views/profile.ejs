@@ -1,6 +1,8 @@
 <h1> <%= user.pseudo %> </h1>
-
+<p>
 <a href="/add/articles/<%= user.id %>">ajouter un article</a>
+<a href="/add/items/<%= user.id %>">ajouter un item</a>
+</p>
 
 <% if (articles.length > 0) { %>
     <ul>

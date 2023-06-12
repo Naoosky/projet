@@ -344,6 +344,7 @@ main h1 {
   text-align: center;
   text-transform: uppercase;
   padding-top: 1rem;
+  margin: 0;
 }
 main .container {
   width: 95%;
