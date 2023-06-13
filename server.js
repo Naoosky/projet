@@ -39,7 +39,7 @@ app.use((req,res,next) =>{
 app.use((req,res,next) =>{
 	const route = parseurl(req).pathname;
 
-	const protectedRoutes = ['/admin']
+	const protectedRoutes = ['/administration', '/administration/articles/', '/administration/users/',  ]
 	if(protectedRoutes.indexOf(route) > -1 && !req.session.isAdmin){
 		res.redirect("/")
 	}else{

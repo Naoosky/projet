@@ -1,1 +1,48 @@
 <h1> <%= user.pseudo %> </h1>
+
+<% if (articles.length > 0) { %>
+
+    <h2>Articles</h2>
+    <table class="table-articles js-table-articles">
+        <thead>
+        <tr>
+            <th>titre</th>
+            <th>contenu</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(let i = 0; i < articles.length; i++) { %>
+            <tr data-id="<%= articles[i].id %>">
+                <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
+                <td><%= articles[i].description.substring(0, 30) %></td>
+                <td>
+                    <button class="js-article-remove" data-id="<%= articles[i].id %>" ><i class="fa fa-remove"></i></button>
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+<% } %>
+<% if (items.length > 0) { %>
+<table>
+    <thead>
+    <tr>
+        <th>nom</th>
+        <th>description</th>
+        <th>image</th>
+        <th>prix</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% items.forEach(function(item) { %>
+        <tr>
+            <td><%= item.title %></td>
+            <td><%= item.content %></td>
+            <td><img src="<%= item.url %>" alt="<%= item.description %>"></td>
+            <td><%= item.price %> <img src="/img/icon.png" alt="une piece d'or" class="img-price"></td>
+        </tr>
+    <% })} %>
+    </tbody>
+</table>
+<script src="/js/admin.js"></script>

@@ -11,23 +11,31 @@ import {profile} from "../controllers/profilController.js";
 import {privacyPolicy} from "../controllers/privacyPolicyController.js";
 
 router.get('/', home);
+
 router.get('/administration', admin)
 router.get('/administration/users/:id', usersProfil)
 router.delete('/administration/articles/:id', deleteArticle);
+
 router.get('/forum', forum);
 router.get('/articles/:id', articlesDetails);
 router.get('/add/articles/:id', addArticles);
 router.post('/add/articles/:id', addArticlesSubmit);
 router.post('/add_comment/:id', addComments)
+
+
 router.get('/auction', auction);
 router.get('/add/items/:id', addItems)
 router.post('/add/items/:id', addItemsSubmit)
+
+
 router.get('/login', login);
 router.post('/login', loginSubmit);
 router.get('/register', register);
 router.post('/register', registerSubmit);
 router.get('/logout', logOut);
 router.get('/profile/:id', profile);
+
+
 router.get('/privacyPolicy', privacyPolicy);
 
 

@@ -21,19 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 const url = `/administration/articles/${id}`;
 
                 fetch(url, options)
-                    .then((res) => {
-                        if(res.ok){
-                            tableArticle.forEach((post) => {
-                                if (post.getAttribute("data-id") === id) {
-                                    post.remove();
-                                }
-                            });
-                        }else{
-                            res.json().then(console.log);
+                    .then(function (response) {
+                        if(response.ok) {
+                            // Récupérer la ligne à supprimer
+                            const articleElement = document.querySelector(`.js-table-articles tr[data-id="${id}"]`)
+                            articleElement.remove();
+                        } else {
+                            response.json().then(console.log);
                         }
-
                     })
-                    .catch((err) => console.log(err));
+                    .catch((err) => {
+                        console.log(err);
+                    });
             });
         });
     }

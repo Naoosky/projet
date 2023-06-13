@@ -21,12 +21,34 @@ export const admin = (req,res) => {
 
 export const usersProfil = (req,res) => {
     const id = req.params.id
-    let sql = ` SELECT * FROM users WHERE id = ?`;
-    pool.query(sql,id, (error,user) => {
-        if(error){
+
+    let query = "SELECT * FROM users WHERE id = ?";
+    pool.query(query, [id], function (error, result) {
+        if (error) {
             console.error(error)
-        }else{
-            res.render('layout', {template: 'usersProfil', user: user[0]});
+            res.status(500).send('erreur de bdd')
+        } else {
+            const query = "SELECT * FROM articles WHERE user_id = ?";
+            pool.query(query, [id], (error, articles) => {
+                if (error) {
+                    console.error(error)
+                } else {
+                    let sql = "SELECT * FROM items INNER JOIN images ON image_id = images.id WHERE user_id = ?";
+                    pool.query(sql, [id], function (error, items) {
+                        if (error) {
+                            console.error(error)
+                            res.status(500).send('erreur de bdd')
+                        } else {
+                            res.render('layout', {
+                                template: 'usersProfil',
+                                user: result[0],
+                                items: items,
+                                articles: articles
+                            })
+                        }
+                    });
+                }
+            });
         }
     });
 }
@@ -34,11 +56,14 @@ export const usersProfil = (req,res) => {
 export const deleteArticle = (req,res) => {
     const id = req.params.id
     let sql = ` DELETE FROM articles WHERE id = ?`;
-    pool.query(sql,id, (error) => {
-        if(error){
-            console.error(error)
-        }else{
-            res.redirect('/administration');
+    pool.query(sql, [id], function (error, result) {
+        if (error) {
+            console.log(error)
+            res.status(500).send({
+                error: 'Error when delete post'
+            });
+        } else {
+            res.status(204).send();
         }
     });
 }
