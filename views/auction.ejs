@@ -1,1 +1,23 @@
-<h1>Page Enchère</h1>
+<section class="table-auction">
+    <table>
+        <thead>
+        <tr>
+            <th>Pseudo</th>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Prix</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(let i = 0; i< items.length; i++){ %>
+        <tr>
+            <td><%= items[i].pseudo %></td>
+            <td><%= items[i].title %></td>
+            <td><%= items[i].content %></td>
+            <td><img src="<%= items[i].url %>" alt=" <%= items[i].description %>"></td>
+            <td><%= items[i].price %> <img src="/img/icon.png" alt="Pièce d'or"> </td>
+        <% }%>
+        </tbody>
+    </table>
+</section>

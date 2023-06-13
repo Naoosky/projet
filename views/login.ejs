@@ -1,9 +1,12 @@
 <section class="page-connect">
 <fieldset class="form-login">
     <legend>Se connecter</legend>
+    <% if(error !== null){ %>
+        <p class="error"><%= error %></p>
+    <% } %>
     <form action="/login" method="post">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email">
+        <input type="email"  name="email">
         <label for="password">Mot de passe</label>
         <input type="password" id="password" name="password">
 

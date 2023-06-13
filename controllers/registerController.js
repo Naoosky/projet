@@ -6,7 +6,7 @@ import bcrypt from "bcrypt"; // module npm pour crypter les mots de passe
 
 
 export const register = (req, res) => {
-    res.render('layout', {template: 'register'});
+    res.render('layout', {template: 'register', error: null});
 }
 
 export const registerSubmit = function (req, res) {
@@ -19,23 +19,24 @@ export const registerSubmit = function (req, res) {
     const inputRegex = /^[a-zA-Z0-9\s]+$/;
 
     // protection contre les failles XSS (cross-site scripting)
-    const safeEmail = xss.escapeHtml(email);
-    const safePseudo = xss.escapeHtml(pseudo);
-    const safePassword = xss.escapeHtml(password);
-    const safeConfirmPassword = xss.escapeHtml(confirmPassword);
+    const safeEmail = xss(email);
+    const safePseudo = xss(pseudo);
+    const safePassword = xss(password);
+    const safeConfirmPassword = xss(confirmPassword);
 
     // vérification des données du formulaire si les données ne sont pas valides, on renvoie un message d'erreur
     if (!emailRegex.test(safeEmail)) {
-        return res.status(400).send('L\'e-mail n\'est pas valide');
+        return res.render('layout', {template: 'register', error: 'L\'email n\'est pas valide'});
     }
     if (safePseudo.length < 3 || !inputRegex.test(safePseudo)) {
-        return res.status(400).send('Le pseudo doit contenir au moins 3 caractères et ne doit pas contenir de caractères spéciaux');
+        return res.render('layout', {template: 'register',
+            error: 'Le pseudo doit contenir au moins 3 caractères et ne doit pas contenir de caractères spéciaux'});
     }
     if (safePassword.length < 8) {
-        return res.status(400).send('Le mot de passe doit contenir au moins 8 caractères');
+        return res.render('layout', {template: 'register', error: 'Le mot de passe doit contenir au moins 8 caractères'});
     }
     if (safeConfirmPassword !== safePassword ) {
-        return res.status(400).send('La confirmation du mot de passe ne correspond pas ou contient des caractères spéciaux');
+        return res.render('layout', {template: 'register', error: 'Les mots de passe ne correspondent pas'});
     }
 
     // cryptage du mot de passe avec bcrypt

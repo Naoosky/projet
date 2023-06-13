@@ -1,6 +1,9 @@
 <section class="page-register">
     <fieldset class="form-registre">
         <legend>Inscription</legend>
+        <% if(error !== null){ %>
+            <p class="error"><%= error %></p>
+        <% } %>
         <form action="/register" method="post" id="registerForm">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Entrer votre email">
@@ -12,7 +15,9 @@
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmer votre mot de passe">
             <input type="submit" value="S'inscrire">
         </form>
+
     </fieldset>
+
     <p>Deja un compte ? <a href="/login">Connecter-vous</a></p>
 </section>
 <script src="/js/form.js"></script>

@@ -4,17 +4,22 @@
     <form action="/add/items/<%= user.id %>" method="POST" class="form-items">
         <label for="title">Titre de l'item</label>
         <input type="text" id="title" name="title">
-        <label for="description">Description</label>
-        <textarea id="description" name="description"></textarea>
+
+        <label for="content">Description</label>
+        <textarea id="content" name="content"></textarea>
+
         <label for="price">Prix</label>
         <input type="number" id="price" name="price">
+
         <label for="category">Catégorie</label>
         <select name="category" id="category" required>
+
             <option value="">Sélectionnez une catégorie</option>
             <% for(let i = 0; i < category.length; i++) { %>
                 <option value="<%= category[i].id %>"><%= category[i].name %></option>
             <% } %>
         </select>
+
         <label for="image">Image</label>
         <div class="image">
             <% for(let i = 0; i < images.length; i++) { %>

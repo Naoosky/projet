@@ -38,6 +38,7 @@
                         <a href="/profile/<%= locals.userId %>">Profil</a>
                         <a href="/logout">Déconnexion</a>
                     <% }else if(locals.isAdmin) { %>
+                        <a href="/profile/<%= locals.userId %>">Profil</a>
                         <a href="/administration">Administration</a>
                         <a href="/logout">Déconnexion</a>
                     <% } else { %>

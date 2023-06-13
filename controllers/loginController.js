@@ -2,7 +2,7 @@ import pool from "../config/database.js";
 import bcrypt from "bcrypt";
 
 export const login = (req, res) => {
-    res.render('layout', {template: 'login'});
+    res.render('layout', {template: 'login', error: null});
 }
 
 export const loginSubmit = (req, res) => {
@@ -17,7 +17,7 @@ export const loginSubmit = (req, res) => {
             res.status(500).send('erreur de bdd')
         }else{
             if (result.length < 1) {
-                res.redirect('/login')
+                res.render('layout', {template: 'login', error: "L'email ou mot de passe n'est pas correct"});
             }else{
                 bcrypt.compare(password, result[0].password, (error,isAllowed) =>{
                     if(isAllowed){
@@ -32,7 +32,7 @@ export const loginSubmit = (req, res) => {
 
                         }
                     }else{
-                        res.redirect('/login')
+                        res.render('layout', {template: 'login', error: "L'email ou mot de passe n'est pas correct"});
                     }
                 })
             }
