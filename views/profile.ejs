@@ -1,10 +1,12 @@
 <h1> <%= user.pseudo %> </h1>
-<p>
-<a href="/add/articles/<%= user.id %>">ajouter un article</a>
-<a href="/add/items/<%= user.id %>">ajouter un item</a>
-</p>
 
-<% if (articles.length > 0) { %>
+<section class="profil-user">
+    <p>
+        <a href="/add/articles/<%= user.id %>">ajouter un article</a>
+        <a href="/add/items/<%= user.id %>">ajouter un item</a>
+    </p>
+
+    <% if (articles.length > 0) { %>
     <ul>
         <% articles.forEach(function(article) { %>
             <li>
@@ -15,24 +17,27 @@
         <% })} %>
     </ul>
 
-<% if (items.length > 0) { %>
+    <% if (items.length > 0) { %>
     <table>
         <thead>
-    <tr>
-                <th>nom</th>
-                <th>description</th>
-                <th>image</th>
-                <th>prix</th>
-            </tr>
+        <tr>
+            <th>nom</th>
+            <th>description</th>
+            <th>image</th>
+            <th>prix</th>
+        </tr>
         </thead>
         <tbody>
         <% items.forEach(function(item) { %>
             <tr>
                 <td><%= item.title %></td>
                 <td><%= item.content %></td>
-                <td><img src="<%= item.url %>" alt="<%= item.description%>"></td>
+                <td><img src="<%= item.url %>" alt="<%= item.description %>"></td>
                 <td><%= item.price %> <img src="/img/icon.png" alt="une piece d'or" class="img-price"></td>
             </tr>
         <% })} %>
         </tbody>
     </table>
+</section>
+
+
