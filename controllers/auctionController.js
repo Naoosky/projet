@@ -1,4 +1,6 @@
 import pool from "../config/database.js";
+import {v4 as uuidv4} from 'uuid';
+import xss from "xss";
 
 export const auction = (req, res) => {
     let sql = " SELECT * FROM items INNER JOIN images ON image_id = images.id";
@@ -33,7 +35,12 @@ export const addItems = (req, res) => {
                             console.error(error)
                             res.status(500).send('erreur de bdd')
                         } else {
-                            res.render('layout', {template: 'addItems', images: images, user: user[0], category: category});
+                            res.render('layout', {
+                                template: 'addItems',
+                                images: images,
+                                user: user[0],
+                                category: category
+                            });
                         }
                     });
                 }
@@ -43,20 +50,25 @@ export const addItems = (req, res) => {
 }
 
 export const addItemsSubmit = (req, res) => {
-    let id = req.session.userId
-    console.log(req.body)
+    let id = req.session.userId;
     let newItems = {
-
+        id: uuidv4(),
+        title: req.body.title,
+        content: req.body.description,
+        price: req.body.price,
+        category_id: req.body.category,
+        image_id: req.body.image,
+        user_id: id
     }
-    res.redirect('/profile/'+id)
-    // let sql = "INSERT INTO items SET ?";
-    // pool.query(sql, [newItems], function (error, result) {
-    //     if (error) {
-    //         console.error(error)
-    //         res.status(500).send('erreur de bdd')
-    //     } else {
-    //         res.redirect('/profile'+id)
-    //     }
-    // });
+
+    let sql = "INSERT INTO items SET ?";
+    pool.query(sql, [newItems], function (error, result) {
+        if (error) {
+            console.error(error)
+            res.status(500).send('erreur de bdd')
+        } else {
+            res.redirect('/profile/' + id)
+        }
+    });
 
 }

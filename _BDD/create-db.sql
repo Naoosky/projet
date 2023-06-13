@@ -26,7 +26,7 @@ CREATE TABLE users (
 CREATE TABLE items (
    id CHAR(36) NOT NULL PRIMARY KEY,
    title VARCHAR(255) NOT NULL,
-   description TEXT NOT NULL,
+   content TEXT NOT NULL,
    category_id CHAR(36) NOT NULL,
    user_id CHAR(36) NOT NULL,
    price DECIMAL(10,2) NOT NULL,
