@@ -20,6 +20,24 @@ export const auction = (req, res) => {
     });
 }
 
+export const searchItems = (req, res) => {
+    const search = req.body.search;
+    let sql = ` SELECT *
+                FROM items
+                         INNER JOIN images ON image_id = images.id
+                         INNER JOIN category_items ON category_id = category_items.id
+                         INNER JOIN users ON user_id = users.id
+                WHERE category_items.name LIKE '%${search}%' `;
+    pool.query(sql, function (error, items) {
+        if (error) {
+            console.error(error)
+            res.status(500).send('erreur de bdd')
+        } else {
+            res.render('layout', {template: 'auction', items: items});
+        }
+    });
+}
+
 export const addItems = (req, res) => {
     let id = req.session.userId;
 

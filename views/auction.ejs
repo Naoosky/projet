@@ -1,4 +1,16 @@
 <section class="table-auction">
+    <h2>Tableau des enchères</h2>
+    <form method="post" action="/search/items">
+    <label for="search">Catégorie</label>
+    <select name="search" id="search" required>
+        <option value="">Sélectionnez une catégorie</option>
+        <option value="Gems">Gemmes</option>
+        <option value="Enchantes">Enchantes</option>
+        <option value="Glyphes">Glyphes</option>
+    </select>
+    <input type="submit" value="Rechercher">
+    </form>
+
     <table>
         <thead>
         <tr>

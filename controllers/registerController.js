@@ -1,8 +1,8 @@
-// importation des modules nécessaires
-import pool from "../config/database.js"; // importation pour la connexion à la base de données
-import {v4 as uuidv4} from 'uuid'; // module npm pour la génération d'uuid
-import xss from 'xss'; // module npm pour la protection contre les failles XSS
-import bcrypt from "bcrypt"; // module npm pour crypter les mots de passe
+// Import necessary modules
+import pool from "../config/database.js"; // Import for database connection
+import {v4 as uuidv4} from 'uuid';  // npm module for generating UUID
+import xss from 'xss';  // npm module for protection against XSS vulnerabilities
+import bcrypt from "bcrypt"; // npm module for password encryption
 
 
 export const register = (req, res) => {
@@ -11,20 +11,20 @@ export const register = (req, res) => {
 
 export const registerSubmit = function (req, res) {
 
-    // recuperation des données du formulaire dans req.body
+    // Get form data from req.body
     const {email, pseudo, password, confirmPassword} = req.body;
 
-    // regex pour l'email (format valide) et pour le pseudo (pas de caractères spéciaux)
+    // Regular expressions for email (valid format) and pseudo (no special characters)
     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$/;
     const inputRegex = /^[a-zA-Z0-9\s]+$/;
 
-    // protection contre les failles XSS (cross-site scripting)
+    // Protection against XSS (Cross-Site Scripting) vulnerabilities
     const safeEmail = xss(email);
     const safePseudo = xss(pseudo);
     const safePassword = xss(password);
     const safeConfirmPassword = xss(confirmPassword);
 
-    // vérification des données du formulaire si les données ne sont pas valides, on renvoie un message d'erreur
+    // Validate form data, if the data is invalid, return an error message
     if (!emailRegex.test(safeEmail)) {
         return res.render('layout', {template: 'register', error: 'L\'email n\'est pas valide'});
     }
@@ -39,34 +39,34 @@ export const registerSubmit = function (req, res) {
         return res.render('layout', {template: 'register', error: 'Les mots de passe ne correspondent pas'});
     }
 
-    // cryptage du mot de passe avec bcrypt
+    // Encrypt password using bcrypt
     bcrypt.hash(safePassword, 10, function (error, hash) {
         if (error) {
             console.log(error);
         } else {
 
-            // recuperation des données du formulaire dans un objet newUsers
+            // Create an object newUsers with form data
             const newUsers = {
-                id: uuidv4(), // on génère un id unique avec uuid
+                id: uuidv4(), // Generate a unique ID using UUID
                 pseudo: safePseudo,
                 email: safeEmail,
-                password: hash, // le mot de passe crypté
-                role: "Membre" // par défaut, le role est "Membre"
+                password: hash, // Encrypted password
+                role: "Membre" // By default, the role is "Member"
             };
 
-            // requète SQL pour insérer les données du formulaire dans la table users
+            // SQL query to insert form data into the users table
             let query = "INSERT INTO users SET ?";
 
-            // execution de la requète SQL avec les données de l'objet newUsers
+            // Execute the SQL query with data from the newUsers object
             pool.query(query, [newUsers], function (error, result) {
                 if (error) {
                     console.error(error);
                     res.status(500).send('Erreur de base de données');
                 } else {
 
-                    // si l'inscription est réussie, on redirige vers la page d'accueil et on connecte l'utilisateur
+                    // If registration is successful, redirect to the homepage and log in the user
                     req.session.isUser = true;
-                    req.session.userId = newUsers.id; // on stocke l'id de l'utilisateur dans la session
+                    req.session.userId = newUsers.id; // Store the user ID in the session
                     res.redirect('/');
                 }
             });
