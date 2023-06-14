@@ -7,12 +7,11 @@
 
     <label for="category">Catégorie :</label>
     <select name="category" id="category" required>
-        <option value="">Sélectionnez une catégorie</option>
+        <option value="0">Sélectionnez une catégorie</option>
         <% for(let i = 0; i < category.length;i++) { %>
             <option value="<%= category[i].id %>"><%= category[i].name %></option>
         <% } %>
     </select>
 
-    <input type="hidden" name="user" value="<%= user.id %>">
     <input type="submit" value="Ajouter">
 </form>

@@ -1,1 +1,25 @@
-<h1>Page Forum</h1>
+<h1>Forum</h1>
+<section>
+    <h2>table des articles</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Créateur</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Catégorie</th>
+            <th>Date de création</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% articles.forEach(article => { %>
+        <tr>
+            <td><%= article.pseudo %></td>
+            <td><a href="/articles/<%= article.id %>"> <%= article.title %> </a></td>
+            <td><%= article.description.substring(0, 30) %></td>
+            <td><%= article.name %></td>
+            <td><%= article.date.toLocaleDateString() %></td>
+        </tr>
+        <% }) %>
+    </table>
+</section>

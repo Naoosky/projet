@@ -48,7 +48,7 @@
                     <% for( let i = 0; i < articles.length; i++ ) { %>
                         <tr>
                             <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
-                            <td><%= articles[i].description.substring(0, 30)%> ...</td>
+                            <td><%= articles[i].description.substring(0, 30) %> ...</td>
                             <td><%= articles[i].category %></td>
                         </tr>
                     <% } %>

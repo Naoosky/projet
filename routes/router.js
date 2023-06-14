@@ -4,9 +4,8 @@ import {home} from '../controllers/homeController.js';
 import {admin, usersProfil, deleteArticle} from '../controllers/adminController.js';
 import {forum, articlesDetails, addComments, addArticles, addArticlesSubmit} from '../controllers/forumController.js';
 import {auction, addItems, addItemsSubmit, searchItems} from '../controllers/auctionController.js';
-import {login, loginSubmit} from '../controllers/loginController.js';
+import {login, loginSubmit, logOut} from '../controllers/loginController.js';
 import {register, registerSubmit} from '../controllers/registerController.js';
-import {logOut} from "../controllers/logOutController.js";
 import {profile} from "../controllers/profilController.js";
 import {privacyPolicy} from "../controllers/privacyPolicyController.js";
 

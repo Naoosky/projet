@@ -3,11 +3,11 @@ import {v4 as uuidv4} from 'uuid';
 import xss from "xss";
 
 export const auction = (req, res) => {
-    let sql = ` SELECT * 
-                 FROM items 
-                 INNER JOIN images ON image_id = images.id 
-                 INNER JOIN category_items ON category_id = category_items.id 
-                 INNER JOIN users ON user_id = users.id
+    let sql = ` SELECT *
+                FROM items
+                         INNER JOIN images ON image_id = images.id
+                         INNER JOIN category_items ON category_id = category_items.id
+                         INNER JOIN users ON user_id = users.id
     `;
 
     pool.query(sql, function (error, items) {
@@ -78,16 +78,11 @@ export const addItemsSubmit = (req, res) => {
 
     const {title, content, price, category, image} = req.body;
 
-    const inputRegex = /^[a-zA-Z0-9\s]+$/;
-
     const safeTitle = xss(title);
     const safeContent = xss(content);
     const safePrice = xss(price);
 
-    if (!inputRegex.test(safeTitle) || !inputRegex.test(safeContent) || !inputRegex.test(safePrice)) {
-        res.status(400).send('le formulaire contient des caractères non autorisés')
-
-    } else if (safeTitle.length < 3 || safeTitle.length > 50) {
+    if (safeTitle.length < 3 || safeTitle.length > 50) {
         res.status(400).send('le titre doit contenir entre 3 et 50 caractères')
 
     } else if (safeContent.length < 3 || safeContent.length > 255) {
