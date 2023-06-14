@@ -1,10 +1,10 @@
 <h1> <%= user.pseudo %> </h1>
 
 <section class="profil-user">
-    <p>
-        <a href="/add/articles/<%= user.id %>">ajouter un article</a>
-        <a href="/add/items/<%= user.id %>">ajouter un item</a>
-    </p>
+    <ul>
+        <li><a href="/add/articles/<%= user.id %>">ajouter un article</a></li>
+        <li><a href="/add/items/<%= user.id %>">ajouter un item</a></li>
+    </ul>
 
     <% if (articles.length > 0) { %>
     <ul>

@@ -6,13 +6,17 @@
         <% } %>
         <form action="/register" method="post" id="registerForm">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Entrer votre email">
+            <input type="email" id="email" name="email" placeholder="Entrer votre email" required>
+
             <label for="pseudo">Nom d'Utilisateur</label>
-            <input type="text" id="pseudo" name="pseudo" placeholder="entrer votre pseudo avec minimum 3 caractères">
+            <input type="text" id="pseudo" name="pseudo" placeholder="entrer votre pseudo avec minimum 3 caractères" required>
+
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" placeholder="enter votre mot de passe avec minimum 8 caractères">
+            <input type="password" id="password" name="password" placeholder="enter votre mot de passe avec minimum 8 caractères" required>
+
             <label for="confirmPassword">Confirmer le mot de passe</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmer votre mot de passe">
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmer votre mot de passe" required>
+
             <input type="submit" value="S'inscrire">
         </form>
 

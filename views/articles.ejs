@@ -16,24 +16,26 @@
     <h2>Commentaires</h2>
     </div>
     <div class="body-comments-img">
+
     <% for( let i=0; i < articles.length; i++ ) { %>
-    <h3>Pseudo : <span><%= articles[i].pseudo %></span></h3>
-    <p>Commentaire : <%= articles[i].comment%></p>
-    <hr />
+        <h3> <span> <%= articles[i].pseudo %> </span></h3>
+        <p> <%= articles[i].comment%></p>
+        <hr />
     <% } %>
     </div>
     <div class="footer-comments-img"></div>
 </section>
 <fieldset class="details-form">
     <legend>Ajoutez un Commentaire</legend>
-    <form
-        action="/add_comment/<%=articles[0].id%>"
-        method="post"
-    >
-        <label>Pseudo</label>
-        <input type="text" name="pseudo" />
-        <label>commentaire</label>
-        <textarea name="comment"></textarea>
+
+    <form action="/add_comment/<%=articles[0].id%>" method="post">
+        <% if(!locals.isUser ){ %>
+            <label for="pseudo">Pseudo</label>
+            <input type="text" name="pseudo" id="pseudo" required>
+        <% } %>
+        <label for="comment">commentaire</label>
+        <textarea name="comment" id="comment" required></textarea>
+
         <input type="submit" name="Enregistrer" />
     </form>
 </fieldset>
