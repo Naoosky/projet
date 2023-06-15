@@ -26,22 +26,27 @@
         </table>
     <% } %>
     <% if (items.length > 0) { %>
-    <table>
+    <table class=" table-items js-table-items">
         <thead>
         <tr>
             <th>nom</th>
             <th>description</th>
             <th>image</th>
             <th>prix</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <% items.forEach(function(item) { %>
-            <tr>
+            <tr data-id="<%= item.id %>" >
                 <td><%= item.title %></td>
                 <td><%= item.content %></td>
                 <td><img src="<%= item.url %>" alt="<%= item.description %>"></td>
                 <td><%= item.price %> <img src="/img/icon.png" alt="une piece d'or" class="img-price"></td>
+                <td>
+                    <button class="js-item-remove" data-id="<%= item.id %>"><i class="fa fa-remove"></i>
+                    </button>
+                </td>
             </tr>
         <% })} %>
         </tbody>
@@ -49,4 +54,4 @@
 
 </section>
 
-<script src="/js/admin.js"></script>
+<script src="/js/delete.js"></script>

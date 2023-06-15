@@ -1,4 +1,14 @@
 <h1>Forum</h1>
+<form method="post" action="/search/articles">
+    <label for="search">Catégorie</label>
+    <select name="search" id="search" required>
+        <option value="">Sélectionnez une catégorie</option>
+        <option value="Aide IG">Aide IG</option>
+        <option value="Events">Events</option>
+        <option value="Update">Update</option>
+    </select>
+    <input type="submit" value="Rechercher">
+</form>
 <section>
     <h2>table des articles</h2>
     <table>
@@ -17,7 +27,7 @@
                 <td><%= articles[i].pseudo %></td>
                 <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
                 <td><%= articles[i].description.substring(0, 30) %> ...</td>
-                <td><%= articles[i].category %></td>
+                <td><%= articles[i].name %></td>
                 <td><%= articles[i].date.toLocaleDateString() %></td>
             </tr>
         <% } %>

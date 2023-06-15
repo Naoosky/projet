@@ -12,8 +12,25 @@ export const forum = (req, res) => {
                        articles.date
                 FROM articles
                          INNER JOIN category_articles ON articles.category_id = category_articles.id
-                         INNER JOIN users ON user_id = users.id `;
+                         INNER JOIN users ON user_id = users.id
+                ORDER BY articles.date DESC`;
 
+    pool.query(sql, function (error, articles) {
+        if (error) {
+            console.error(error)
+            res.status(500).send('erreur de bdd')
+        } else {
+            res.render('layout', {template: 'forum', articles: articles});
+        }
+    });
+}
+
+export const searchArticles = (req, res) => {
+    const search = req.body.search;
+    let sql = ` SELECT * FROM articles
+                INNER JOIN category_articles ON articles.category_id = category_articles.id
+                INNER JOIN users ON user_id = users.id
+                WHERE category_articles.name LIKE '%${search}%' `;
     pool.query(sql, function (error, articles) {
         if (error) {
             console.error(error)
@@ -149,7 +166,7 @@ export const addArticlesSubmit = (req, res) => {
         } else {
             let sql = 'SELECT * FROM users WHERE id = ?';
             pool.query(sql, id, (error, user) => {
-                const {title, description, category} = req.body
+                const {title, description, categories} = req.body
 
                 const safeTitle = xss(title)
                 const safeDescription = xss(description)
@@ -185,7 +202,7 @@ export const addArticlesSubmit = (req, res) => {
                     id: uuidV4(),
                     title: safeTitle,
                     description: safeDescription,
-                    category_id: category,
+                    category_id: categories,
                     user_id: id
                 }
                 let sql = `INSERT INTO articles
