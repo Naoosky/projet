@@ -50,9 +50,9 @@ export const deleteArticle = (req,res) => {
 }
 
 export const deleteItem = (req,res) => {
-    const id = req.params.id
-    let sql = ` DELETE FROM items WHERE id = ?`;
-    pool.query(sql, [id], function (error, result) {
+    const id = req.params.id;
+    let sql = ` DELETE FROM items WHERE image_id = ?`;
+    pool.query(sql, id, function (error, result) {
         if (error) {
             console.log(error)
             res.status(500).send({

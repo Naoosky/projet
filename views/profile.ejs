@@ -23,8 +23,7 @@
                     <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
                     <td><%= articles[i].description.substring(0, 30) %></td>
                     <td>
-                        <button class="js-article-remove" data-id="<%= articles[i].id %>"><i class="fa fa-remove"></i>
-                        </button>
+                        <button class="js-article-remove" data-id="<%= articles[i].id %>"><i class="fa fa-remove"></i></button>
                     </td>
                 </tr>
             <% } %>
@@ -33,7 +32,7 @@
     <% } %>
 
     <% if (items.length > 0) { %>
-    <table class=" table-items js-table-items">
+    <table class="table-items js-table-items">
         <thead>
         <tr>
             <th>nom</th>

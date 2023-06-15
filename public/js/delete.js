@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(buttonElement)
 
                 const id = buttonElement.getAttribute("data-id");
+                console.log(id)
 
                 const options = {
                     method: "delete",
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 };
 
                 const url = `/delete/articles/${id}`;
+                console.log(url)
 
                 fetch(url, options)
                     .then(function (response) {
@@ -55,12 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 };
 
                 const url = `/delete/items/${id}`;
+                console.log(url)
 
                 fetch(url, options)
                     .then(function (response) {
                         if(response.ok) {
                             // Récupérer la ligne à supprimer
                             const itemElement = document.querySelector(`.js-table-items tr[data-id="${id}"]`)
+                            console.log(itemElement)
                             itemElement.remove();
                         } else {
                             response.json().then(console.log);
