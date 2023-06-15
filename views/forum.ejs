@@ -12,14 +12,14 @@
         </tr>
         </thead>
         <tbody>
-        <% articles.forEach(article => { %>
-        <tr>
-            <td><%= article.pseudo %></td>
-            <td><a href="/articles/<%= article.id %>"> <%= article.title %> </a></td>
-            <td><%= article.description.substring(0, 30) %></td>
-            <td><%= article.name %></td>
-            <td><%= article.date.toLocaleDateString() %></td>
-        </tr>
-        <% }) %>
+        <% for( let i = 0; i < articles.length; i++ ) { %>
+            <tr>
+                <td><%= articles[i].pseudo %></td>
+                <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
+                <td><%= articles[i].description.substring(0, 30) %> ...</td>
+                <td><%= articles[i].category %></td>
+                <td><%= articles[i].date.toLocaleDateString() %></td>
+            </tr>
+        <% } %>
     </table>
 </section>

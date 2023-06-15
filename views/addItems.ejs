@@ -1,6 +1,8 @@
 <fieldset>
     <legend>Ajouter votre item</legend>
-
+    <% if(error != null) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
     <form action="/add/items/<%= user.id %>" method="POST" class="form-items">
         <label for="title">Titre de l'item</label>
         <input type="text" id="title" name="title">

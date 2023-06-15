@@ -4,9 +4,11 @@ import xss from 'xss';
 
 
 export const forum = (req, res) => {
-    let sql = ` SELECT * FROM articles
-                            INNER JOIN category_articles ON articles.category_id = category_articles.id
-                            INNER JOIN users ON user_id = users.id `;
+    let sql = ` SELECT articles.id, articles.title, users.pseudo, articles.description, category_articles.name, articles.date 
+                  FROM articles
+                       INNER JOIN category_articles ON articles.category_id = category_articles.id
+                       INNER JOIN users ON user_id = users.id `;
+
     pool.query(sql, function (error, articles) {
         if (error) {
             console.error(error)
@@ -39,7 +41,7 @@ export const articlesDetails = (req, res) => {
             console.error(error)
         } else {
 
-            res.render('layout', {template: 'articles', articles: results})
+            res.render('layout', {template: 'articles', articles: results, error: null})
         }
     })
 }
@@ -54,7 +56,7 @@ export const addComments = (req, res) => {
     if (safePseudo.length < 3 ) {
         return res.render('layout', {template: 'articles', error: 'Le pseudo doit contenir au moins 3 caractères'});
     } else if (safeComment.length < 3  && safeComment.length > 255) {
-        return res.render('layout', {template: 'articles', error: 'Le commentaire doit contenir au moins 3 caractères ou dépassé les 255 caractères'});
+        return res.render('layout', {template: 'articles', error: 'Le commentaire doit contenir au moins 3 caractères et moins de 255 caractères'});
     }
 
     if (req.session.isUser) {
@@ -79,7 +81,7 @@ export const addComments = (req, res) => {
                     if (error) {
                         console.error(error)
                     } else {
-                        res.redirect('/articles/' + id)
+                        res.redirect('/articles/'+ id)
                     }
                 });
             }
@@ -98,56 +100,91 @@ export const addComments = (req, res) => {
             if (error) {
                 console.error(error)
             } else {
-                res.redirect('/articles/' + id)
+                res.redirect('/articles/'+ id)
             }
         })
     }
 }
 
 export const addArticles = (req, res) => {
-    let id = req.params.id
+    let userId = req.session.userId
     const query = 'SELECT * FROM category_articles';
     pool.query(query, (error, category) => {
         if (error) {
             console.error(error)
         } else {
-            res.render('layout', {template: 'addArticles', category: category, id: id})
+            const sql = 'SELECT * FROM users WHERE id = ?';
+            pool.query(sql, userId, (error, user) => {
+                if (error) {
+                    console.error(error)
+                } else {
+                    res.render('layout', {template: 'addArticles', category: category, user: user[0], error: null})
+                }
+            });
         }
     });
 }
 
 export const addArticlesSubmit = (req, res) => {
     const id = req.session.userId
-    const {title, description, category} = req.body
-
-    const safeTitle = xss(title)
-    const safeDescription = xss(description)
-
-    if (safeTitle.length < 3 && safeTitle.length > 50 ) {
-        return res.render('layout', {template: 'addArticles', error: 'Le titre doit contenir au moins 3 caractères ou dépassé les 50 caractères'});
-    }
-    if (safeDescription.length < 3 && safeDescription.length > 255 ) {
-        return res.render('layout', {template: 'addArticles', error: 'La description doit contenir au moins 3 caractères ou dépassé les 255 caractères'});
-    }
-    if (category === '0') {
-        return res.render('layout', {template: 'addArticles', error: 'Veuillez choisir une catégorie'});
-    }
-
-
-    const newArticle = {
-        id: uuidV4(),
-        title: safeTitle,
-        description: safeDescription,
-        category_id: category,
-        user_id: id
-    }
-    let sql = `INSERT INTO articles
-               SET ?`;
-    pool.query(sql, newArticle, (error) => {
+    const query = `SELECT *
+                   FROM category_articles`;
+    pool.query(query, (error, category) => {
         if (error) {
             console.error(error)
         } else {
-            res.redirect('/profile/' + id)
+            let sql = 'SELECT * FROM users WHERE id = ?';
+            pool.query(sql, id, (error, user) => {
+                const {title, description, category} = req.body
+
+                const safeTitle = xss(title)
+                const safeDescription = xss(description)
+
+
+                if (safeTitle.length < 3 || safeTitle.length > 50) {
+                    return res.render('layout', {
+                        template: 'addArticles',
+                        category: category,
+                        user: user[0],
+                        error: 'Le titre doit contenir au moins 3 caractères ou dépassé les 50 caractères'
+                    });
+                }
+                if (safeDescription.length < 3 || safeDescription.length > 255) {
+                    return res.render('layout', {
+                        template: 'addArticles',
+                        category: category,
+                        user: user[0],
+                        error: 'La description doit contenir au moins 3 caractères ou dépassé les 255 caractères'
+                    });
+                }
+                if (category === '0') {
+                    return res.render('layout', {
+                        template: 'addArticles',
+                        category: category,
+                        user: user[0],
+                        error: 'Veuillez choisir une catégorie'
+                    });
+                }
+
+
+                const newArticle = {
+                    id: uuidV4(),
+                    title: safeTitle,
+                    description: safeDescription,
+                    category_id: category,
+                    user_id: id
+                }
+                let sql = `INSERT INTO articles
+                           SET ?`;
+                pool.query(sql, newArticle, (error) => {
+                    if (error) {
+                        console.error(error)
+                    } else {
+                        res.redirect('/profile/' + id)
+                    }
+                })
+
+            });
         }
-    })
+    });
 }

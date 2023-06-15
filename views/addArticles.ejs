@@ -1,17 +1,27 @@
-<form method="POST" action="/add/articles/<%= user.id %>">
-    <label for="title">Titre :</label>
-    <input type="text" name="title" id="title" required>
+<fieldset>
+    <legend>Ajouter votre Article</legend>
+    <% if(error !== null) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+    <form action="/add/articles/<%= user.id %>" method="POST" class="form-articles">
+        <label for="title">Titre de l'article</label>
+        <input type="text" id="title" name="title">
 
-    <label for="description">Description :</label>
-    <textarea name="description" id="description" rows="4" cols="50" required></textarea>
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
 
-    <label for="category">Catégorie :</label>
-    <select name="category" id="category" required>
-        <option value="0">Sélectionnez une catégorie</option>
-        <% for(let i = 0; i < category.length;i++) { %>
-            <option value="<%= category[i].id %>"><%= category[i].name %></option>
-        <% } %>
-    </select>
+        <label for="category">Catégorie</label>
 
-    <input type="submit" value="Ajouter">
-</form>
+        <select name="category" id="category" required>
+            <option value="0">Sélectionnez une catégorie</option>
+            <% for(let i = 0; i < category.length; i++) { %>
+                <option value="<%= category[i].id %>"><%= category[i].name %></option>
+            <% } %>
+        </select>
+
+
+        <input type="hidden" name="user" value="<%= user.id %>">
+        <input type="submit" value="Ajouter">
+    </form>
+
+</fieldset>

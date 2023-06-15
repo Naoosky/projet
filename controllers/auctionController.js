@@ -59,12 +59,7 @@ export const addItems = (req, res) => {
                             console.error(error)
                             res.status(500).send('erreur de bdd')
                         } else {
-                            res.render('layout', {
-                                template: 'addItems',
-                                images: images,
-                                user: user[0],
-                                category: category
-                            });
+                            res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: null});
                         }
                     });
                 }
@@ -76,46 +71,70 @@ export const addItems = (req, res) => {
 export const addItemsSubmit = (req, res) => {
     let id = req.session.userId;
 
-    const {title, content, price, category, image} = req.body;
+    let sql = "SELECT * FROM images";
+    pool.query(sql, function (error, images) {
+        if (error) {
+            console.error(error)
+            res.status(500).send('erreur de bdd')
+        } else {
+            let query = "SELECT * FROM users WHERE id = ?";
+            pool.query(query, id, function (error, user) {
+                if (error) {
+                    console.error(error)
+                    res.status(500).send('erreur de bdd')
+                } else {
+                    let sql2 = "SELECT * FROM category_items";
+                    pool.query(sql2, function (error, category) {
+                        if (error) {
+                            console.error(error)
+                            res.status(500).send('erreur de bdd')
+                        } else {
+                            const {title, content, price, category, image} = req.body;
 
-    const safeTitle = xss(title);
-    const safeContent = xss(content);
-    const safePrice = xss(price);
+                            const safeTitle = xss(title);
+                            const safeContent = xss(content);
+                            const safePrice = xss(price);
 
-    if (safeTitle.length < 3 || safeTitle.length > 50) {
-        res.status(400).send('le titre doit contenir entre 3 et 50 caractères')
+                            if (safeTitle.length < 3 || safeTitle.length > 50) {
+                                res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'le titre doit contenir entre 3 et 50 caractères'})
 
-    } else if (safeContent.length < 3 || safeContent.length > 255) {
-        res.status(400).send('la description doit contenir entre 3 et 255 caractères')
+                            } else if (safeContent.length < 3 || safeContent.length > 255) {
+                                res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'la description doit contenir entre 3 et 255 caractères'})
 
-    } else if (safePrice.length < 1 || safePrice.length > 10) {
-        res.status(400).send('le prix ne doit pas dépasser 10 chiffres')
+                            } else if (safePrice.length < 1 || safePrice.length > 10) {
+                                res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'le prix doit contenir entre 1 et 10 caractères'})
 
-    } else if (category === undefined) {
-        res.status(400).send('veuillez choisir une catégorie')
+                            } else if (category === "") {
+                                res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'veuillez choisir une catégorie'})
 
-    } else if (image === undefined) {
-        res.status(400).send('veuillez choisir une image')
+                            } else if (image === undefined) {
+                                res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'veuillez choisir une image'})
 
-    } else {
-        let newItems = {
-            id: uuidv4(),
-            title: safeTitle,
-            content: safeContent,
-            price: safePrice,
-            category_id: category,
-            image_id: image,
-            user_id: id
+                            } else {
+                                let newItems = {
+                                    id: uuidv4(),
+                                    title: safeTitle,
+                                    content: safeContent,
+                                    price: safePrice,
+                                    category_id: category,
+                                    image_id: image,
+                                    user_id: id
+                                }
+
+                                let sql3 = "INSERT INTO items SET ? ";
+                                pool.query(sql3, [newItems], function (error, result) {
+                                    if (error) {
+                                        console.error(error)
+                                        res.status(500).send('erreur de bdd')
+                                    } else {
+                                        res.redirect('/profile/' + id)
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            });
         }
-
-        let sql = "INSERT INTO items SET ? ";
-        pool.query(sql, [newItems], function (error, result) {
-            if (error) {
-                console.error(error)
-                res.status(500).send('erreur de bdd')
-            } else {
-                res.redirect('/profile/' + id)
-            }
-        });
-    }
+    });
 }
