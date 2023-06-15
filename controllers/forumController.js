@@ -4,10 +4,15 @@ import xss from 'xss';
 
 
 export const forum = (req, res) => {
-    let sql = ` SELECT articles.id, articles.title, users.pseudo, articles.description, category_articles.name, articles.date 
-                  FROM articles
-                       INNER JOIN category_articles ON articles.category_id = category_articles.id
-                       INNER JOIN users ON user_id = users.id `;
+    let sql = ` SELECT articles.id,
+                       articles.title,
+                       users.pseudo,
+                       articles.description,
+                       category_articles.name,
+                       articles.date
+                FROM articles
+                         INNER JOIN category_articles ON articles.category_id = category_articles.id
+                         INNER JOIN users ON user_id = users.id `;
 
     pool.query(sql, function (error, articles) {
         if (error) {
@@ -29,7 +34,7 @@ export const articlesDetails = (req, res) => {
                category_articles.name as 'category',
                comments.pseudo,
                comments.comment,
-               comments.date          as 'dateComments'
+               comments.date as 'dateComments'
         FROM articles
                  INNER JOIN category_articles ON articles.category_id = category_articles.id
                  LEFT JOIN comments ON comments.article_id = articles.id
@@ -48,62 +53,71 @@ export const articlesDetails = (req, res) => {
 
 export const addComments = (req, res) => {
     const id = req.params.id
-    const {pseudo, comment} = req.body
+    let sql = `
+        SELECT articles.id,
+               articles.title,
+               articles.description,
+               articles.date,
+               category_articles.name as 'category',
+               comments.pseudo,
+               comments.comment,
+               comments.date as 'dateComments'
+        FROM articles
+                 INNER JOIN category_articles ON articles.category_id = category_articles.id
+                 LEFT JOIN comments ON comments.article_id = articles.id
+        WHERE articles.id = ?
 
-    const safePseudo = xss(pseudo)
-    const safeComment = xss(comment)
+    `;
+    pool.query(sql, id, (error, results) => {
+        if (error) {
+            console.error(error)
+        } else {
+            const userId = req.session.userId
+            const {comment} = req.body
 
-    if (safePseudo.length < 3 ) {
-        return res.render('layout', {template: 'articles', error: 'Le pseudo doit contenir au moins 3 caractères'});
-    } else if (safeComment.length < 3  && safeComment.length > 255) {
-        return res.render('layout', {template: 'articles', error: 'Le commentaire doit contenir au moins 3 caractères et moins de 255 caractères'});
-    }
+            const safeComment = xss(comment)
 
-    if (req.session.isUser) {
-
-        const userId = req.session.userId
-        const sql = 'SELECT * FROM users WHERE id = ?';
-
-        pool.query(sql, userId, (error, user) => {
-            if (error) {
-                console.error(error)
-            } else {
-                const newCommentUser = {
-                    id: uuidV4(),
-                    pseudo: user[0].pseudo,
-                    comment: safeComment,
-                    article_id: id
-                }
-
-                let sql = 'INSERT INTO comments SET ?';
-
-                pool.query(sql, newCommentUser, (error) => {
-                    if (error) {
-                        console.error(error)
-                    } else {
-                        res.redirect('/articles/'+ id)
-                    }
+            if (safeComment.length < 3) {
+                return res.render('layout', {
+                    template: 'articles',
+                    articles: results,
+                    error: 'Le commentaire doit contenir au moins 3 caractères et moins de 255 caractères'
+                });
+            } else if (safeComment.length > 255) {
+                return res.render('layout', {
+                    template: 'articles',
+                    articles: results,
+                    error: 'Le commentaire doit contenir au moins 3 caractères et moins de 255 caractères'
                 });
             }
-        });
 
-    } else {
+            const sql2 = 'SELECT * FROM users WHERE id = ?';
 
-        const newComment = {
-            id: uuidV4(),
-            pseudo: safePseudo,
-            comment: safeComment,
-            article_id: id
+            pool.query(sql2, userId, (error, user) => {
+                if (error) {
+                    console.error(error)
+                } else {
+                    const newCommentUser = {
+                        id: uuidV4(),
+                        pseudo: user[0].pseudo,
+                        comment: safeComment,
+                        article_id: id
+                    }
+
+                    let sql3 = 'INSERT INTO comments SET ?';
+
+                    pool.query(sql3, newCommentUser, (error) => {
+                        if (error) {
+                            console.error(error)
+                        } else {
+                            res.redirect('/articles/' + id)
+                        }
+                    });
+                }
+            });
         }
-        let sql2 = "INSERT INTO comments SET  ?";
-        pool.query(sql2, newComment, (error) => {
-            if (error) {
-                console.error(error)
-            } else {
-                res.redirect('/articles/'+ id)
-            }
-        })
-    }
+    })
+
 }
 
 export const addArticles = (req, res) => {
