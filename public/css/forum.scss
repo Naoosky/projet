@@ -1,0 +1,140 @@
+.container-details {
+  padding-top: 1rem;
+
+  .header-details-img {
+    background-image: url(../img/forum-details/articles-head.webp);
+    background-size: cover;
+    background-position: 0 15%;
+    padding: 2rem;
+  }
+
+  .details-article {
+    padding: 1rem;
+    text-align: center;
+
+    p {
+      margin: auto auto 0.5rem;
+      width: 85%;
+    }
+  }
+
+  .body-details-img {
+    background-image: url(../img/forum-details/articles-body.webp);
+    background-size: 100%;
+    background-repeat: repeat-y;
+  }
+
+  .footer-details-img {
+    background-image: url(../img/forum-details/articles-footer.webp);
+    background-size: cover;
+    background-position: 0 -80%;
+    padding: 4rem;
+  }
+}
+
+.details-comments {
+  padding: 1rem;
+
+  text-align: center;
+
+  p {
+    margin: auto auto 0.5rem;
+    width: 85%;
+  }
+
+  hr {
+    border-color: black;
+
+    &:last-child {
+      display: none;
+    }
+  }
+
+  .header-comments-img {
+    background-image: url(../img/forum-details/comments-head.webp);
+    background-size: cover;
+    background-position: 0 25%;
+    padding: 5%;
+  }
+
+  .body-comments-img {
+    background-image: url(../img/forum-details/comments-body.webp);
+    background-size: 100%;
+    background-repeat: repeat-y;
+    padding-bottom: 0.5%;
+  }
+
+  .footer-comments-img {
+    background-image: url(../img/forum-details/comments-footer.webp);
+    background-size: cover;
+    background-position: 0 -75%;
+    padding: 7%;
+  }
+}
+
+.details-form {
+  margin: 1rem;
+  border-radius: var(--border-radius);
+}
+
+@media screen and (min-width: 767px) {
+
+  .container-details {
+    .header-details-img {
+      background-position: 0 15%;
+      padding: 8%;
+    }
+    .footer-details-img {
+      background-position: 0 -80%;
+      padding: 10.5%;
+    }
+  }
+  .details-comments{
+    .header-comments-img{
+      background-position: 0 25%;
+      padding: 8.5%;
+    }
+    .footer-comments-img {
+      background-position: 0 -75%;
+      padding: 7%;
+    }
+  }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+  .container-details{
+    width: 90%;
+    margin: auto;
+    .header-details-img {
+      background-position: 0 15%;
+      padding: 7.5%;
+      h1{
+        font-size: 5rem;
+        margin: 0;
+      }
+    }
+    .footer-details-img {
+      background-position: 0 -75%;
+      padding: 10%;
+    }
+  }
+  .details-comments{
+    width: 91.4%;
+    margin: auto;
+    .header-comments-img{
+      background-position: 0 20%;
+      padding: 6%;
+      h2{
+        font-size: 5rem;
+        margin: 0;
+      }
+    }
+    .footer-comments-img {
+      background-position: 0 -80%;
+      padding: 7.4%;
+    }
+  }
+
+}

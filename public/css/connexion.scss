@@ -1,0 +1,13 @@
+.page-connect,.page-register{
+  width: 90%;
+  margin: auto;
+  padding-top: 1rem;
+  text-align: center;
+  .form-login,.form-register{
+    margin: 0 1rem 1rem;
+    border-radius: var(--border-radius);
+  }
+  p{
+    margin-bottom: 0;
+  }
+}

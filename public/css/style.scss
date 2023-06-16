@@ -1,3 +1,4 @@
+/* ************* FONTS FACE ************* */
 @font-face {
   font-family: 'OpenDyslexic';
   src: url('../fonts/opendys/OpenDyslexic-Regular.woff') format('woff');
@@ -15,14 +16,18 @@
   font-style: italic;
 }
 
+/* ************* ROOT ************* */
 :root {
   --border: 2px solid black;
   --border-radius: 5px;
 }
 
+/* ************* NORMALIZE ************* */
+
 @import 'normalize';
 
 /* ************* GENERAL ************* */
+
 
 *{
   margin: 0;
@@ -214,279 +219,32 @@ form {
   }
 }
 
-/* ************* PAGES ************* */
+/* ************* PAGE ************* */
 /* ************* HOME ************* */
 
-.home-welcome {
-  width: 100%;
-  padding: 1rem 1rem 0 1rem;
+@import 'home';
 
-  h2 {
-    width: 100%;
-    text-align: center;
-    text-transform: uppercase;
-  }
+/* ************* PAGE ************* */
+/* ************* FORUM ************* */
 
-  .home-welcome_article {
-    text-align: justify;
+@import 'forum';
 
-    p {
-      margin-bottom: 1rem;
-    }
-    img {
-      width: 100%;
-    }
-  }
-}
+/* ************* PAGE ************* */
+/* ************* AUCTION ************* */
 
-.home-navigation {
-  width: 100%;
-  text-align: center;
-  padding: 2rem 0;
+@import 'auction';
 
-  .home-navigation_table {
-    margin: auto;
-    border: var(--border);
-    border-collapse: collapse;
+/* ************* PAGE ************* */
+/* ************* PROFILE ************* */
 
-    td,
-    th {
-      border: var(--border);
-      padding: 1rem;
+@import 'profile';
 
-      a {
-        color: #0803D2;
-        text-decoration: underline;
-      }
-    }
-  }
-}
+/* ************* PAGE ************* */
+/* ************* CONNEXION ************* */
 
-@media screen and (min-width: 1200px) {
+@import 'connexion';
 
-  .container-home {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .home-welcome {
-    width: 48%;
-    padding: 1rem 1rem 0 1rem;
-  }
-
-  .home-navigation {
-    width: 48%;
-  }
-}
-
-/* ************* PAGES ************* */
-/* ************* DETAILS ************* */
-
-.container-details {
-  padding-top: 1rem;
-
-  .header-details-img {
-    background-image: url(../img/forum-details/articles-head.webp);
-    background-size: cover;
-    background-position: 0 15%;
-    padding: 2rem;
-  }
-
-  .details-article {
-    padding: 1rem;
-    text-align: center;
-
-    p {
-      margin: auto auto 0.5rem;
-      width: 85%;
-    }
-  }
-
-  .body-details-img {
-    background-image: url(../img/forum-details/articles-body.webp);
-    background-size: 100%;
-    background-repeat: repeat-y;
-  }
-
-  .footer-details-img {
-    background-image: url(../img/forum-details/articles-footer.webp);
-    background-size: cover;
-    background-position: 0 -80%;
-    padding: 4rem;
-  }
-}
-
-.details-comments {
-  padding: 1rem;
-
-  text-align: center;
-
-  p {
-    margin: auto auto 0.5rem;
-    width: 85%;
-  }
-
-  hr {
-    border-color: black;
-
-    &:last-child {
-      display: none;
-    }
-  }
-
-  .header-comments-img {
-    background-image: url(../img/forum-details/comments-head.webp);
-    background-size: cover;
-    background-position: 0 25%;
-    padding: 5%;
-  }
-
-  .body-comments-img {
-    background-image: url(../img/forum-details/comments-body.webp);
-    background-size: 100%;
-    background-repeat: repeat-y;
-    padding-bottom: 0.5%;
-  }
-
-  .footer-comments-img {
-    background-image: url(../img/forum-details/comments-footer.webp);
-    background-size: cover;
-    background-position: 0 -75%;
-    padding: 7%;
-  }
-}
-
-.details-form {
-  margin: 1rem;
-  border-radius: var(--border-radius);
-}
-
-@media screen and (min-width: 767px) {
-
-  .container-details {
-    .header-details-img {
-      background-position: 0 15%;
-      padding: 8%;
-    }
-    .footer-details-img {
-      background-position: 0 -80%;
-      padding: 10.5%;
-    }
-  }
-  .details-comments{
-    .header-comments-img{
-      background-position: 0 25%;
-      padding: 8.5%;
-    }
-    .footer-comments-img {
-      background-position: 0 -75%;
-      padding: 7%;
-    }
-  }
-
-}
-
-@media screen and (min-width: 1200px) {
-
-  .container-details{
-    width: 90%;
-    margin: auto;
-    .header-details-img {
-      background-position: 0 15%;
-      padding: 7.5%;
-      h1{
-        font-size: 5rem;
-        margin: 0;
-      }
-    }
-    .footer-details-img {
-      background-position: 0 -75%;
-      padding: 10%;
-    }
-  }
-  .details-comments{
-    width: 91.4%;
-    margin: auto;
-    .header-comments-img{
-      background-position: 0 20%;
-      padding: 6%;
-      h2{
-        font-size: 5rem;
-        margin: 0;
-      }
-    }
-    .footer-comments-img {
-      background-position: 0 -80%;
-      padding: 7.4%;
-    }
-  }
-
-}
-
-/* ************* PAGES ************* */
-/* ************* LOGIN / REGISTER ************* */
-.page-connect,.page-register{
-  width: 90%;
-  margin: auto;
-  padding-top: 1rem;
-  text-align: center;
-  .form-login,.form-register{
-    margin: 0 1rem 1rem;
-    border-radius: var(--border-radius);
-  }
-  p{
-    margin-bottom: 0;
-  }
-}
-/* ************* PAGES ************* */
+/* ************* PAGE ************* */
 /* ************* ADMINISTRATION ************* */
-.container-administration{
-  margin: auto;
-  padding-top: 1rem;
-  text-align: center;
-  .list-users{
-    margin-bottom: 1rem;
-  }
-  .table-users{
-    width: 90%;
-    margin: auto;
-    border: var(--border);
-    border-collapse: collapse;
-    td,th{
-      border: var(--border);
-      padding: 1rem;
-    }
-  }
-  .table-articles{
-    border: var(--border);
-    border-collapse: collapse;
-    td,th{
-      border: var(--border);
-      padding: 0.5rem;
-    }
-  }
 
-}
-
-
-
-/* ************* PAGES ************* */
-/* ************* FORM ENCHERE ************* */
-
-.form-items {
-  div {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  img {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    /* Ajoutez d'autres styles selon vos besoins */
-  }
-}
-
-
-
-
+@import 'administration';

@@ -1,0 +1,27 @@
+.container-administration{
+  margin: auto;
+  padding-top: 1rem;
+  text-align: center;
+  .list-users{
+    margin-bottom: 1rem;
+  }
+  .table-users{
+    width: 90%;
+    margin: auto;
+    border: var(--border);
+    border-collapse: collapse;
+    td,th{
+      border: var(--border);
+      padding: 1rem;
+    }
+  }
+  .table-articles{
+    border: var(--border);
+    border-collapse: collapse;
+    td,th{
+      border: var(--border);
+      padding: 0.5rem;
+    }
+  }
+
+}
