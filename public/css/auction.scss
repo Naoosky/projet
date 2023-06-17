@@ -1,8 +1,25 @@
+
+.mobil-list {
+  img {
+    width: 40%;
+  }
+
+  div:last-child {
+    img {
+      width: 10%;
+    }
+  }
+}
+
+/* ************* PAGE ************* */
+/* ************* ADD ITEMS ************* */
+
 .form-items {
   div {
     display: inline-block;
     margin-right: 10px;
   }
+
   img {
     width: 50px;
     height: 50px;

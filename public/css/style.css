@@ -585,6 +585,13 @@ table th a {
     width: 48%;
     padding: 1rem 1rem 0 1rem;
   }
+  .home-welcome .home-welcome_article {
+    text-align: justify;
+  }
+  .home-welcome .home-welcome_article .mobil-hidden {
+    margin: auto;
+    padding: 0;
+  }
   .home-navigation {
     width: 48%;
   }
@@ -606,36 +613,36 @@ table th a {
   margin-top: 2%;
 }
 
-.mobil-list-forum .list-articles {
+.mobil-list .list-articles {
   margin: auto auto 5%;
   width: 90%;
 }
-.mobil-list-forum .list-articles div {
+.mobil-list .list-articles div {
   display: flex;
   border: var(--border);
   border-bottom: none;
   border-collapse: collapse;
 }
-.mobil-list-forum .list-articles div:last-child {
+.mobil-list .list-articles div:last-child {
   border-bottom: var(--border);
 }
-.mobil-list-forum .list-articles div p {
+.mobil-list .list-articles div p {
   width: 50%;
   padding: 1%;
   text-align: center;
   text-transform: capitalize;
   border-left: var(--border);
 }
-.mobil-list-forum .list-articles div p:first-child {
+.mobil-list .list-articles div p:first-child {
   border-left: none;
   font-weight: bold;
 }
-.mobil-list-forum .list-articles div p a {
+.mobil-list .list-articles div p a {
   text-decoration: underline;
 }
 
 @media screen and (min-width: 767px) {
-  .mobil-list-forum {
+  .mobil-list {
     display: none;
   }
   .mobil-hidden {
@@ -679,133 +686,143 @@ table th a {
 }
 /* ************* PAGE ************* */
 /* ************* DETAILS ************* */
-.container-details {
+.page-details {
+  width: 100%;
+}
+.page-details .container-details {
   padding-top: 1rem;
 }
-.container-details .header-details-img {
+.page-details .container-details .header-details-img {
   background-image: url(../img/forum-details/articles-head.webp);
   background-size: cover;
   background-position: 0 15%;
   padding: 2rem;
 }
-.container-details .details-article {
+.page-details .container-details .details-article {
   padding: 1rem;
   text-align: center;
 }
-.container-details .details-article p {
+.page-details .container-details .details-article p {
   margin: auto auto 0.5rem;
   width: 85%;
 }
-.container-details .body-details-img {
+.page-details .container-details .body-details-img {
   background-image: url(../img/forum-details/articles-body.webp);
   background-size: 100%;
   background-repeat: repeat-y;
 }
-.container-details .footer-details-img {
+.page-details .container-details .footer-details-img {
   background-image: url(../img/forum-details/articles-footer.webp);
   background-size: cover;
   background-position: 0 -75%;
   padding: 10%;
 }
-
-.details-comments {
+.page-details .details-comments {
   padding: 1rem;
   text-align: center;
 }
-.details-comments p {
+.page-details .details-comments p {
   margin: auto auto 0.5rem;
   width: 85%;
 }
-.details-comments hr {
+.page-details .details-comments hr {
   border-color: black;
 }
-.details-comments hr:last-child {
+.page-details .details-comments hr:last-child {
   display: none;
 }
-.details-comments .header-comments-img {
+.page-details .details-comments .header-comments-img {
   background-image: url(../img/forum-details/comments-head.webp);
   background-size: cover;
   background-position: 0 25%;
   padding: 5%;
 }
-.details-comments .body-comments-img {
+.page-details .details-comments .body-comments-img {
   background-image: url(../img/forum-details/comments-body.webp);
   background-size: 100%;
   background-repeat: repeat-y;
   padding-bottom: 0.5%;
 }
-.details-comments .footer-comments-img {
+.page-details .details-comments .footer-comments-img {
   background-image: url(../img/forum-details/comments-footer.webp);
   background-size: cover;
   background-position: 0 -75%;
   padding: 7%;
 }
-
-.details-form {
+.page-details .details-form {
   margin: 1rem;
   border-radius: var(--border-radius);
 }
-.details-form form {
+.page-details .details-form form {
   padding: 0;
 }
-.details-form form label {
+.page-details .details-form form label {
   font-size: 1.5rem;
 }
-
 @media screen and (min-width: 767px) {
-  .container-details .header-details-img {
+  .page-details .container-details .header-details-img {
     background-position: 0 15%;
     padding: 8%;
   }
-  .container-details .footer-details-img {
+  .page-details .container-details .footer-details-img {
     background-position: 0 -80%;
     padding: 10.5%;
   }
-  .details-comments .header-comments-img {
+  .page-details .details-comments .header-comments-img {
     background-position: 0 25%;
     padding: 8.5%;
   }
-  .details-comments .footer-comments-img {
+  .page-details .details-comments .footer-comments-img {
     background-position: 0 -75%;
     padding: 7%;
   }
 }
 @media screen and (min-width: 1200px) {
-  .container-details {
+  .page-details .container-details {
     width: 90%;
     margin: auto;
   }
-  .container-details .header-details-img {
+  .page-details .container-details .header-details-img {
     background-position: 0 15%;
     padding: 7.5%;
   }
-  .container-details .header-details-img h1 {
+  .page-details .container-details .header-details-img h1 {
     font-size: 5rem;
     margin: 0;
   }
-  .container-details .footer-details-img {
+  .page-details .container-details .footer-details-img {
     background-position: 0 -75%;
     padding: 10%;
   }
-  .details-comments {
+  .page-details .details-comments {
     width: 91.4%;
     margin: auto;
   }
-  .details-comments .header-comments-img {
+  .page-details .details-comments .header-comments-img {
     background-position: 0 20%;
     padding: 6%;
   }
-  .details-comments .header-comments-img h2 {
+  .page-details .details-comments .header-comments-img h2 {
     font-size: 5rem;
     margin: 0;
   }
-  .details-comments .footer-comments-img {
+  .page-details .details-comments .footer-comments-img {
     background-position: 0 -80%;
     padding: 7.4%;
   }
 }
+
 /* ************* PAGE ************* */
 /* ************* AUCTION ************* */
+.mobil-list img {
+  width: 40%;
+}
+.mobil-list div:last-child img {
+  width: 10%;
+}
+
+/* ************* PAGE ************* */
+/* ************* ADD ITEMS ************* */
 .form-items div {
   display: inline-block;
   margin-right: 10px;
