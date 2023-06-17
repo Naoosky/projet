@@ -25,8 +25,9 @@
         <label for="image">Image</label>
         <div class="image">
             <% for(let i = 0; i < images.length; i++) { %>
-                <input type="radio" id="image<%= i %>" name="image" value="<%= images[i].id %>">
-                <img src="<%= images[i].url %>" alt="<%= images[i].description %>">
+                <label for="image<%= i %>" class="imgCheck"><img src="<%= images[i].url %>" alt="<%= images[i].description %>"></label>
+                <input type="radio" id="image<%= i %>" class="hidden" name="image" value="<%= images[i].id %>">
+
             <% } %>
         </div>
 
@@ -35,3 +36,5 @@
     </form>
 
 </fieldset>
+
+<script src="/js/addItems.js"></script>
