@@ -30,7 +30,7 @@
     <fieldset class="details-form">
         <legend>Ajoutez un Commentaire</legend>
         <form action="/add_comment/<%=articles[0].id%>" method="post">
-            <label for="comment">commentaire</label>
+            <label for="comment">commentaire :</label>
             <textarea name="comment" id="comment" required></textarea>
             <input type="hidden" name="pseudo" id="pseudo" value="<%= articles[0].pseudo %>" >
             <input type="submit" name="Enregistrer" >

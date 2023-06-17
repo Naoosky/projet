@@ -12,10 +12,6 @@
   .home-welcome_article {
     text-align: justify;
 
-    .mobil-text-home {
-
-    }
-
     .desktop-text-home {
       display: none;
     }
@@ -62,7 +58,7 @@
         display: none;
       }
 
-      .desktop-text-home {
+      .mobil-hidden {
         display: block;
       }
     }

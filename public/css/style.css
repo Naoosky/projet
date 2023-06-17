@@ -416,8 +416,28 @@ form textarea {
   border-radius: 5px;
 }
 
+table {
+  margin: 5% auto auto;
+  border: var(--border);
+  border-collapse: collapse;
+}
+table td,
+table th {
+  border: var(--border);
+  padding: 1%;
+}
+table td a,
+table th a {
+  color: #0803D2;
+  text-decoration: underline;
+}
+
 .dyslexia {
   font-family: "OpenDyslexic", sans-serif;
+}
+
+.mobil-hidden {
+  display: none;
 }
 
 /* ************* PAGE ************* */
@@ -548,7 +568,7 @@ form textarea {
   .home-welcome .home-welcome_article .mobil-text-home {
     display: none;
   }
-  .home-welcome .home-welcome_article .desktop-text-home {
+  .home-welcome .home-welcome_article .mobil-hidden {
     display: block;
   }
   .home-navigation .home-navigation_table {
@@ -571,6 +591,94 @@ form textarea {
 }
 /* ************* PAGE ************* */
 /* ************* FORUM ************* */
+.search-form {
+  padding: 0;
+  margin-top: 5%;
+}
+.search-form form {
+  padding: 0;
+}
+.search-form form label {
+  font-size: 1.5rem;
+}
+.search-form form input[type=submit] {
+  width: 50%;
+  margin-top: 2%;
+}
+
+.mobil-list-forum .list-articles {
+  margin: auto auto 5%;
+  width: 90%;
+}
+.mobil-list-forum .list-articles div {
+  display: flex;
+  border: var(--border);
+  border-bottom: none;
+  border-collapse: collapse;
+}
+.mobil-list-forum .list-articles div:last-child {
+  border-bottom: var(--border);
+}
+.mobil-list-forum .list-articles div p {
+  width: 50%;
+  padding: 1%;
+  text-align: center;
+  text-transform: capitalize;
+  border-left: var(--border);
+}
+.mobil-list-forum .list-articles div p:first-child {
+  border-left: none;
+  font-weight: bold;
+}
+.mobil-list-forum .list-articles div p a {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 767px) {
+  .mobil-list-forum {
+    display: none;
+  }
+  .mobil-hidden {
+    display: block;
+    margin-top: 1%;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  main h1 {
+    width: 100%;
+  }
+  main .search-form {
+    width: 30%;
+    margin-top: 2%;
+  }
+  main .search-form form {
+    padding: 0 5% 5%;
+  }
+  main .search-form form input[type=submit] {
+    width: 90%;
+    margin-top: 5%;
+  }
+  main h2 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  main .table-forum {
+    width: 90%;
+    margin-top: 2%;
+    text-align: center;
+    text-transform: capitalize;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .mobil-hidden {
+    width: 70%;
+  }
+}
+/* ************* PAGE ************* */
+/* ************* DETAILS ************* */
 .container-details {
   padding-top: 1rem;
 }
@@ -596,8 +704,8 @@ form textarea {
 .container-details .footer-details-img {
   background-image: url(../img/forum-details/articles-footer.webp);
   background-size: cover;
-  background-position: 0 -80%;
-  padding: 4rem;
+  background-position: 0 -75%;
+  padding: 10%;
 }
 
 .details-comments {
@@ -636,6 +744,12 @@ form textarea {
 .details-form {
   margin: 1rem;
   border-radius: var(--border-radius);
+}
+.details-form form {
+  padding: 0;
+}
+.details-form form label {
+  font-size: 1.5rem;
 }
 
 @media screen and (min-width: 767px) {

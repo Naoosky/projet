@@ -1,3 +1,96 @@
+
+.search-form{
+  padding: 0;
+  margin-top: 5%;
+  form{
+    padding: 0;
+    label{
+        font-size: 1.5rem;
+    }
+    input[type='submit']{
+      width: 50%;
+      margin-top: 2%;
+    }
+  }
+}
+.mobil-list-forum{
+  .list-articles{
+    margin: auto auto 5%;
+    width: 90%;
+    div{
+
+      display: flex;
+      border: var(--border);
+      border-bottom: none;
+      border-collapse: collapse;
+      &:last-child{
+        border-bottom: var(--border);
+      }
+      p{
+        width: 50%;
+        padding: 1%;
+        text-align: center;
+        text-transform: capitalize;
+        border-left: var(--border);
+        &:first-child{
+          border-left: none;
+          font-weight: bold;
+        }
+        a{
+            text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .mobil-list-forum{
+    display: none;
+  }
+  .mobil-hidden{
+    display: block;
+    margin-top: 1%;
+  }
+  main{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    h1{
+      width: 100%;
+    }
+    .search-form{
+      width: 30%;
+      margin-top: 2%;
+      form{
+        padding: 0 5% 5%;
+        input[type='submit']{
+          width: 90%;
+          margin-top: 5%;
+        }
+      }
+    }
+    h2{
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .table-forum{
+      width: 90%;
+      margin-top: 2%;
+      text-align: center;
+      text-transform: capitalize;
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .mobil-hidden{
+    width: 70%;
+  }
+}
+
+/* ************* PAGE ************* */
+/* ************* DETAILS ************* */
+
 .container-details {
   padding-top: 1rem;
 
@@ -27,8 +120,8 @@
   .footer-details-img {
     background-image: url(../img/forum-details/articles-footer.webp);
     background-size: cover;
-    background-position: 0 -80%;
-    padding: 4rem;
+    background-position: 0 -75%;
+    padding: 10%;
   }
 }
 
@@ -75,6 +168,12 @@
 .details-form {
   margin: 1rem;
   border-radius: var(--border-radius);
+  form{
+    padding: 0;
+    label{
+        font-size: 1.5rem;
+    }
+  }
 }
 
 @media screen and (min-width: 767px) {
