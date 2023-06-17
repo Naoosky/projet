@@ -180,12 +180,12 @@ export const addArticlesSubmit = (req, res) => {
                         error: 'Le titre doit contenir au moins 3 caractères ou dépassé les 50 caractères'
                     });
                 }
-                if (safeDescription.length < 3 || safeDescription.length > 255) {
+                if (safeDescription.length < 3 || safeDescription.length > 2500) {
                     return res.render('layout', {
                         template: 'addArticles',
                         category: category,
                         user: user[0],
-                        error: 'La description doit contenir au moins 3 caractères ou dépassé les 255 caractères'
+                        error: 'La description doit contenir au moins 3 caractères ou dépassé les 2500 caractères'
                     });
                 }
                 if (category === '0') {
