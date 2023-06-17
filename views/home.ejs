@@ -3,57 +3,98 @@
     <section class="home-welcome">
         <h2>Article d'accueil</h2>
         <article class="home-welcome_article">
-            <p>
-                Cher aventurier, nous sommes prêts à partager des moments inoubliables dans ce monde fantastique d'Eden Eternal.
-                Kyosei est un lieu où l’esprit d’équipe, l’entraide et la camaraderie sont les valeurs les plus importantes.
-            </p>
-            <p>
-                En rejoignant la guilde Kyosei, vous aurez la chance de rencontrer des joueurs passionnés, prêts à explorer les contrées lointaines,
-                vaincre des ennemis redoutables et atteindre des sommets de puissance. Que vous soyez un combattant féroce, un mage prodigieux
-                ou un voleur rusé, chaque membre de notre guilde apporte sa propre expertise et sa contribution unique à notre succès collectif.
-            </p>
-            <p>
-                Au sein de notre communauté, vous trouverez une atmosphère chaleureuse où les conseils et les connaissances sont partagés librement.
-                Les joueurs expérimentés seront là pour accompagner et aider les joueurs à progresser rapidement. Ensemble, 
-                nous franchirons les épreuves, découvrirons les trésors cachés et affronterons les défis, nous les surmonterons en unissant
-                nos forces.
-            </p>
-            <p>
-                Les activités de guilde ne se limitent pas seulement à l'aventure. Nous organisons également des événements spéciaux, 
-                des compétitions amicales et des fêtes pour célébrer nos succès et renforcer nos liens. Notre guilde est bien plus qu'un simple groupe
-                de joueurs ; c'est une famille où chacun à sa place et peut s'épanouir.
-            </p>
-            <p>
-                Alors préparez-vous, Chers Compagnons, à des heures de jeu intenses, de rires partagés et des victoires mémorables. 
-                En rejoignant la guilde Kyosei, vous faites partie d'une équipe solidaire prête à relever tous les défis qui se dresseront
-                sur notre chemin.
-            </p>
-            <p>
-                Que l'aventure commence ! Kyosei se lèvera et laissera leurs empreintes dans Eden Eternal !
-            </p>
-            <img src="/img/eden-eternal-banner.jpg" alt="eden eternal bannière">
+            <div class="mobil-text-home">
+                <p>
+                    Bienvenue dans Eden Eternal ! Rejoignez la guilde Kyosei et vivez des aventures inoubliables. Esprit
+                    d'équipe, entraide et camaraderie sont nos valeurs. </p>
+
+                <p>
+                    Dans Kyosei, rencontrez des joueurs passionnés, explorez des contrées lointaines et vainquez de
+                    redoutables ennemis. Que vous soyez un combattant, un mage ou un voleur, chaque membre apporte son
+                    expertise pour notre succès collectif. </p>
+
+                <p>
+                    Notre communauté chaleureuse partage conseils et connaissances. Les joueurs expérimentés vous
+                    aideront à progresser rapidement. Unissons nos forces pour surmonter les épreuves, découvrir des
+                    trésors et relever des défis. </p>
+
+                <p>
+                    Participez à nos événements spéciaux, compétitions amicales et fêtes. Kyosei est plus qu'un groupe,
+                    c'est une famille où chacun peut s'épanouir. </p>
+
+                <p>
+                    Préparez-vous à des heures de jeu intenses, de rires partagés et de victoires mémorables. Rejoignez
+                    Kyosei, une équipe solidaire prête à relever tous les défis. </p>
+
+                <p> Que l'aventure commence ! Kyosei laissera son empreinte dans Eden Eternal !
+                </p>
+            </div>
+            <div class="desktop-text-home">
+                <p>
+                    Cher aventurier, nous sommes prêts à partager des moments inoubliables dans ce monde fantastique
+                    d'Eden Eternal.
+                    Kyosei est un lieu où l’esprit d’équipe, l’entraide et la camaraderie sont les valeurs les plus
+                    importantes.
+                </p>
+                <p>
+                    En rejoignant la guilde Kyosei, vous aurez la chance de rencontrer des joueurs passionnés, prêts à
+                    explorer les contrées lointaines,
+                    vaincre des ennemis redoutables et atteindre des sommets de puissance. Que vous soyez un combattant
+                    féroce, un mage prodigieux
+                    ou un voleur rusé, chaque membre de notre guilde apporte sa propre expertise et sa contribution
+                    unique à notre succès collectif.
+                </p>
+                <p>
+                    Au sein de notre communauté, vous trouverez une atmosphère chaleureuse où les conseils et les
+                    connaissances sont partagés librement.
+                    Les joueurs expérimentés seront là pour accompagner et aider les joueurs à progresser rapidement.
+                    Ensemble,
+                    nous franchirons les épreuves, découvrirons les trésors cachés et affronterons les défis, nous les
+                    surmonterons en unissant
+                    nos forces.
+                </p>
+                <p>
+                    Les activités de guilde ne se limitent pas seulement à l'aventure. Nous organisons également des
+                    événements spéciaux,
+                    des compétitions amicales et des fêtes pour célébrer nos succès et renforcer nos liens. Notre guilde
+                    est bien plus qu'un simple groupe
+                    de joueurs ; c'est une famille où chacun à sa place et peut s'épanouir.
+                </p>
+                <p>
+                    Alors préparez-vous, Chers Compagnons, à des heures de jeu intenses, de rires partagés et des
+                    victoires mémorables.
+                    En rejoignant la guilde Kyosei, vous faites partie d'une équipe solidaire prête à relever tous les
+                    défis qui se dresseront
+                    sur notre chemin.
+                </p>
+                <p>
+                    Que l'aventure commence ! Kyosei se lèvera et laissera leurs empreintes dans Eden Eternal !
+                </p>
+            </div>
+
+            <img src="/img/eden-eternal-banner.webp" alt="eden eternal bannière">
         </article>
     </section>
     <section class="home-navigation">
         <h2>Table navigation accueil</h2>
-            <table class="home-navigation_table">
-                <thead>
-                    <tr>
-                        <th>Titre</th>
-                        <th>description</th>
-                        <th>Categories</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for( let i = 0; i < articles.length; i++ ) { %>
-                        <tr>
-                            <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
-                            <td><%= articles[i].description.substring(0, 30) %> ...</td>
-                            <td><%= articles[i].category %></td>
-                        </tr>
-                    <% } %>
-                    
-                </tbody>
-            </table>
+        <table class="home-navigation_table">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>description</th>
+                <th>Categories</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for( let i = 0; i < articles.length; i++ ) { %>
+                <tr>
+                    <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
+                    <td><%= articles[i].description.substring(0, 30) %> ...</td>
+                    <td><%= articles[i].category %></td>
+                </tr>
+            <% } %>
+
+            </tbody>
+        </table>
     </section>
 </div>

@@ -498,18 +498,23 @@ form textarea {
 /* ************* HOME ************* */
 .home-welcome {
   width: 100%;
-  padding: 1rem 1rem 0 1rem;
+  margin: auto;
 }
 .home-welcome h2 {
   width: 100%;
   text-align: center;
   text-transform: uppercase;
+  margin: 5% 0;
 }
 .home-welcome .home-welcome_article {
   text-align: justify;
 }
+.home-welcome .home-welcome_article .desktop-text-home {
+  display: none;
+}
 .home-welcome .home-welcome_article p {
-  margin-bottom: 1rem;
+  margin: auto auto 5%;
+  width: 90%;
 }
 .home-welcome .home-welcome_article img {
   width: 100%;
@@ -521,14 +526,14 @@ form textarea {
   padding: 2rem 0;
 }
 .home-navigation .home-navigation_table {
-  margin: auto;
+  margin: 5% auto auto;
   border: var(--border);
   border-collapse: collapse;
 }
 .home-navigation .home-navigation_table td,
 .home-navigation .home-navigation_table th {
   border: var(--border);
-  padding: 1rem;
+  padding: 1%;
 }
 .home-navigation .home-navigation_table td a,
 .home-navigation .home-navigation_table th a {
@@ -536,6 +541,20 @@ form textarea {
   text-decoration: underline;
 }
 
+@media screen and (min-width: 768px) {
+  .home-welcome .home-welcome_article {
+    text-align: inherit;
+  }
+  .home-welcome .home-welcome_article .mobil-text-home {
+    display: none;
+  }
+  .home-welcome .home-welcome_article .desktop-text-home {
+    display: block;
+  }
+  .home-navigation .home-navigation_table {
+    width: 90%;
+  }
+}
 @media screen and (min-width: 1200px) {
   .container-home {
     display: flex;
