@@ -45,8 +45,8 @@
         <tbody>
         <% items.forEach(function(item) { %>
             <tr data-id="<%= item.id %>">
-                <td><%= item.title %></td>
-                <td><%= item.content %></td>
+                <td><%= item.title.substring(0, 15) %></td>
+                <td><%= item.content.substring(0, 15) %>...</td>
                 <td><img src="<%= item.url %>" alt="<%= item.description %>"></td>
                 <td><%= item.price %> <img src="/img/icon.png" alt="une piece d'or" class="img-price"></td>
                 <td>
