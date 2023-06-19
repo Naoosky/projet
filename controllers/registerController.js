@@ -54,22 +54,41 @@ export const registerSubmit = function (req, res) {
                 role: "Membre" // By default, the role is "Member"
             };
 
-            // SQL query to insert form data into the users table
-            let query = "INSERT INTO users SET ?";
+            let sql = 'SELECT * FROM users';
 
-            // Execute the SQL query with data from the newUsers object
-            pool.query(query, [newUsers], function (error, result) {
+            pool.query(sql, (error,user) =>{
                 if (error) {
                     console.error(error);
                     res.status(500).send('Erreur de base de données');
                 } else {
 
-                    // If registration is successful, redirect to the homepage and log in the user
-                    req.session.isUser = true;
-                    req.session.userId = newUsers.id; // Store the user ID in the session
-                    res.redirect('/');
+                    for(let i = 0; i < user.length; i++){
+                        if(safePseudo === user[i].pseudo){
+                            return res.render('layout', {template: 'register', error: "Email ou Pseudo déja utilisé"});
+                        }else if(safeEmail === user[i].email){
+                            return res.render('layout', {template: 'register', error: "Email ou Pseudo déja utilisé"});
+                        }
+                    }
+
+
+                    // SQL query to insert form data into the users table
+                    let query = "INSERT INTO users SET ?";
+
+                    // Execute the SQL query with data from the newUsers object
+                    pool.query(query, [newUsers], function (error) {
+                        if (error) {
+                            console.error(error);
+                            res.status(500).send('Erreur de base de données');
+                        } else {
+
+                            // If registration is successful, redirect to the homepage and log in the user
+                            req.session.isUser = true;
+                            req.session.userId = newUsers.id; // Store the user ID in the session
+                            res.redirect('/');
+                        }
+                    });
                 }
-            });
+            })
         }
     });
 }

@@ -1,67 +1,69 @@
-<h1>Forum</h1>
-<section class="search-form">
-    <form method="post" action="/search/articles">
-        <label for="search">Catégorie</label>
-        <select name="search" id="search" required>
-            <option value="">Sélectionnez une catégorie</option>
-            <option value="Aide IG">Aide IG</option>
-            <option value="Events">Events</option>
-            <option value="Update">Update</option>
-        </select>
-        <input type="submit" value="Rechercher">
-    </form>
-</section>
+<div class="container-form">
+    <h1>Forum</h1>
+    <section class="search-form">
+        <form method="post" action="/search/articles">
+            <label for="search">Chercher une catégorie</label>
+            <select name="search" id="search" required>
+                <option value="">Sélectionnez une catégorie</option>
+                <option value="Aide IG">Aide IG</option>
+                <option value="Events">Events</option>
+                <option value="Update">Update</option>
+            </select>
+            <input type="submit" value="Rechercher">
+        </form>
+    </section>
 
-<section class="mobil-list">
-    <ul>
-        <% for( let i = 0; i < articles.length; i++ ) { %>
-            <li class="list-articles">
-                <div>
-                    <p>Créateur : </p>
-                    <p><%= articles[i].pseudo %></p>
-                </div>
-                <div>
-                    <p>Titre : </p>
-                    <p><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></p>
-                </div>
-                <div>
-                    <p>Description : </p>
-                    <p><%= articles[i].description.substring(0, 15) %> ...</p>
-                </div>
-                <div>
-                    <p>Catégorie : </p>
-                    <p><%= articles[i].name %></p>
-                </div>
-                <div>
-                    <p> Date de création : </p>
-                    <p><%= articles[i].date.toLocaleDateString() %></p>
-                </div>
-            </li>
-        <% } %>
-    </ul>
-</section>
+    <section class="mobil-list">
+        <ul>
+            <% for( let i = 0; i < articles.length; i++ ) { %>
+                <li class="list-articles">
+                    <div>
+                        <p>Créateur : </p>
+                        <p><%= articles[i].pseudo %></p>
+                    </div>
+                    <div>
+                        <p>Titre : </p>
+                        <p><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></p>
+                    </div>
+                    <div>
+                        <p>Description : </p>
+                        <p><%= articles[i].description.substring(0, 15) %> ...</p>
+                    </div>
+                    <div>
+                        <p>Catégorie : </p>
+                        <p><%= articles[i].name %></p>
+                    </div>
+                    <div>
+                        <p> Date de création : </p>
+                        <p><%= articles[i].date.toLocaleDateString() %></p>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    </section>
 
-<section class="mobil-hidden">
-    <h2>table des articles</h2>
-    <table class="table-forum">
-        <thead>
-        <tr>
-            <th>Créateur</th>
-            <th>Titre</th>
-            <th>Description</th>
-            <th>Catégorie</th>
-            <th>Date de création</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% for( let i = 0; i < articles.length; i++ ) { %>
+    <section class="mobil-hidden">
+        <h2>Tableau des posts</h2>
+        <table class="table-forum">
+            <thead>
             <tr>
-                <td><%= articles[i].pseudo %></td>
-                <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
-                <td><%= articles[i].description.substring(0, 15) %> ...</td>
-                <td><%= articles[i].name %></td>
-                <td><%= articles[i].date.toLocaleDateString() %></td>
+                <th>Créateur</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Catégorie</th>
+                <th>Date de création</th>
             </tr>
-        <% } %>
-    </table>
-</section>
+            </thead>
+            <tbody>
+            <% for( let i = 0; i < articles.length; i++ ) { %>
+                <tr>
+                    <td><%= articles[i].pseudo %></td>
+                    <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
+                    <td><%= articles[i].description.substring(0, 15) %> ...</td>
+                    <td><%= articles[i].name %></td>
+                    <td><%= articles[i].date.toLocaleDateString() %></td>
+                </tr>
+            <% } %>
+        </table>
+    </section>
+</div>

@@ -95,8 +95,8 @@ export const addItemsSubmit = (req, res) => {
                             const safeContent = xss(content);
                             const safePrice = xss(price);
 
-                            if (safeTitle.length < 3 || safeTitle.length > 50) {
-                                res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'le titre doit contenir entre 3 et 50 caractères'})
+                            if (safeTitle.length < 3 || safeTitle.length > 30) {
+                                res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'le titre doit contenir entre 3 et 30 caractères'})
 
                             } else if (safeContent.length < 3 || safeContent.length > 255) {
                                 res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'la description doit contenir entre 3 et 255 caractères'})

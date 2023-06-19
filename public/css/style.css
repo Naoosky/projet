@@ -570,6 +570,7 @@ table th a {
   }
   .home-welcome .home-welcome_article .mobil-hidden {
     display: block;
+    width: 100%;
   }
   .home-navigation .home-navigation_table {
     width: 90%;
@@ -642,38 +643,39 @@ table th a {
 }
 
 @media screen and (min-width: 767px) {
-  .mobil-list {
-    display: none;
-  }
-  .mobil-hidden {
-    display: block;
-    margin-top: 1%;
-  }
-  main {
+  .container-form {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    justify-content: space-between;
   }
-  main h1 {
+  .container-form h1 {
     width: 100%;
   }
-  main .search-form {
+  .container-form .search-form {
+    width: 100%;
+    margin-top: 2%;
+  }
+  .container-form .search-form form {
+    margin: auto;
+  }
+  .container-form .search-form form input[type=submit] {
     width: 30%;
     margin-top: 2%;
   }
-  main .search-form form {
-    padding: 0 5% 5%;
+  .container-form .mobil-list {
+    display: none;
   }
-  main .search-form form input[type=submit] {
-    width: 90%;
-    margin-top: 5%;
+  .container-form .mobil-hidden {
+    display: block;
+    width: 100%;
   }
-  main h2 {
+  .container-form .mobil-hidden h2 {
     text-align: center;
     text-transform: uppercase;
   }
-  main .table-forum {
-    width: 90%;
+  .container-form .mobil-hidden .table-forum {
+    width: 95%;
+    margin: auto;
     margin-top: 2%;
     text-align: center;
     text-transform: capitalize;

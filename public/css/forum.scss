@@ -54,48 +54,52 @@
 }
 
 @media screen and (min-width: 767px) {
-  .mobil-list {
-    display: none;
-  }
-  .mobil-hidden {
-    display: block;
-    margin-top: 1%;
-  }
-  main {
+  .container-form {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    justify-content: space-between;
 
     h1 {
       width: 100%;
     }
 
     .search-form {
-      width: 30%;
+      width: 100%;
       margin-top: 2%;
 
       form {
-        padding: 0 5% 5%;
+        margin: auto;
 
         input[type='submit'] {
-          width: 90%;
-          margin-top: 5%;
+          width: 30%;
+          margin-top: 2%;
         }
       }
     }
 
-    h2 {
-      text-align: center;
-      text-transform: uppercase;
+    .mobil-list {
+      display: none;
     }
 
-    .table-forum {
-      width: 90%;
-      margin-top: 2%;
-      text-align: center;
-      text-transform: capitalize;
+    .mobil-hidden {
+      display: block;
+      width: 100%;
+
+      h2 {
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .table-forum {
+        width: 95%;
+        margin: auto;
+        margin-top: 2%;
+        text-align: center;
+        text-transform: capitalize;
+      }
     }
   }
+
 }
 
 @media screen and (min-width: 1200px) {
