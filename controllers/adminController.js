@@ -53,3 +53,19 @@ export const usersProfil = (req,res) => {
     });
 }
 
+export const deleteUser = (req, res) => {
+    const id = req.params.id;
+    let sql = ` DELETE
+                FROM users
+                WHERE id = ?`;
+    pool.query(sql, id, function (error) {
+        if (error) {
+            console.log(error)
+            res.status(500).send({
+                error: 'Error when delete post'
+            });
+        } else {
+            res.status(204).send();
+        }
+    });
+}

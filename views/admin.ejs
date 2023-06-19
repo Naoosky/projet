@@ -1,7 +1,7 @@
 <div class="container-administration">
     <section class="list-users">
         <h2>Utilisateurs</h2>
-        <table class="table-users">
+        <table class="table-users js-table-users">
             <thead>
             <tr>
                 <th>id</th>
@@ -12,11 +12,12 @@
             </thead>
             <tbody>
             <% for(let i = 0; i < users.length; i++) { %>
-            <tr>
+                <tr data-id="<%= users[i].id %>">
                 <td><%= users[i].id %></td>
                 <td><%= users[i].pseudo %></td>
                 <td><%= users[i].role %></td>
                 <td>
+                    <button class="js-user-remove" data-id="<%= users[i].id %>" ><i class="fa fa-remove"></i></button>
                     <a href="/administration/users/<%= users[i].id %>">Voir</a>
                 </td>
             </tr>
