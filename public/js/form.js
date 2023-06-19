@@ -20,7 +20,6 @@ if (pseudo) {
     pseudo.addEventListener('keyup', () => {
         if (pseudo.value.length < 3) {
             pseudo.style.borderColor = 'red';
-            e.preventDefault();
         } else {
             pseudo.style.borderColor = 'green';
         }

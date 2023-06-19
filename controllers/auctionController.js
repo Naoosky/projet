@@ -101,8 +101,8 @@ export const addItemsSubmit = (req, res) => {
                             } else if (safeContent.length < 3 || safeContent.length > 255) {
                                 res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'la description doit contenir entre 3 et 255 caractères'})
 
-                            } else if (safePrice.length < 1 || safePrice.length > 10) {
-                                res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'le prix doit contenir entre 1 et 10 caractères'})
+                            } else if (safePrice.length < 1 || safePrice.length > 10 || safePrice < 0 || safePrice > 999999999) {
+                                res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'le prix doit contenir entre 1 et 10 nombre et ne peut être négatif'})
 
                             } else if (category === "") {
                                 res.render('layout', {template: 'addItems', images: images, user: user[0], category: category, error: 'veuillez choisir une catégorie'})

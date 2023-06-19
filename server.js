@@ -19,7 +19,7 @@ app.use(session({
 	secret: 'keyboard cat',
 	resave : false,
 	saveUninitialized: true,
-	cookie: {maxAge: 3600000000000000}
+	cookie: {maxAge: 360000}
 }));
 
 // utilisation des template EJS grâce au modules npm "ejs"
