@@ -14,7 +14,10 @@ export const profile = (req, res) => {
                 if (error) {
                     console.error(error)
                 } else {
-                    let sql = "SELECT * FROM items INNER JOIN images ON image_id = images.id WHERE user_id = ?";
+                    let sql = `SELECT items.id, items.title, items.content, items.price, images.url, images.description
+                               FROM items
+                                        INNER JOIN images ON image_id = images.id
+                               WHERE user_id = ?`;
                     pool.query(sql, [id], function (error, items) {
                         if (error) {
                             console.error(error)
@@ -34,9 +37,11 @@ export const profile = (req, res) => {
     });
 }
 
-export const deleteArticle = (req,res) => {
+export const deleteArticle = (req, res) => {
     const id = req.params.id
-    let sql = ` DELETE FROM articles WHERE id = ?`;
+    let sql = ` DELETE
+                FROM articles
+                WHERE id = ?`;
     pool.query(sql, [id], function (error) {
         if (error) {
             console.log(error)
@@ -49,9 +54,11 @@ export const deleteArticle = (req,res) => {
     });
 }
 
-export const deleteItem = (req,res) => {
+export const deleteItem = (req, res) => {
     const id = req.params.id;
-    let sql = ` DELETE FROM items WHERE image_id = ?`;
+    let sql = ` DELETE
+                FROM items
+                WHERE id = ?`;
     pool.query(sql, id, function (error) {
         if (error) {
             console.log(error)

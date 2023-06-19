@@ -823,6 +823,32 @@ table th a {
   width: 10%;
 }
 
+@media screen and (min-width: 768px) {
+  .mobil-list {
+    display: none;
+  }
+  .mobil-hidden {
+    display: block;
+    width: 100%;
+  }
+  .mobil-hidden table {
+    width: 95%;
+    margin: auto;
+  }
+  .mobil-hidden table td:nth-child(4) {
+    padding: 0;
+    text-align: center;
+  }
+  .mobil-hidden table td:last-child {
+    width: 15%;
+  }
+  .mobil-hidden table img {
+    width: 50%;
+  }
+  .mobil-hidden table .img-coins {
+    width: 20%;
+  }
+}
 /* ************* PAGE ************* */
 /* ************* ADD ITEMS ************* */
 .form-items .image {

@@ -24,6 +24,7 @@
                     <td><%= articles[i].description.substring(0, 30) %></td>
                     <td>
                         <button class="js-article-remove" data-id="<%= articles[i].id %>"><i class="fa fa-remove"></i></button>
+                        <a href="/edit/articles/<%= articles[i].id %>"> modifier</a>
                     </td>
                 </tr>
             <% } %>
@@ -48,10 +49,10 @@
                 <td><%= item.title.substring(0, 15) %></td>
                 <td><%= item.content.substring(0, 15) %>...</td>
                 <td><img src="<%= item.url %>" alt="<%= item.description %>"></td>
-                <td><%= item.price %> <img src="/img/icon.png" alt="une piece d'or" class="img-price"></td>
+                <td><%= item.price %> <img src="/img/icon.webp" alt="une piece d'or" class="img-price"></td>
                 <td>
-                    <button class="js-item-remove" data-id="<%= item.id %>"><i class="fa fa-remove"></i>
-                    </button>
+                    <button class="js-item-remove" data-id="<%= item.id %>"><i class="fa fa-remove"></i></button>
+                    <a href="/edit/items/<%= item.id %>"> modifier</a>
                 </td>
             </tr>
         <% })} %>

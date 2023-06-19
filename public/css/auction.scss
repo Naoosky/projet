@@ -10,6 +10,32 @@
     }
   }
 }
+@media screen and (min-width: 768px){
+  .mobil-list{
+    display: none;
+  }
+  .mobil-hidden{
+    display: block;
+    width: 100%;
+    table{
+      width:95%;
+      margin: auto;
+      td:nth-child(4){
+        padding: 0;
+        text-align: center;
+      }
+      td:last-child{
+        width:15%;
+      }
+      img{
+        width:50%;
+      }
+      .img-coins{
+        width: 20%
+      }
+    }
+  }
+}
 
 /* ************* PAGE ************* */
 /* ************* ADD ITEMS ************* */

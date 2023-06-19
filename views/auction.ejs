@@ -57,10 +57,10 @@
         <% for(let i = 0; i < items.length; i++){ %>
         <tr>
             <td><%= items[i].pseudo %></td>
-            <td><%= items[i].title %></td>
-            <td><%= items[i].content %></td>
+            <td><%= items[i].title.substring(0, 15) %></td>
+            <td><%= items[i].content.substring(0, 15) %>...</td>
             <td><img src="<%= items[i].url %>" alt=" <%= items[i].description %>"></td>
-            <td><%= items[i].price %> <img src="/img/icon.webp" alt="Pièce d'or"></td>
+            <td><%= items[i].price %> <img src="/img/icon.webp" alt="Pièce d'or" class="img-coins"></td>
             <% } %>
         </tbody>
     </table>

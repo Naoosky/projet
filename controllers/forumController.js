@@ -27,9 +27,10 @@ export const forum = (req, res) => {
 
 export const searchArticles = (req, res) => {
     const search = req.body.search;
-    let sql = ` SELECT * FROM articles
-                INNER JOIN category_articles ON articles.category_id = category_articles.id
-                INNER JOIN users ON user_id = users.id
+    let sql = ` SELECT *
+                FROM articles
+                         INNER JOIN category_articles ON articles.category_id = category_articles.id
+                         INNER JOIN users ON user_id = users.id
                 WHERE category_articles.name LIKE '%${search}%' `;
     pool.query(sql, function (error, articles) {
         if (error) {
@@ -51,7 +52,7 @@ export const articlesDetails = (req, res) => {
                category_articles.name as 'category',
                comments.pseudo,
                comments.comment,
-               comments.date as 'dateComments'
+               comments.date          as 'dateComments'
         FROM articles
                  INNER JOIN category_articles ON articles.category_id = category_articles.id
                  LEFT JOIN comments ON comments.article_id = articles.id
@@ -78,7 +79,7 @@ export const addComments = (req, res) => {
                category_articles.name as 'category',
                comments.pseudo,
                comments.comment,
-               comments.date as 'dateComments'
+               comments.date          as 'dateComments'
         FROM articles
                  INNER JOIN category_articles ON articles.category_id = category_articles.id
                  LEFT JOIN comments ON comments.article_id = articles.id
@@ -218,4 +219,107 @@ export const addArticlesSubmit = (req, res) => {
             });
         }
     });
+}
+
+export const editArticle = (req, res) => {
+    let id = req.params.id;
+
+    let sql = `SELECT articles.id, articles.title, articles.description, users.id as "userId"
+               FROM articles
+                        INNER JOIN users ON articles.user_id = users.id
+               WHERE articles.id = ?`;
+
+    pool.query(sql, [id], (error, article) => {
+        if (error) {
+            console.error(error)
+        } else {
+
+            let sql2 = 'SELECT * FROM category_articles';
+
+            pool.query(sql2, (error, category) => {
+                if (error) {
+                    console.error(error)
+                } else {
+                    res.render('layout', {
+                        template: 'editArticle',
+                        article: article[0],
+                        category: category,
+                        error: null
+                    });
+                }
+            })
+        }
+    })
+}
+
+export const editArticleSubmit = (req, res) => {
+    let id = req.params.id;
+    let userId = req.session.userId;
+
+    let sql = `SELECT articles.id, articles.title, articles.description, users.id as "userId"
+               FROM articles
+                        INNER JOIN users ON articles.user_id = users.id
+               WHERE articles.id = ?`;
+
+    pool.query(sql, [id], (error, article) => {
+        if (error) {
+            console.error(error)
+        } else {
+
+            let sql2 = 'SELECT * FROM category_articles';
+
+            pool.query(sql2, (error, category) => {
+                if (error) {
+                    console.error(error)
+                } else {
+                    const {title, description, categories} = req.body
+
+                    const safeTitle = xss(title)
+                    const safeDescription = xss(description)
+
+                    if (safeTitle.length < 3 || safeTitle.length > 50) {
+                        return res.render('layout', {
+                            template: 'editArticle',
+                            article: article[0],
+                            category: category,
+                            error: 'Le titre doit contenir au moins 3 caractères ou dépassé les 50 caractères'
+                        });
+                    }
+                    if (safeDescription.length < 3) {
+                        return res.render('layout', {
+                            template: 'editArticle',
+                            article: article[0],
+                            category: category,
+                            error: 'La description doit contenir au moins 3 caractères'
+                        });
+                    }
+                    if (categories === '0') {
+                        return res.render('layout', {
+                            template: 'editArticle',
+                            article: article[0],
+                            category: category,
+                            error: 'Veuillez choisir une catégorie'
+                        });
+                    }
+
+                    const editArticle = {
+                        title: safeTitle,
+                        description: safeDescription,
+                        category_id: categories,
+                    }
+
+                    let sql3 = 'UPDATE articles SET ? WHERE id = ? '
+                    pool.query(sql3, [editArticle, id], (error) => {
+                        if (error) {
+                            console.error(error)
+                        } else {
+                            res.redirect('/profile/' + userId)
+                        }
+                    })
+                }
+
+            })
+        }
+
+    })
 }
