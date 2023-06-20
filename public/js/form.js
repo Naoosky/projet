@@ -1,3 +1,4 @@
+
 let email = document.getElementById('email');
 let pseudo = document.getElementById('pseudo');
 let password = document.getElementById('password');

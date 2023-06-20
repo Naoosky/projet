@@ -6,8 +6,8 @@ export const login = (req, res) => {
 }
 
 export const loginSubmit = (req, res) => {
-    // récupération des données du formulaire dans req.body
-    // on utilise les name des input comme clefs de req.body
+    // Récupération des données du formulaire dans req.body
+    // On utilise les names des inputs comme clefs de req.body
     const {email, password} = req.body;
     let query = "SELECT * FROM users WHERE email = ?";
 

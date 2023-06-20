@@ -1,5 +1,5 @@
 import pool from "../config/database.js";
-import {v4 as uuidv4} from 'uuid';
+import {v4 as uuidV4} from 'uuid';
 import xss from "xss";
 
 export const auction = (req, res) => {
@@ -90,7 +90,7 @@ export const addItemsSubmit = (req, res) => {
                     res.status(500).send('erreur de bdd')
                 } else {
                     let sql2 = "SELECT * FROM category_items";
-                    pool.query(sql2, function (error, category) {
+                    pool.query(sql2, function (error) {
                         if (error) {
                             console.error(error)
                             res.status(500).send('erreur de bdd')
@@ -148,7 +148,7 @@ export const addItemsSubmit = (req, res) => {
 
                             } else {
                                 let newItems = {
-                                    id: uuidv4(),
+                                    id: uuidV4(),
                                     title: safeTitle,
                                     content: safeContent,
                                     price: safePrice,
@@ -157,8 +157,8 @@ export const addItemsSubmit = (req, res) => {
                                     user_id: id
                                 }
 
-                                let sql3 = "INSERT INTO items SET ? ";
-                                pool.query(sql3, [newItems], function (error, result) {
+                                let sql3 = `INSERT INTO items SET ? `;
+                                pool.query(sql3, [newItems], function (error) {
                                     if (error) {
                                         console.error(error)
                                         res.status(500).send('erreur de bdd')

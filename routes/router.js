@@ -11,16 +11,14 @@ import {
     addArticlesSubmit,
     searchArticles,
     editArticle,
-    editArticleSubmit
-} from '../controllers/forumController.js';
+    editArticleSubmit } from '../controllers/forumController.js';
 import {
     auction,
     addItems,
     addItemsSubmit,
     searchItems,
     editItems,
-    editItemsSubmit
-} from '../controllers/auctionController.js';
+    editItemsSubmit } from '../controllers/auctionController.js';
 import {login, loginSubmit, logOut} from '../controllers/loginController.js';
 import {register, registerSubmit} from '../controllers/registerController.js';
 import {profile, deleteArticle, deleteItem} from "../controllers/profilController.js";
