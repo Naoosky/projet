@@ -273,4 +273,60 @@
   }
 }
 
+/* ************* PAGE ************* */
+/* ************* ADD ARTICLE ************* */
+
+.page-add-article {
+  width: 90%;
+  margin: auto;
+  padding-top: 2%;
+
+  fieldset {
+    padding: 0;
+
+    .form-articles {
+      padding: 0;
+      margin: 0;
+
+      select {
+        margin-bottom: 5%;
+      }
+
+      input[type='submit'] {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .page-add-article {
+    fieldset {
+      .form-articles {
+        select {
+          margin-bottom: 2%;
+        }
+
+        input[type='submit'] {
+          width: 30%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .page-add-article {
+    width: 95%;
+    fieldset {
+      .form-articles {
+
+        input[type='submit'] {
+          width: 20%;
+        }
+      }
+    }
+  }
+}
+
 

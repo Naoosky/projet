@@ -1,63 +1,127 @@
 <h1> <%= user.pseudo %> </h1>
 
-<section class="profil-user">
+<div class="profil-user">
     <ul>
         <li><a href="/add/articles/<%= user.id %>">ajouter un article</a></li>
         <li><a href="/add/items/<%= user.id %>">ajouter un item</a></li>
     </ul>
 
     <% if (articles.length > 0) { %>
+        <section class="mobil-list">
+            <h2>list Articles</h2>
+            <ul class="js-list-articles">
+                <% for( let i = 0; i < articles.length; i++ ) { %>
+                    <li class="list-articles"  data-id="<%= articles[i].id %>">
+                        <div>
+                            <p>Titre : </p>
+                            <p><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></p>
+                        </div>
+                        <div>
+                            <p>Description : </p>
+                            <p><%= articles[i].description.substring(0, 15) %> ...</p>
+                        </div>
+                        <div>
+                            <p>Modifier : </p>
+                            <p><a href="/edit/articles/<%= articles[i].id %>"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                        </div>
+                        <div>
+                            <p>Suprimer : </p>
+                            <p><button class="js-list-article-remove" data-id="<%= articles[i].id %>"><i
+                                            class="fa fa-remove"></i></button></p>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+        </section>
 
-        <h2>Articles</h2>
-        <table class="table-articles js-table-articles">
-            <thead>
-            <tr>
-                <th>titre</th>
-                <th>contenu</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <% for(let i = 0; i < articles.length; i++) { %>
-                <tr data-id="<%= articles[i].id %>">
-                    <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
-                    <td><%= articles[i].description.substring(0, 30) %></td>
-                    <td>
-                        <button class="js-article-remove" data-id="<%= articles[i].id %>"><i class="fa fa-remove"></i></button>
-                        <a href="/edit/articles/<%= articles[i].id %>"> modifier</a>
-                    </td>
+        <section class="mobil-hidden">
+            <h2>list Articles</h2>
+            <table class="table-articles js-table-articles">
+                <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Contenu</th>
+                    <th>Suprimer</th>
+                    <th>Modifier</th>
                 </tr>
-            <% } %>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <% for(let i = 0; i < articles.length; i++) { %>
+                    <tr data-id="<%= articles[i].id %>">
+                        <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
+                        <td><%= articles[i].description.substring(0, 30) %>...</td>
+                        <td>
+                            <button class="js-article-remove" data-id="<%= articles[i].id %>"><i
+                                        class="fa fa-remove"></i></button>
+
+                        </td>
+                        <td><a href="/edit/articles/<%= articles[i].id %>"><i class="fa-solid fa-pen-to-square"></i></a>
+                        </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </section>
     <% } %>
 
     <% if (items.length > 0) { %>
-    <table class="table-items js-table-items">
-        <thead>
-        <tr>
-            <th>nom</th>
-            <th>description</th>
-            <th>image</th>
-            <th>prix</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <% items.forEach(function(item) { %>
-            <tr data-id="<%= item.id %>">
-                <td><%= item.title.substring(0, 15) %></td>
-                <td><%= item.content.substring(0, 15) %>...</td>
-                <td><img src="<%= item.url %>" alt="<%= item.description %>"></td>
-                <td><%= item.price %> <img src="/img/icon.webp" alt="une piece d'or" class="img-price"></td>
-                <td>
-                    <button class="js-item-remove" data-id="<%= item.id %>"><i class="fa fa-remove"></i></button>
-                    <a href="/edit/items/<%= item.id %>"> modifier</a>
-                </td>
-            </tr>
-        <% })} %>
-        </tbody>
-    </table>
-</section>
+        <section class="mobil-list">
+            <h2>list Items</h2>
+            <ul>
+                <% for(let i = 0; i < items.length; i++) { %>
+                    <li class="list-articles">
+                        <div>
+                            <p>Item : </p>
+                            <p><%= items[i].title.substring(0, 15) %></p>
+                        </div>
+                        <div>
+                            <p>Description : </p>
+                            <p><%= items[i].content.substring(0, 15) %>...</p>
+                        </div>
+                        <div>
+                            <p>Image : </p>
+                            <p><img src="<%= items[i].url %>" alt=" <%= items[i].description %>"></p>
+                        </div>
+                        <div>
+                            <p> Prix : </p>
+                            <p><%= items[i].price %> <img src="/img/icon.webp" alt="Pièce d'or"></p>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+        </section>
+
+        <section class="mobil-hidden">
+            <h2>list Items</h2>
+            <table class="table-items js-table-items">
+                <thead>
+                <tr>
+                    <th>nom</th>
+                    <th>description</th>
+                    <th>image</th>
+                    <th>prix</th>
+                    <th>Suprimer</th>
+                    <th>Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% items.forEach(function(item) { %>
+                    <tr data-id="<%= item.id %>">
+                        <td><%= item.title.substring(0, 15) %></td>
+                        <td><%= item.content.substring(0, 15) %>...</td>
+                        <td><img src="<%= item.url %>" alt="<%= item.description %>"></td>
+                        <td><div><p><%= item.price %></p><img src="/img/icon.webp" alt="Pièce d'or" class="img-coins"></div></td>
+                        <td>
+                            <button class="js-item-remove" data-id="<%= item.id %>"><i class="fa fa-remove"></i>
+                            </button>
+                        </td>
+                        <td><a href="/edit/items/<%= item.id %>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        </section>
+    <% } %>
+</div>
 
 <script src="/js/delete.js"></script>

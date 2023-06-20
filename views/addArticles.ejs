@@ -1,27 +1,29 @@
-<fieldset>
-    <legend>Ajouter votre Article</legend>
-    <% if(error !== null) { %>
-        <p class="error"><%= error %></p>
-    <% } %>
-    <form action="/add/articles/<%= user.id %>" method="POST" class="form-articles">
-        <label for="title">Titre de l'article</label>
-        <input type="text" id="title" name="title">
+<section class="page-add-article">
+    <fieldset>
+        <legend>Ajouter votre Article</legend>
+        <% if(error !== null) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+        <form action="/add/articles/<%= user.id %>" method="POST" class="form-articles">
+            <label for="title">Titre de l'article</label>
+            <input type="text" id="title" name="title">
 
-        <label for="description">Description</label>
-        <textarea id="description" name="description"></textarea>
+            <label for="description">Description</label>
+            <textarea id="description" name="description"></textarea>
 
-        <label for="categories">Catégorie</label>
+            <label for="categories">Catégorie</label>
 
-        <select name="categories" id="categories" required>
-            <option value="0">Sélectionnez une catégorie</option>
-            <% for(let i = 0; i < category.length; i++) { %>
-                <option value="<%= category[i].id %>"><%= category[i].name %></option>
-            <% } %>
-        </select>
+            <select name="categories" id="categories" required>
+                <option value="0">Sélectionnez une catégorie</option>
+                <% for(let i = 0; i < category.length; i++) { %>
+                    <option value="<%= category[i].id %>"><%= category[i].name %></option>
+                <% } %>
+            </select>
 
 
-        <input type="hidden" name="user" value="<%= user.id %>">
-        <input type="submit" value="Ajouter">
-    </form>
+            <input type="hidden" name="user" value="<%= user.id %>">
+            <input type="submit" value="Ajouter">
+        </form>
 
-</fieldset>
+    </fieldset>
+</section>

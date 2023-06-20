@@ -16,14 +16,15 @@
         <div class="header-comments-img">
             <h2>Commentaires</h2>
         </div>
-        <div class="body-comments-img">
+            <div class="body-comments-img">
 
-            <% for( let i = 0; i < articles.length; i++ ) { %>
-                <h3><span> <%= articles[i].pseudo %> </span></h3>
-                <p> <%= articles[i].comment %></p>
-                <hr/>
-            <% } %>
-        </div>
+                <% for( let i = 0; i < articles.length; i++ ) { %>
+                    <h3><span> <%= articles[i].pseudo %> </span></h3>
+                    <p> <%= articles[i].comment %></p>
+                    <hr/>
+                <% } %>
+
+            </div>
         <div class="footer-comments-img"></div>
     </section>
 

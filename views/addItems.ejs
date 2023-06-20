@@ -1,40 +1,42 @@
-<fieldset>
-    <legend>Ajouter votre item</legend>
-    <% if(error != null) { %>
-        <p class="error"><%= error %></p>
-    <% } %>
-    <form action="/add/items/<%= user.id %>" method="POST" class="form-items">
-        <label for="title">Titre de l'item</label>
-        <input type="text" id="title" name="title">
+<section class="page-add-item">
+    <fieldset>
+        <legend>Ajouter votre item</legend>
+        <% if(error != null) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+        <form action="/add/items/<%= user.id %>" method="POST" class="form-items">
+            <label for="title">Titre de l'item</label>
+            <input type="text" id="title" name="title">
 
-        <label for="content">Description</label>
-        <textarea id="content" name="content"></textarea>
+            <label for="content">Description</label>
+            <textarea id="content" name="content"></textarea>
 
-        <label for="price">Prix</label>
-        <input type="number" id="price" name="price" min="0" max="999999999">
+            <label for="price">Prix</label>
+            <input type="number" id="price" name="price" min="0" max="999999999">
 
-        <label for="category">Catégorie</label>
-        <select name="category" id="category" required>
+            <label for="category">Catégorie</label>
+            <select name="category" id="category" required>
 
-            <option value="">Sélectionnez une catégorie</option>
-            <% for(let i = 0; i < category.length; i++) { %>
-                <option value="<%= category[i].id %>"><%= category[i].name %></option>
-            <% } %>
-        </select>
+                <option value="">Sélectionnez une catégorie</option>
+                <% for(let i = 0; i < category.length; i++) { %>
+                    <option value="<%= category[i].id %>"><%= category[i].name %></option>
+                <% } %>
+            </select>
 
-        <label for="image">Image</label>
-        <div class="image">
-            <% for(let i = 0; i < images.length; i++) { %>
-                <label for="image<%= i %>" class="imgCheck"><img src="<%= images[i].url %>" alt="<%= images[i].description %>"></label>
-                <input type="radio" id="image<%= i %>" class="hidden" name="image" value="<%= images[i].id %>">
+            <label for="image">Image</label>
+            <div class="image">
+                <% for(let i = 0; i < images.length; i++) { %>
+                    <label for="image<%= i %>" class="imgCheck"><img src="<%= images[i].url %>"
+                                                                     alt="<%= images[i].description %>"></label>
+                    <input type="radio" id="image<%= i %>" class="hidden" name="image" value="<%= images[i].id %>">
 
-            <% } %>
-        </div>
+                <% } %>
+            </div>
 
-        <input type="hidden" name="user" value="<%= user.id %>">
-        <input type="submit" value="Ajouter">
-    </form>
+            <input type="hidden" name="user" value="<%= user.id %>">
+            <input type="submit" value="Ajouter">
+        </form>
 
-</fieldset>
-
+    </fieldset>
+</section>
 <script src="/js/addItems.js"></script>

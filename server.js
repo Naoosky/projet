@@ -16,10 +16,10 @@ app.use(express.urlencoded({ extended: true }))
 
 //pour l'utilisation des sessions
 app.use(session({
-	secret: 'keyboard cat',
+	secret: process.env.SECRET_KEY,
 	resave : false,
 	saveUninitialized: true,
-	cookie: {maxAge: 360000}
+	cookie: {maxAge: 7200000 }
 }));
 
 // utilisation des template EJS grâce au modules npm "ejs"
