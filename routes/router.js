@@ -1,12 +1,29 @@
 import express from "express";
+
 const router = express.Router();
 import {home} from '../controllers/homeController.js';
 import {admin, usersProfil, deleteUser} from '../controllers/adminController.js';
-import {forum, articlesDetails, addComments, addArticles, addArticlesSubmit, searchArticles, editArticle, editArticleSubmit} from '../controllers/forumController.js';
-import {auction, addItems, addItemsSubmit, searchItems, editItems, editItemsSubmit} from '../controllers/auctionController.js';
+import {
+    forum,
+    articlesDetails,
+    addComments,
+    addArticles,
+    addArticlesSubmit,
+    searchArticles,
+    editArticle,
+    editArticleSubmit
+} from '../controllers/forumController.js';
+import {
+    auction,
+    addItems,
+    addItemsSubmit,
+    searchItems,
+    editItems,
+    editItemsSubmit
+} from '../controllers/auctionController.js';
 import {login, loginSubmit, logOut} from '../controllers/loginController.js';
 import {register, registerSubmit} from '../controllers/registerController.js';
-import {profile,  deleteArticle, deleteItem} from "../controllers/profilController.js";
+import {profile, deleteArticle, deleteItem} from "../controllers/profilController.js";
 import {privacyPolicy} from "../controllers/privacyPolicyController.js";
 
 router.get('/', home);
@@ -42,8 +59,6 @@ router.get('/profile/:id', profile);
 router.delete('/delete/articles/:id', deleteArticle);
 router.delete('/delete/items/:id', deleteItem);
 router.delete('/delete/users/:id', deleteUser);
-
-
 
 
 router.get('/privacyPolicy', privacyPolicy);

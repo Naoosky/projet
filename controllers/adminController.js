@@ -1,17 +1,18 @@
 import pool from "../config/database.js";
 
-export const admin = (req,res) => {
+export const admin = (req, res) => {
 
-    let sql = ` SELECT * FROM users`;
-    pool.query(sql, (error,users) => {
-        if(error){
+    let sql = ` SELECT *
+                FROM users`;
+    pool.query(sql, (error, users) => {
+        if (error) {
             console.error(error)
-        }else{
+        } else {
             let query = "SELECT * FROM articles";
             pool.query(query, (error, articles) => {
-                if(error){
+                if (error) {
                     console.error(error)
-                }else{
+                } else {
                     res.render('layout', {template: 'admin', users: users, articles: articles});
                 }
             });
@@ -19,7 +20,7 @@ export const admin = (req,res) => {
     });
 }
 
-export const usersProfil = (req,res) => {
+export const usersProfil = (req, res) => {
     const id = req.params.id
 
     let query = "SELECT * FROM users WHERE id = ?";

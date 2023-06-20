@@ -1,37 +1,46 @@
-.profil-user{
+.profil-user {
   margin-top: 2%;
-  h2{
+
+  h2 {
     text-align: center;
     margin: 2% 0;
   }
 
-  .mobil-hidden{
-    .table-articles{
+  .mobil-hidden {
+    .table-articles {
       text-align: center;
-      td{
+
+      td {
         padding: 1%;
         width: 30%;
-        &:nth-child(3), &:nth-child(4), &:nth-child(1){
-            width: 10%;
+
+        &:nth-child(3), &:nth-child(4), &:nth-child(1) {
+          width: 10%;
         }
       }
     }
-    .table-items{
+
+    .table-items {
       text-align: center;
-      td{
+
+      td {
         padding: 1%;
         width: 30%;
-        &:nth-child(1), &:nth-child(3), &:nth-child(5), &:nth-child(6){
-            width: 20%;
+
+        &:nth-child(1), &:nth-child(3), &:nth-child(5), &:nth-child(6) {
+          width: 20%;
 
         }
-        &:nth-child(4){
+
+        &:nth-child(4) {
           width: 20%;
-          div{
+
+          div {
             display: flex;
             justify-content: center;
             align-items: center;
-            .img-coins{
+
+            .img-coins {
               width: 15%
             }
           }
@@ -41,30 +50,35 @@
   }
 }
 
-@media screen and (min-width: 1200px){
-  .profil-user{
-    .mobil-hidden{
-      .table-articles{
-        td{
+@media screen and (min-width: 1200px) {
+  .profil-user {
+    .mobil-hidden {
+      .table-articles {
+        td {
           padding: 0.5%;
-          &:nth-child(3), &:nth-child(4), &:nth-child(1){
-              width: 1%;
+
+          &:nth-child(3), &:nth-child(4), &:nth-child(1) {
+            width: 1%;
           }
-          &:nth-child(2){
+
+          &:nth-child(2) {
             width: 2%;
           }
         }
       }
-      .table-items{
-        td{
+
+      .table-items {
+        td {
           width: 3%;
           padding: 0.5%;
-          &:nth-child(4){
-            div{
+
+          &:nth-child(4) {
+            div {
               display: flex;
               justify-content: center;
               align-items: center;
-              .img-coins{
+
+              .img-coins {
                 width: 6%
               }
             }

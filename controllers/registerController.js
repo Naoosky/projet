@@ -29,13 +29,18 @@ export const registerSubmit = function (req, res) {
         return res.render('layout', {template: 'register', error: 'L\'email n\'est pas valide'});
     }
     if (safePseudo.length < 3 || !inputRegex.test(safePseudo)) {
-        return res.render('layout', {template: 'register',
-            error: 'Le pseudo doit contenir au moins 3 caractères et ne doit pas contenir de caractères spéciaux'});
+        return res.render('layout', {
+            template: 'register',
+            error: 'Le pseudo doit contenir au moins 3 caractères et ne doit pas contenir de caractères spéciaux'
+        });
     }
     if (safePassword.length < 8) {
-        return res.render('layout', {template: 'register', error: 'Le mot de passe doit contenir au moins 8 caractères'});
+        return res.render('layout', {
+            template: 'register',
+            error: 'Le mot de passe doit contenir au moins 8 caractères'
+        });
     }
-    if (safeConfirmPassword !== safePassword ) {
+    if (safeConfirmPassword !== safePassword) {
         return res.render('layout', {template: 'register', error: 'Les mots de passe ne correspondent pas'});
     }
 
@@ -56,16 +61,16 @@ export const registerSubmit = function (req, res) {
 
             let sql = 'SELECT * FROM users';
 
-            pool.query(sql, (error,user) =>{
+            pool.query(sql, (error, user) => {
                 if (error) {
                     console.error(error);
                     res.status(500).send('Erreur de base de données');
                 } else {
 
-                    for(let i = 0; i < user.length; i++){
-                        if(safePseudo === user[i].pseudo){
+                    for (let i = 0; i < user.length; i++) {
+                        if (safePseudo === user[i].pseudo) {
                             return res.render('layout', {template: 'register', error: "Email ou Pseudo déja utilisé"});
-                        }else if(safeEmail === user[i].email){
+                        } else if (safeEmail === user[i].email) {
                             return res.render('layout', {template: 'register', error: "Email ou Pseudo déja utilisé"});
                         }
                     }

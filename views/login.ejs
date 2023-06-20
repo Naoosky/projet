@@ -1,20 +1,20 @@
 <section class="page-connect">
-<fieldset>
-    <legend>Se connecter</legend>
-    <% if(error !== null){ %>
-        <p class="error"><%= error %></p>
-    <% } %>
-    <form action="/login" method="post" class="form-login">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Entrer votre Email" required>
+    <fieldset>
+        <legend>Se connecter</legend>
+        <% if(error !== null){ %>
+            <p class="error"><%= error %></p>
+        <% } %>
+        <form action="/login" method="post" class="form-login">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Entrer votre Email" required>
 
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" name="password" placeholder="Entrer votre mot de passe" required>
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" placeholder="Entrer votre mot de passe" required>
 
-        <input type="submit" value="S'identifier">
-    </form>
-</fieldset>
-<p>Pas de compte ? <a href="/register">Enregister-vous</a></p>
+            <input type="submit" value="S'identifier">
+        </form>
+    </fieldset>
+    <p>Pas de compte ? <a href="/register">Enregister-vous</a></p>
 </section>
 
 <script src="/js/form.js"></script>

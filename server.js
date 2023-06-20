@@ -12,40 +12,40 @@ app.use(express.static("public"));
 
 //pour l'utilisation du json à la réception des données formulaire
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({extended: true}))
 
 //pour l'utilisation des sessions
 app.use(session({
-	secret: process.env.SECRET_KEY,
-	resave : false,
-	saveUninitialized: true,
-	cookie: {maxAge: 7200000 }
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {maxAge: 7200000}
 }));
 
 // utilisation des template EJS grâce au modules npm "ejs"
 app.set('views', './views');
 app.set('view engine', 'ejs');
-app.set('view options', { pretty: true });
+app.set('view options', {pretty: true});
 
 // Creation d'un middleware pour les sessions Admin et Member
-app.use((req,res,next) =>{
+app.use((req, res, next) => {
     res.locals.isAdmin = !!req.session.isAdmin;
     res.locals.isUser = !!req.session.isUser;
-	res.locals.userId = req.session.userId;
+    res.locals.userId = req.session.userId;
     next();
 })
 
 // Creation des routes securisé pour les admins
-app.use((req,res,next) =>{
-	const route = parseurl(req).pathname;
+app.use((req, res, next) => {
+    const route = parseurl(req).pathname;
 
-	const protectedRoutes = ['/administration', '/administration/articles/', '/administration/users/',  ]
-	if(protectedRoutes.indexOf(route) > -1 && !req.session.isAdmin){
-		res.redirect("/")
-	}else{
-		next();
-	}
-	
+    const protectedRoutes = ['/administration', '/administration/articles/', '/administration/users/',]
+    if (protectedRoutes.indexOf(route) > -1 && !req.session.isAdmin) {
+        res.redirect("/")
+    } else {
+        next();
+    }
+
 });
 
 //appel du routeur

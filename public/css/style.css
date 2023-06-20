@@ -327,7 +327,9 @@ template {
  */
 [hidden] {
   display: none;
-} 
+}
+
+
 /* ************* GENERAL ************* */
 * {
   margin: 0;

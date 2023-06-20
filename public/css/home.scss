@@ -54,6 +54,7 @@
   .home-welcome {
     .home-welcome_article {
       text-align: inherit;
+
       .mobil-text-home {
         display: none;
       }
@@ -83,8 +84,10 @@
   .home-welcome {
     width: 48%;
     padding: 1rem 1rem 0 1rem;
-    .home-welcome_article{
+
+    .home-welcome_article {
       text-align: justify;
+
       .mobil-hidden {
         margin: auto;
         padding: 0;

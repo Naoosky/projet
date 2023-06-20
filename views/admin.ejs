@@ -13,14 +13,15 @@
             <tbody>
             <% for(let i = 0; i < users.length; i++) { %>
                 <tr data-id="<%= users[i].id %>">
-                <td><%= users[i].id %></td>
-                <td><%= users[i].pseudo %></td>
-                <td><%= users[i].role %></td>
-                <td>
-                    <button class="js-user-remove" data-id="<%= users[i].id %>" ><i class="fa fa-remove"></i></button>
-                    <a href="/administration/users/<%= users[i].id %>">Voir</a>
-                </td>
-            </tr>
+                    <td><%= users[i].id %></td>
+                    <td><%= users[i].pseudo %></td>
+                    <td><%= users[i].role %></td>
+                    <td>
+                        <button class="js-user-remove" data-id="<%= users[i].id %>"><i class="fa fa-remove"></i>
+                        </button>
+                        <a href="/administration/users/<%= users[i].id %>">Voir</a>
+                    </td>
+                </tr>
             <% } %>
             </tbody>
         </table>
@@ -38,14 +39,15 @@
             </thead>
             <tbody>
             <% for(let i = 0; i < articles.length; i++) { %>
-            <tr data-id="<%= articles[i].id %>">
-                <td><%= articles[i].id %></td>
-                <td><%= articles[i].title %></td>
-                <td><%= articles[i].description.substring(0, 30) %></td>
-                <td>
-                    <button class="js-article-remove" data-id="<%= articles[i].id %>" ><i class="fa fa-remove"></i></button>
-                </td>
-            </tr>
+                <tr data-id="<%= articles[i].id %>">
+                    <td><%= articles[i].id %></td>
+                    <td><%= articles[i].title %></td>
+                    <td><%= articles[i].description.substring(0, 30) %></td>
+                    <td>
+                        <button class="js-article-remove" data-id="<%= articles[i].id %>"><i class="fa fa-remove"></i>
+                        </button>
+                    </td>
+                </tr>
             <% } %>
             </tbody>
         </table>

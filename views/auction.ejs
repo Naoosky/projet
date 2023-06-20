@@ -60,7 +60,9 @@
             <td><%= items[i].title.substring(0, 15) %></td>
             <td><%= items[i].content.substring(0, 15) %>...</td>
             <td><img src="<%= items[i].url %>" alt=" <%= items[i].description %>"></td>
-            <td><div><p><%= items[i].price %></p><img src="/img/icon.webp" alt="Pièce d'or" class="img-coins"></div> </td>
+            <td>
+                <div><p><%= items[i].price %></p><img src="/img/icon.webp" alt="Pièce d'or" class="img-coins"></div>
+            </td>
             <% } %>
         </tbody>
     </table>

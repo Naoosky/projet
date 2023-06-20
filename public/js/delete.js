@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 fetch(url, options)
                     .then(function (response) {
-                        if(response.ok) {
+                        if (response.ok) {
                             // Récupérer la ligne à supprimer
                             const articleElement = document.querySelector(`.js-table-articles tr[data-id="${id}"]`)
                             articleElement.remove();
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 fetch(url, options)
                     .then(function (response) {
-                        if(response.ok) {
+                        if (response.ok) {
                             // Récupérer la ligne à supprimer
                             const articleElement = document.querySelector(`.js-list-articles li[data-id="${id}"]`)
                             articleElement.remove();
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 fetch(url, options)
                     .then(function (response) {
-                        if(response.ok) {
+                        if (response.ok) {
                             // Récupérer la ligne à supprimer
                             const itemElement = document.querySelector(`.js-table-items tr[data-id="${id}"]`)
                             console.log(itemElement)
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 fetch(url, options)
                     .then(function (response) {
-                        if(response.ok) {
+                        if (response.ok) {
                             // Récupérer la ligne à supprimer
                             const itemElement = document.querySelector(`.js-table-users tr[data-id="${id}"]`)
                             console.log(itemElement)

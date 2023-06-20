@@ -29,7 +29,7 @@
 /* ************* GENERAL ************* */
 
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
@@ -72,6 +72,7 @@ hr {
   width: 75%;
   margin: 1rem auto;
 }
+
 legend {
   text-align: center;
   text-transform: uppercase;
@@ -79,6 +80,7 @@ legend {
   font-weight: bold;
   margin-bottom: 1rem;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -107,7 +109,8 @@ form {
     font-weight: bold;
     cursor: pointer;
   }
-  textarea{
+
+  textarea {
     min-width: 90%;
     max-width: 90%;
     min-height: 10rem;
@@ -118,6 +121,7 @@ form {
     border-radius: 5px;
   }
 }
+
 table {
   margin: 5% auto auto;
   border: var(--border);
@@ -139,7 +143,7 @@ table {
   font-family: 'OpenDyslexic', sans-serif;
 }
 
-.mobil-hidden{
+.mobil-hidden {
   display: none;
 }
 
@@ -152,6 +156,7 @@ table {
 
   .header-logo {
     text-align: center;
+
     img {
       width: 60%;
     }
@@ -196,9 +201,11 @@ table {
   text-align: center;
   background-image: url(../img/bannierefooter.webp);
   background-size: cover;
-  p{
+
+  p {
     display: flex;
     flex-direction: column;
+
     a {
       margin-left: 1rem;
       color: #fff;
@@ -218,8 +225,8 @@ table {
       }
     }
   }
-  .footer{
-    p{
+  .footer {
+    p {
       flex-direction: row;
       justify-content: center;
     }
