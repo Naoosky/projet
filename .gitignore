@@ -13,7 +13,7 @@ debug.log
 # Ignorer tous les fichiers CSS
 *.css
 *.css.map
-# Sauf le fichier important.css
+# Sauf le fichier style.css
 !style.css
 !style.css.map
 
