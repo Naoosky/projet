@@ -1073,8 +1073,38 @@ table th a {
   padding-top: 1rem;
   text-align: center;
 }
-.container-administration .list-users {
-  margin-bottom: 1rem;
+.container-administration .mobil-list h2 {
+  margin-bottom: 2%;
+}
+.container-administration .mobil-list .list-users {
+  margin: auto auto 5%;
+  width: 90%;
+}
+.container-administration .mobil-list .list-users div {
+  display: flex;
+  border: var(--border);
+  border-bottom: none;
+  border-collapse: collapse;
+}
+.container-administration .mobil-list .list-users div button {
+  cursor: pointer;
+}
+.container-administration .mobil-list .list-users div:last-child {
+  border-bottom: var(--border);
+}
+.container-administration .mobil-list .list-users div p {
+  width: 50%;
+  padding: 1%;
+  text-align: center;
+  text-transform: capitalize;
+  border-left: var(--border);
+}
+.container-administration .mobil-list .list-users div p:first-child {
+  border-left: none;
+  font-weight: bold;
+}
+.container-administration .mobil-list .list-users div p a {
+  text-decoration: underline;
 }
 .container-administration .table-users {
   width: 90%;

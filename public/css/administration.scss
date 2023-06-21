@@ -3,8 +3,46 @@
   padding-top: 1rem;
   text-align: center;
 
-  .list-users {
-    margin-bottom: 1rem;
+  .mobil-list {
+    h2{
+      margin-bottom: 2%;
+    }
+    .list-users {
+      margin: auto auto 5%;
+      width: 90%;
+      div {
+
+        display: flex;
+        border: var(--border);
+        border-bottom: none;
+        border-collapse: collapse;
+
+        button{
+          cursor: pointer;
+        }
+
+        &:last-child {
+          border-bottom: var(--border);
+        }
+
+        p {
+          width: 50%;
+          padding: 1%;
+          text-align: center;
+          text-transform: capitalize;
+          border-left: var(--border);
+
+          &:first-child {
+            border-left: none;
+            font-weight: bold;
+          }
+
+          a {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
   }
 
   .table-users {

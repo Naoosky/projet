@@ -1,56 +1,124 @@
 <div class="container-administration">
-    <section class="list-users">
-        <h2>Utilisateurs</h2>
-        <table class="table-users js-table-users">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>pseudo</th>
-                <th>role</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <% for(let i = 0; i < users.length; i++) { %>
-                <tr data-id="<%= users[i].id %>">
-                    <td><%= users[i].id %></td>
-                    <td><%= users[i].pseudo %></td>
-                    <td><%= users[i].role %></td>
-                    <td>
-                        <button class="js-user-remove" data-id="<%= users[i].id %>"><i class="fa fa-remove"></i>
-                        </button>
-                        <a href="/administration/users/<%= users[i].id %>">Voir</a>
-                    </td>
+
+    <% if(users.length > 0){ %>
+
+        <section class="mobil-list">
+            <h2>Liste Utilisateurs</h2>
+            <ul class="js-list-users">
+                <% for( let i = 0; i < users.length; i++ ) { %>
+                    <li class="list-users" data-id="<%= users[i].id %>">
+                        <div>
+                            <p>Id user : </p>
+                            <p><%= users[i].id %></p>
+                        </div>
+                        <div>
+                            <p>Nom : </p>
+                            <p><%= users[i].pseudo %></p>
+                        </div>
+                        <div>
+                            <p>Role : </p>
+                            <p><%= users[i].role %> </p>
+                        </div>
+                        <div>
+                            <p>Profil : </p>
+                            <p>
+                                <a href="/administration/users/<%= users[i].id %>"><i class="fa-solid fa-user"></i></a>
+                            </p>
+                        </div>
+                        <div>
+                            <p>Suprimer : </p>
+                            <p>
+                                <button class="js-list-user-remove" data-id="<%= users[i].id %>"><i
+                                            class="fa fa-remove"></i>
+                                </button>
+                            </p>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+        </section>
+
+        <section class="mobil-hidden">
+            <h2>Utilisateurs</h2>
+            <table class="table-users js-table-users">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>pseudo</th>
+                    <th>role</th>
+                    <th>Profil</th>
+                    <th>Suprimer</th>
                 </tr>
-            <% } %>
-            </tbody>
-        </table>
-    </section>
-    <section class="list-articles">
-        <h2>Articles</h2>
-        <table class="table-articles js-table-articles">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>titre</th>
-                <th>contenu</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <% for(let i = 0; i < articles.length; i++) { %>
-                <tr data-id="<%= articles[i].id %>">
-                    <td><%= articles[i].id %></td>
-                    <td><%= articles[i].title %></td>
-                    <td><%= articles[i].description.substring(0, 30) %></td>
-                    <td>
-                        <button class="js-article-remove" data-id="<%= articles[i].id %>"><i class="fa fa-remove"></i>
-                        </button>
-                    </td>
+                </thead>
+                <tbody>
+                <% for(let i = 0; i < users.length; i++) { %>
+                    <tr data-id="<%= users[i].id %>">
+                        <td><%= users[i].id %></td>
+                        <td><%= users[i].pseudo %></td>
+                        <td><%= users[i].role %></td>
+                        <td><a href="/administration/users/<%= users[i].id %>">Voir</a></td>
+                        <td>
+                            <button class="js-user-remove" data-id="<%= users[i].id %>"><i class="fa fa-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </section>
+    <% } %>
+
+    <% if (articles.length > 0) { %>
+        <section class="mobil-list">
+            <h2>list Articles</h2>
+            <ul class="js-list-articles">
+                <% for( let i = 0; i < articles.length; i++ ) { %>
+                    <li class="list-articles" data-id="<%= articles[i].id %>">
+                        <div>
+                            <p>Titre : </p>
+                            <p><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></p>
+                        </div>
+                        <div>
+                            <p>Description : </p>
+                            <p><%= articles[i].description.substring(0, 15) %> ...</p>
+                        </div>
+                        <div>
+                            <p>Suprimer : </p>
+                            <p>
+                                <button class="js-list-article-remove" data-id="<%= articles[i].id %>"><i
+                                            class="fa fa-remove"></i></button>
+                            </p>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+        </section>
+
+        <section class="mobil-hidden">
+            <h2>list Articles</h2>
+            <table class="table-articles js-table-articles">
+                <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Contenu</th>
+                    <th>Suprimer</th>
                 </tr>
-            <% } %>
-            </tbody>
-        </table>
-    </section>
+                </thead>
+                <tbody>
+                <% for(let i = 0; i < articles.length; i++) { %>
+                    <tr data-id="<%= articles[i].id %>">
+                        <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
+                        <td><%= articles[i].description.substring(0, 30) %>...</td>
+                        <td>
+                            <button class="js-article-remove" data-id="<%= articles[i].id %>"><i
+                                        class="fa fa-remove"></i></button>
+
+                        </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </section>
+    <% } %>
 </div>
 <script src="/js/delete.js"></script>
