@@ -157,7 +157,8 @@ export const addItemsSubmit = (req, res) => {
                                     user_id: id
                                 }
 
-                                let sql3 = `INSERT INTO items SET ? `;
+                                let sql3 = `INSERT INTO items
+                                            SET ? `;
                                 pool.query(sql3, [newItems], function (error) {
                                     if (error) {
                                         console.error(error)
@@ -286,15 +287,19 @@ export const editItemsSubmit = (req, res) => {
                                 image_id: image
                             }
 
-                            let sql3 = "UPDATE items SET ? WHERE id = ?";
-                            pool.query(sql3, [editItems, id], function (error) {
-                                if (error) {
-                                    console.error(error)
-                                    res.status(500).send('erreur de bdd')
-                                } else {
-                                    res.redirect('/profile/' + userId)
-                                }
-                            });
+                            if (item[0].user_id !== userId) {
+                                res.redirect('/profile/' + userId)
+                            } else {
+                                let sql3 = "UPDATE items SET ? WHERE id = ?";
+                                pool.query(sql3, [editItems, id], function (error) {
+                                    if (error) {
+                                        console.error(error)
+                                        res.status(500).send('erreur de bdd')
+                                    } else {
+                                        res.redirect('/profile/' + userId)
+                                    }
+                                });
+                            }
                         }
                     })
                 }

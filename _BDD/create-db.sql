@@ -35,7 +35,7 @@ CREATE TABLE items
     category_id CHAR(36)       NOT NULL,
     user_id     CHAR(36)       NOT NULL,
     price       DECIMAL(10, 2) NOT NULL,
-    image_id    VARCHAR(255)   NOT NULL,
+    image_id    CHAR(36)       NOT NULL,
     FOREIGN KEY (image_id) REFERENCES images (id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES category_items (id)

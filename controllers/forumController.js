@@ -308,14 +308,19 @@ export const editArticleSubmit = (req, res) => {
                         category_id: categories,
                     }
 
-                    let sql3 = 'UPDATE articles SET ? WHERE id = ? '
-                    pool.query(sql3, [editArticle, id], (error) => {
-                        if (error) {
-                            console.error(error)
-                        } else {
-                            res.redirect('/profile/' + userId)
-                        }
-                    })
+                    if (article[0].userId !== userId) {
+                        return res.redirect('/profile/' + userId)
+                    } else {
+                        let sql3 = 'UPDATE articles SET ? WHERE id = ? '
+                        pool.query(sql3, [editArticle, id], (error) => {
+                            if (error) {
+                                console.error(error)
+                            } else {
+                                res.redirect('/profile/' + userId)
+                            }
+                        })
+                    }
+
                 }
 
             })
