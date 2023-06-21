@@ -40,12 +40,13 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
     const route = parseurl(req).pathname;
 
-    const adminProtectedRoutes = ['/administration', '/administration/articles/', '/administration/users/','/delete/users/'];
-    const userProtectedRoutes = ['/profil', '/delete/articles/', '/delete/items/'];
+    const adminProtectedRoutes = ['/administration', '/administration/articles/', '/administration/users/', '/delete/users/'];
 
-    if(userProtectedRoutes.indexOf(route) > -1 && !req.session.isUser) {
+    const userProtectedRoutes = ['/profile/', '/delete/articles/', '/delete/items/', '/add/articles/', '/add/items/', '/edit/articles/', '/edit/items/', '/add_comment/'];
+
+    if (userProtectedRoutes.indexOf(route) > -1 && !req.session.isUser || !req.session.isAdmin) {
         res.redirect("/");
-    }else{
+    } else {
         next();
     }
 

@@ -6,16 +6,17 @@ const router = express.Router();
 import {home} from '../controllers/homeController.js';
 import {admin, usersProfil, deleteUser} from '../controllers/adminController.js';
 import {
-    forum,
+    listArticles,
     articlesDetails,
     addComments,
     addArticles,
     addArticlesSubmit,
     searchArticles,
     editArticle,
-    editArticleSubmit } from '../controllers/forumController.js';
+    editArticleSubmit
+} from '../controllers/forumController.js';
 import {
-    auction,
+    listItems,
     addItems,
     addItemsSubmit,
     searchItems,
@@ -32,7 +33,7 @@ router.get('/administration', admin)
 router.get('/administration/users/:id', usersProfil)
 
 
-router.get('/forum', forum);
+router.get('/forum', listArticles);
 router.get('/articles/:id', articlesDetails);
 router.get('/add/articles/:id', addArticles);
 router.get('/edit/articles/:id', editArticle);
@@ -42,7 +43,7 @@ router.post('/add_comment/:id', addComments);
 router.post('/search/articles', searchArticles);
 
 
-router.get('/auction', auction);
+router.get('/auction', listItems);
 router.get('/add/items/:id', addItems);
 router.get('/edit/items/:id', editItems)
 router.post('/add/items/:id', addItemsSubmit);

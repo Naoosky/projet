@@ -3,7 +3,7 @@ import {v4 as uuidV4} from 'uuid';
 import xss from 'xss';
 
 
-export const forum = (req, res) => {
+export const listArticles = (req, res) => {
     let sql = ` SELECT articles.id,
                        articles.title,
                        users.pseudo,

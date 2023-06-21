@@ -2,7 +2,7 @@ import pool from "../config/database.js";
 import {v4 as uuidV4} from 'uuid';
 import xss from "xss";
 
-export const auction = (req, res) => {
+export const listItems = (req, res) => {
     let sql = ` SELECT *
                 FROM items
                          INNER JOIN images ON image_id = images.id
