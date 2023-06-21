@@ -12,8 +12,10 @@ debug.log
 
 # Ignorer tous les fichiers CSS
 *.css
+*.css.map
 # Sauf le fichier important.css
 !style.css
+!style.css.map
 
 # Fichiers de configuration
 config.js
