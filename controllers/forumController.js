@@ -20,7 +20,7 @@ export const listArticles = (req, res) => {
             console.error(error)
             res.status(500).send('erreur de bdd')
         } else {
-            res.render('layout', {template: 'forum', articles: articles});
+            res.render('layout', {template: 'listArticles', articles: articles});
         }
     });
 }
@@ -37,7 +37,7 @@ export const searchArticles = (req, res) => {
             console.error(error)
             res.status(500).send('erreur de bdd')
         } else {
-            res.render('layout', {template: 'forum', articles: articles});
+            res.render('layout', {template: 'listArticles', articles: articles});
         }
     });
 }
@@ -64,7 +64,7 @@ export const articlesDetails = (req, res) => {
             console.error(error)
         } else {
 
-            res.render('layout', {template: 'articles', articles: results, error: null})
+            res.render('layout', {template: 'detailArticles', articles: results, error: null})
         }
     })
 }
@@ -97,13 +97,13 @@ export const addComments = (req, res) => {
 
             if (safeComment.length < 3) {
                 return res.render('layout', {
-                    template: 'articles',
+                    template: 'detailArticles',
                     articles: results,
                     error: 'Le commentaire doit contenir au moins 3 caractères et moins de 255 caractères'
                 });
             } else if (safeComment.length > 255) {
                 return res.render('layout', {
-                    template: 'articles',
+                    template: 'detailArticles',
                     articles: results,
                     error: 'Le commentaire doit contenir au moins 3 caractères et moins de 255 caractères'
                 });
@@ -139,7 +139,10 @@ export const addComments = (req, res) => {
 }
 
 export const addArticles = (req, res) => {
-    let userId = req.session.userId
+    let userId = req.session.userId;
+
+    if (!userId) return res.redirect('/login')
+
     const query = 'SELECT * FROM category_articles';
     pool.query(query, (error, category) => {
         if (error) {
@@ -222,109 +225,123 @@ export const addArticlesSubmit = (req, res) => {
 }
 
 export const editArticle = (req, res) => {
-    let id = req.params.id;
+    const id = req.params.id;
+    const userId = req.session.userId;
 
-    let sql = `SELECT articles.id, articles.title, articles.description, users.id as "userId"
-               FROM articles
-                        INNER JOIN users ON articles.user_id = users.id
-               WHERE articles.id = ?`;
+    const sql = `SELECT articles.id, articles.title, articles.description, users.id as "userId"
+                 FROM articles
+                          INNER JOIN users ON articles.user_id = users.id
+                 WHERE articles.id = ?`;
 
     pool.query(sql, [id], (error, article) => {
         if (error) {
-            console.error(error)
-        } else {
-
-            let sql2 = 'SELECT * FROM category_articles';
-
-            pool.query(sql2, (error, category) => {
-                if (error) {
-                    console.error(error)
-                } else {
-                    res.render('layout', {
-                        template: 'editArticle',
-                        article: article[0],
-                        category: category,
-                        error: null
-                    });
-                }
-            })
+            console.error(error);
+            return;
         }
-    })
-}
 
+        const articleData = article[0];
+
+        if (!articleData || articleData.userId !== userId) {
+            // Si l'article n'existe pas ou n'appartient pas à l'utilisateur
+            return res.redirect('/profile/' + userId);
+        }
+
+        const sql2 = 'SELECT * FROM category_articles';
+        pool.query(sql2, (error, category) => {
+            if (error) {
+                console.error(error);
+                return;
+            }
+
+            res.render('layout', {
+                template: 'editArticle',
+                article: articleData,
+                category: category,
+                error: null
+            });
+        });
+    });
+};
 export const editArticleSubmit = (req, res) => {
-    let id = req.params.id;
-    let userId = req.session.userId;
+    const id = req.params.id;
+    const userId = req.session.userId;
 
-    let sql = `SELECT articles.id, articles.title, articles.description, users.id as "userId"
-               FROM articles
-                        INNER JOIN users ON articles.user_id = users.id
-               WHERE articles.id = ?`;
+    const sql = `SELECT articles.id, articles.title, articles.description, users.id as "userId"
+                 FROM articles
+                          INNER JOIN users ON articles.user_id = users.id
+                 WHERE articles.id = ?`;
 
     pool.query(sql, [id], (error, article) => {
         if (error) {
-            console.error(error)
-        } else {
-
-            let sql2 = 'SELECT * FROM category_articles';
-
-            pool.query(sql2, (error, category) => {
-                if (error) {
-                    console.error(error)
-                } else {
-                    const {title, description, categories} = req.body
-
-                    const safeTitle = xss(title)
-                    const safeDescription = xss(description)
-
-                    if (safeTitle.length < 3 || safeTitle.length > 50) {
-                        return res.render('layout', {
-                            template: 'editArticle',
-                            article: article[0],
-                            category: category,
-                            error: 'Le titre doit contenir au moins 3 caractères ou dépassé les 50 caractères'
-                        });
-                    }
-                    if (safeDescription.length < 3) {
-                        return res.render('layout', {
-                            template: 'editArticle',
-                            article: article[0],
-                            category: category,
-                            error: 'La description doit contenir au moins 3 caractères'
-                        });
-                    }
-                    if (categories === '0') {
-                        return res.render('layout', {
-                            template: 'editArticle',
-                            article: article[0],
-                            category: category,
-                            error: 'Veuillez choisir une catégorie'
-                        });
-                    }
-
-                    const editArticle = {
-                        title: safeTitle,
-                        description: safeDescription,
-                        category_id: categories,
-                    }
-
-                    if (article[0].userId !== userId) {
-                        return res.redirect('/profile/' + userId)
-                    } else {
-                        let sql3 = 'UPDATE articles SET ? WHERE id = ? '
-                        pool.query(sql3, [editArticle, id], (error) => {
-                            if (error) {
-                                console.error(error)
-                            } else {
-                                res.redirect('/profile/' + userId)
-                            }
-                        })
-                    }
-
-                }
-
-            })
+            console.error(error);
+            return;
         }
 
-    })
-}
+        const articleData = article[0];
+
+        if (!articleData || articleData.userId !== userId) {
+            // Si l'article n'existe pas ou n'appartient pas à l'utilisateur
+            return res.redirect('/profile/' + userId);
+        }
+
+        const sql2 = 'SELECT * FROM category_articles';
+        pool.query(sql2, (error, category) => {
+            if (error) {
+                console.error(error);
+                return;
+            }
+
+            const {title, description, categories} = req.body;
+
+            const safeTitle = xss(title);
+            const safeDescription = xss(description);
+
+            if (safeTitle.length < 3 || safeTitle.length > 50) {
+                return res.render('layout', {
+                    template: 'editArticle',
+                    article: articleData,
+                    category,
+                    error: 'Le titre doit contenir au moins 3 caractères ou dépasser les 50 caractères'
+                });
+            }
+
+            if (safeDescription.length < 3) {
+                return res.render('layout', {
+                    template: 'editArticle',
+                    article: articleData,
+                    category,
+                    error: 'La description doit contenir au moins 3 caractères'
+                });
+            }
+
+            if (categories === '0') {
+                return res.render('layout', {
+                    template: 'editArticle',
+                    article: articleData,
+                    category,
+                    error: 'Veuillez choisir une catégorie'
+                });
+            }
+
+            const editArticle = {
+                title: safeTitle,
+                description: safeDescription,
+                category_id: categories
+            };
+
+            if (articleData.userId !== userId) {
+                return res.redirect('/profile/' + userId);
+            }
+
+            const sql3 = 'UPDATE articles SET ? WHERE id = ?';
+            pool.query(sql3, [editArticle, id], (error) => {
+                if (error) {
+                    console.error(error);
+                    return;
+                }
+
+                res.redirect('/profile/' + userId);
+            });
+        });
+    });
+};

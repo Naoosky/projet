@@ -44,13 +44,9 @@ app.use((req, res, next) => {
 
     const userProtectedRoutes = ['/profile/', '/delete/articles/', '/delete/items/', '/add/articles/', '/add/items/', '/edit/articles/', '/edit/items/', '/add_comment/'];
 
-    if (userProtectedRoutes.indexOf(route) > -1 && !req.session.isUser || !req.session.isAdmin) {
+    if (userProtectedRoutes.indexOf(route) > -1 && !req.session.isUser ) {
         res.redirect("/");
-    } else {
-        next();
-    }
-
-    if (adminProtectedRoutes.indexOf(route) > -1 && !req.session.isAdmin) {
+    }else if (adminProtectedRoutes.indexOf(route) > -1 && !req.session.isAdmin) {
         res.redirect("/")
     } else {
         next();

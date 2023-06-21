@@ -15,7 +15,7 @@ export const listItems = (req, res) => {
             console.error(error)
             res.status(500).send('erreur de bdd')
         } else {
-            res.render('layout', {template: 'auction', items: items});
+            res.render('layout', {template: 'listItems', items: items});
         }
     });
 }
@@ -33,7 +33,7 @@ export const searchItems = (req, res) => {
             console.error(error)
             res.status(500).send('erreur de bdd')
         } else {
-            res.render('layout', {template: 'auction', items: items});
+            res.render('layout', {template: 'listItems', items: items});
         }
     });
 }
@@ -41,37 +41,41 @@ export const searchItems = (req, res) => {
 export const addItems = (req, res) => {
     let id = req.session.userId;
 
-    let sql = "SELECT * FROM images";
-    pool.query(sql, function (error, images) {
-        if (error) {
-            console.error(error)
-            res.status(500).send('erreur de bdd')
-        } else {
-            let query = "SELECT * FROM users WHERE id = ?";
-            pool.query(query, id, function (error, user) {
-                if (error) {
-                    console.error(error)
-                    res.status(500).send('erreur de bdd')
-                } else {
-                    let sql2 = "SELECT * FROM category_items";
-                    pool.query(sql2, function (error, category) {
-                        if (error) {
-                            console.error(error)
-                            res.status(500).send('erreur de bdd')
-                        } else {
-                            res.render('layout', {
-                                template: 'addItems',
-                                images: images,
-                                user: user[0],
-                                category: category,
-                                error: null
-                            });
-                        }
-                    });
-                }
-            });
-        }
-    });
+    if (!id) {
+        res.redirect('/login');
+    } else {
+        let sql = "SELECT * FROM images";
+        pool.query(sql, function (error, images) {
+            if (error) {
+                console.error(error)
+                res.status(500).send('erreur de bdd')
+            } else {
+                let query = "SELECT * FROM users WHERE id = ?";
+                pool.query(query, id, function (error, user) {
+                    if (error) {
+                        console.error(error)
+                        res.status(500).send('erreur de bdd')
+                    } else {
+                        let sql2 = "SELECT * FROM category_items";
+                        pool.query(sql2, function (error, category) {
+                            if (error) {
+                                console.error(error)
+                                res.status(500).send('erreur de bdd')
+                            } else {
+                                res.render('layout', {
+                                    template: 'addItems',
+                                    images: images,
+                                    user: user[0],
+                                    category: category,
+                                    error: null
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
 }
 
 export const addItemsSubmit = (req, res) => {
@@ -178,6 +182,7 @@ export const addItemsSubmit = (req, res) => {
 
 export const editItems = (req, res) => {
     let id = req.params.id;
+    let userId = req.session.userId;
 
     let sql = 'SELECT * FROM items WHERE id = ?';
 
@@ -185,32 +190,36 @@ export const editItems = (req, res) => {
         if (error) {
             console.error(error);
         } else {
-            let sql2 = 'SELECT * FROM images';
 
-            pool.query(sql2, (error, images) => {
-                if (error) {
-                    console.error(error)
-                } else {
-                    let sql3 = 'SELECT * FROM category_items';
+            if (item[0].user_id !== userId) {
+                res.redirect('/profile/' + userId)
+            } else {
+                let sql2 = 'SELECT * FROM images';
 
-                    pool.query(sql3, (error, category) => {
-                        res.render('layout', {
-                            template: 'editItems',
-                            images: images,
-                            item: item[0],
-                            category: category,
-                            error: null
+                pool.query(sql2, (error, images) => {
+                    if (error) {
+                        console.error(error)
+                    } else {
+                        let sql3 = 'SELECT * FROM category_items';
+
+                        pool.query(sql3, (error, category) => {
+                            res.render('layout', {
+                                template: 'editItems',
+                                images: images,
+                                item: item[0],
+                                category: category,
+                                error: null
+                            })
                         })
-                    })
-                }
-            })
+                    }
+                })
+            }
         }
     })
 }
 
 export const editItemsSubmit = (req, res) => {
     let id = req.params.id;
-    let userId = req.session.userId
 
     let sql = 'SELECT * FROM items WHERE id = ?';
 
@@ -286,20 +295,15 @@ export const editItemsSubmit = (req, res) => {
                                 category_id: categories,
                                 image_id: image
                             }
-
-                            if (item[0].user_id !== userId) {
-                                res.redirect('/profile/' + userId)
-                            } else {
-                                let sql3 = "UPDATE items SET ? WHERE id = ?";
-                                pool.query(sql3, [editItems, id], function (error) {
-                                    if (error) {
-                                        console.error(error)
-                                        res.status(500).send('erreur de bdd')
-                                    } else {
-                                        res.redirect('/profile/' + userId)
-                                    }
-                                });
-                            }
+                            let sql3 = "UPDATE items SET ? WHERE id = ?";
+                            pool.query(sql3, [editItems, id], function (error) {
+                                if (error) {
+                                    console.error(error)
+                                    res.status(500).send('erreur de bdd')
+                                } else {
+                                    res.redirect('/profile/' + userId)
+                                }
+                            });
                         }
                     })
                 }
