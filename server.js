@@ -1,6 +1,5 @@
 import express from "express";
 import session from "express-session";
-import rateLimit from 'express-rate-limit';
 import router from "./routes/router.js";
 import parseurl from "parseurl";
 
@@ -15,15 +14,6 @@ app.use(express.static("public"));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-// Créer une limite de 100 requêtes par heure
-const limiter = rateLimit({
-    windowMs: 60 * 60 * 1000, // 1 heure
-    max: 100, // Limite de 100 requêtes par IP
-    message: 'Trop de requêtes effectuées depuis cette adresse IP. Veuillez réessayer plus tard.',
-});
-
-// Utiliser le rate limiter comme middleware global
-app.use(limiter);
 
 //pour l’utilisation des sessions
 app.use(session({
