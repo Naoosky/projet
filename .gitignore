@@ -10,6 +10,11 @@ yarn-debug.log*
 yarn-error.log*
 debug.log
 
+# Ignorer tous les fichiers CSS
+*.css
+# Sauf le fichier important.css
+!style.css
+
 # Fichiers de configuration
 config.js
 config.json
