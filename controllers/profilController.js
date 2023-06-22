@@ -2,7 +2,7 @@ import pool from "../config/database.js";
 
 export const profile = (req, res) => {
     let id = req.session.userId
-    if (!id) {
+    if (!id || !req.session.isAdmin) {
         res.redirect('/')
     } else {
         let query = "SELECT * FROM users WHERE id = ?";
@@ -56,7 +56,7 @@ export const deleteArticle = (req, res) => {
             console.error(error)
             res.status(500).send('erreur de bdd')
         } else {
-            if (result[0].user_id !== userId) {
+            if (result[0].user_id !== userId && !req.session.isAdmin) {
                 res.status(403).send('Forbidden')
             } else {
                 let sql2 = ` DELETE
@@ -87,7 +87,7 @@ export const deleteItem = (req, res) => {
             console.error(error)
             res.status(500).send('erreur de bdd')
         } else {
-            if (result[0].user_id !== userId) {
+            if (result[0].user_id !== userId || !req.session.isAdmin) {
                 res.status(403).send('Forbidden')
             } else {
                 let sql2 = ` DELETE

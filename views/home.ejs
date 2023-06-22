@@ -1,11 +1,11 @@
 <h1>Bienvenue chez Kyosei !</h1>
 <div class="container container-home">
     <section class="home-welcome">
-        <h2>Article d'accueil</h2>
+        <h2>Rejoignez-nous dès maintenant !</h2>
         <article class="home-welcome_article">
             <div class="mobil-text-home">
                 <p>
-                    Bienvenue dans Eden Eternal ! Rejoignez la guilde Kyosei et vivez des aventures inoubliables. Esprit
+                    Rejoignez la guilde Kyosei et vivez des aventures inoubliables. Esprit
                     d'équipe, entraide et camaraderie sont nos valeurs. </p>
 
                 <p>
@@ -75,26 +75,46 @@
             <img src="/img/eden-eternal-banner.webp" alt="eden eternal bannière">
         </article>
     </section>
-    <section class="home-navigation">
-        <h2>Table navigation accueil</h2>
-        <table class="home-navigation_table">
+    <section class="mobil-list">
+        <h2>Liste des publications récentes.</h2>
+        <ul>
+            <% for( let i = 0; i < articles.length; i++ ) { %>
+                <li class="list-articles">
+                    <div>
+                        <p>Titre : </p>
+                        <p><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></p>
+                    </div>
+                    <div>
+                        <p>Description : </p>
+                        <p><%= articles[i].description.substring(0, 15) %> ...</p>
+                    </div>
+                    <div>
+                        <p>Catégorie : </p>
+                        <p><%= articles[i].category %></p>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    </section>
+
+    <section class="mobil-hidden">
+        <h2>Tableau des publications récentes.</h2>
+        <table class="table-home">
             <thead>
             <tr>
                 <th>Titre</th>
-                <th>description</th>
-                <th>Categories</th>
+                <th>Description</th>
+                <th>Catégorie</th>
             </tr>
             </thead>
             <tbody>
             <% for( let i = 0; i < articles.length; i++ ) { %>
                 <tr>
                     <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
-                    <td><%= articles[i].description.substring(0, 30) %> ...</td>
+                    <td><%= articles[i].description.substring(0, 15) %> ...</td>
                     <td><%= articles[i].category %></td>
                 </tr>
             <% } %>
-
-            </tbody>
         </table>
     </section>
 </div>

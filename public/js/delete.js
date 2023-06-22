@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let buttonRemoveListArticle = document.querySelectorAll(".js-list-article-remove");
     let buttonRemoveUser = document.querySelectorAll(".js-user-remove");
     let buttonRemoveListUser = document.querySelectorAll(".js-list-user-remove");
-    let buttonRemoveItem = document.querySelectorAll(".js-item-remove");
+    let buttonRemoveItem = document.querySelectorAll(".js-item-remove")
+    let buttonRemoveListItem = document.querySelectorAll(".js-list-items-remove");
 
     // Si des boutons sont présents
     if (buttonRemoveArticle.length > 0) {
@@ -116,6 +117,41 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
+    if (buttonRemoveListItem.length > 0) {
+        buttonRemoveListItem.forEach((elem) => {
+            elem.addEventListener("click", (event) => {
+
+                const buttonElement = event.target.parentElement;
+
+                const id = buttonElement.getAttribute("data-id");
+
+                const options = {
+                    method: "delete", 
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                };
+
+                const url = `/delete/items/${id}`;
+
+                fetch(url, options)
+                    .then(function (response) {
+                        if (response.ok) {
+                            // Récupérer la ligne à supprimer
+                            const articleElement = document.querySelector(`.js-list-items li[data-id="${id}"]`)
+                            articleElement.remove();
+                        } else {
+                            response.json().then(console.log);
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            });
+        });
+    }
+
     if (buttonRemoveUser.length > 0) {
         buttonRemoveUser.forEach((elem) => {
             elem.addEventListener("click", (event) => {

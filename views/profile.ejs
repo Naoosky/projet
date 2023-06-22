@@ -70,9 +70,9 @@
     <% if (items.length > 0) { %>
         <section class="mobil-list">
             <h2>list Items</h2>
-            <ul>
+            <ul class="js-list-items">
                 <% for(let i = 0; i < items.length; i++) { %>
-                    <li class="list-articles">
+                    <li class="list-articles" data-id="<%= items[i].id %>">
                         <div>
                             <p>Item : </p>
                             <p><%= items[i].title.substring(0, 15) %></p>
@@ -86,8 +86,16 @@
                             <p><img src="<%= items[i].url %>" alt=" <%= items[i].description %>"></p>
                         </div>
                         <div>
-                            <p> Prix : </p>
-                            <p><%= items[i].price %> <img src="/img/icon.webp" alt="Pièce d'or"></p>
+                            <p>Suprimer : </p>
+                            <p>
+                                <button class="js-list-items-remove" data-id="<%= items[i].id %>"><i
+                                            class="fa fa-remove"></i></button>
+                            </p>
+                        </div>
+                        <div>
+                            <p>Modifier : </p>
+                            <p><a href="/edit/items/<%= items[i].id %>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </p>
                         </div>
                     </li>
                 <% } %>
