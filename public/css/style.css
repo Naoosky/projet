@@ -623,31 +623,31 @@ table th a {
   margin-top: 2%;
 }
 
-.mobil-list .list-articles {
+.mobil-list .list-articles, .mobil-list .list-items {
   margin: auto auto 5%;
   width: 90%;
 }
-.mobil-list .list-articles div {
+.mobil-list .list-articles div, .mobil-list .list-items div {
   display: flex;
   border: var(--border);
   border-bottom: none;
   border-collapse: collapse;
 }
-.mobil-list .list-articles div:last-child {
+.mobil-list .list-articles div:last-child, .mobil-list .list-items div:last-child {
   border-bottom: var(--border);
 }
-.mobil-list .list-articles div p {
+.mobil-list .list-articles div p, .mobil-list .list-items div p {
   width: 50%;
   padding: 1%;
   text-align: center;
   text-transform: capitalize;
   border-left: var(--border);
 }
-.mobil-list .list-articles div p:first-child {
+.mobil-list .list-articles div p:first-child, .mobil-list .list-items div p:first-child {
   border-left: none;
   font-weight: bold;
 }
-.mobil-list .list-articles div p a {
+.mobil-list .list-articles div p a, .mobil-list .list-items div p a {
   text-decoration: underline;
 }
 
@@ -927,27 +927,27 @@ table th a {
 }
 /* ************* PAGE ************* */
 /* ************* ADD ITEMS ************* */
-.page-add-item {
+.page-add-item, .page-edit-item {
   width: 90%;
   margin: auto;
   padding-top: 2%;
 }
-.page-add-item fieldset {
+.page-add-item fieldset, .page-edit-item fieldset {
   padding: 0;
 }
-.page-add-item fieldset .form-items {
+.page-add-item fieldset .form-items, .page-edit-item fieldset .form-items {
   padding: 0;
 }
-.page-add-item fieldset .form-items label {
+.page-add-item fieldset .form-items label, .page-edit-item fieldset .form-items label {
   margin: 2% 0;
 }
-.page-add-item fieldset .form-items label img {
+.page-add-item fieldset .form-items label img, .page-edit-item fieldset .form-items label img {
   width: 50%;
   cursor: pointer;
   border: var(--border);
   border-radius: var(--border-radius);
 }
-.page-add-item fieldset .form-items .image {
+.page-add-item fieldset .form-items .image, .page-edit-item fieldset .form-items .image {
   width: 90%;
   display: flex;
   flex-wrap: wrap;
@@ -957,35 +957,35 @@ table th a {
   border: var(--border);
   border-radius: var(--border-radius);
 }
-.page-add-item fieldset .form-items .image label {
+.page-add-item fieldset .form-items .image label, .page-edit-item fieldset .form-items .image label {
   width: 20%;
 }
-.page-add-item fieldset .form-items .image .active img {
+.page-add-item fieldset .form-items .image .active img, .page-edit-item fieldset .form-items .image .active img {
   border-color: blue;
   box-shadow: blue 1px 0 5px;
 }
-.page-add-item fieldset .form-items .image .hidden {
+.page-add-item fieldset .form-items .image .hidden, .page-edit-item fieldset .form-items .image .hidden {
   display: none;
 }
 
 @media screen and (min-width: 768px) {
-  .page-add-item fieldset .form-items select {
+  .page-add-item fieldset .form-items select, .page-edit-item fieldset .form-items select {
     width: 50%;
     text-align: center;
   }
 }
 @media screen and (min-width: 1200px) {
-  .page-add-item fieldset .form-items select {
+  .page-add-item fieldset .form-items select, .page-edit-item fieldset .form-items select {
     width: 30%;
   }
-  .page-add-item fieldset .form-items label {
+  .page-add-item fieldset .form-items label, .page-edit-item fieldset .form-items label {
     margin: 1% 0;
     font-size: 1.5rem;
   }
-  .page-add-item fieldset .form-items .image {
+  .page-add-item fieldset .form-items .image, .page-edit-item fieldset .form-items .image {
     margin-top: 0;
   }
-  .page-add-item fieldset .form-items .image label {
+  .page-add-item fieldset .form-items .image label, .page-edit-item fieldset .form-items .image label {
     width: 10%;
     margin: 1%;
   }
@@ -1012,9 +1012,15 @@ table th a {
 .profil-user .mobil-hidden .table-items {
   text-align: center;
 }
+.profil-user .mobil-hidden .table-items th:nth-child(5) {
+  padding: 0;
+}
 .profil-user .mobil-hidden .table-items td {
-  padding: 1%;
+  padding: 0.5%;
   width: 30%;
+}
+.profil-user .mobil-hidden .table-items td img {
+  width: 20%;
 }
 .profil-user .mobil-hidden .table-items td:nth-child(1), .profil-user .mobil-hidden .table-items td:nth-child(3), .profil-user .mobil-hidden .table-items td:nth-child(5), .profil-user .mobil-hidden .table-items td:nth-child(6) {
   width: 20%;
@@ -1044,6 +1050,15 @@ table th a {
   .profil-user .mobil-hidden .table-items td {
     width: 3%;
     padding: 0.5%;
+  }
+  .profil-user .mobil-hidden .table-items td img {
+    width: 15%;
+  }
+  .profil-user .mobil-hidden .table-items td:nth-child(2) {
+    width: 20%;
+  }
+  .profil-user .mobil-hidden .table-items td:nth-child(5) {
+    width: 10%;
   }
   .profil-user .mobil-hidden .table-items td:nth-child(4) div {
     display: flex;

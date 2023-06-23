@@ -89,7 +89,7 @@
 /* ************* PAGE ************* */
 /* ************* ADD ITEMS ************* */
 
-.page-add-item {
+.page-add-item,.page-edit-item {
   width: 90%;
   margin: auto;
   padding-top: 2%;
@@ -141,7 +141,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .page-add-item {
+  .page-add-item, .page-edit-item {
     fieldset {
       .form-items {
         select {
@@ -154,7 +154,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .page-add-item {
+  .page-add-item, .page-edit-item {
     fieldset {
       .form-items {
         select {
