@@ -2,7 +2,7 @@ import pool from "../config/database.js";
 
 export const admin = (req, res) => {
     if (!req.session.isAdmin) {
-        res.status(403).send('Forbidden')
+         res.redirect('/')
     } else {
         let sql = ` SELECT *
                     FROM users`;
@@ -25,7 +25,7 @@ export const admin = (req, res) => {
 
 export const usersProfil = (req, res) => {
     if (!req.session.isAdmin) {
-        res.status(403).send('Forbidden')
+         res.redirect('/')
     } else {
         const id = req.params.id;
         let query = "SELECT * FROM users WHERE id = ?";
@@ -39,7 +39,7 @@ export const usersProfil = (req, res) => {
                     if (error) {
                         console.error(error)
                     } else {
-                        let sql = "SELECT * FROM items INNER JOIN images ON image_id = images.id WHERE user_id = ?";
+                        let sql = "SELECT items.id, items.title, items.content, items.price, images.url, images.description FROM items INNER JOIN images ON image_id = images.id WHERE user_id = ?";
                         pool.query(sql, [id], function (error, items) {
                             if (error) {
                                 console.error(error)

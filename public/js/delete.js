@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let buttonRemoveUser = document.querySelectorAll(".js-user-remove");
     let buttonRemoveListUser = document.querySelectorAll(".js-list-user-remove");
     let buttonRemoveItem = document.querySelectorAll(".js-item-remove")
+    console.log(buttonRemoveItem)
     let buttonRemoveListItem = document.querySelectorAll(".js-list-items-remove");
 
     // Si des boutons sont présents
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             elem.addEventListener("click", (event) => {
 
                 const buttonElement = event.target.parentElement;
-
+                
                 const id = buttonElement.getAttribute("data-id");
 
                 const options = {
@@ -89,9 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
             elem.addEventListener("click", (event) => {
 
                 const buttonElement = event.target.parentElement;
-
+                console.log(buttonElement)
                 const id = buttonElement.getAttribute("data-id");
-
+                console.log(id)
                 const options = {
                     method: "delete",
                     headers: {
@@ -106,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         if (response.ok) {
                             // Récupérer la ligne à supprimer
                             const itemElement = document.querySelector(`.js-table-items tr[data-id="${id}"]`)
+                            console.log(itemElement)
                             itemElement.remove();
                         } else {
                             response.json().then(console.log);

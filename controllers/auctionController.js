@@ -220,6 +220,7 @@ export const editItems = (req, res) => {
 
 export const editItemsSubmit = (req, res) => {
     let id = req.params.id;
+    let userId = req.session.userId
 
     let sql = 'SELECT * FROM items WHERE id = ?';
 

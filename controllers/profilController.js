@@ -2,7 +2,7 @@ import pool from "../config/database.js";
 
 export const profile = (req, res) => {
     let id = req.session.userId
-    if (!id || !req.session.isAdmin) {
+    if (!id) {
         res.redirect('/')
     } else {
         let query = "SELECT * FROM users WHERE id = ?";
@@ -35,7 +35,7 @@ export const profile = (req, res) => {
                                     user: result[0],
                                     items: items,
                                     articles: articles
-                                })
+                                }) 
                             }
                         });
                     }
@@ -56,12 +56,11 @@ export const deleteArticle = (req, res) => {
             console.error(error)
             res.status(500).send('erreur de bdd')
         } else {
-            if (result[0].user_id !== userId && !req.session.isAdmin) {
-                res.status(403).send('Forbidden')
-            } else {
+            if (req.session.isAdmin) {
+                
                 let sql2 = ` DELETE
-                             FROM articles
-                             WHERE id = ?`;
+                         FROM articles
+                         WHERE id = ?`;
                 pool.query(sql2, [id], function (error) {
                     if (error) {
                         console.log(error)
@@ -72,6 +71,22 @@ export const deleteArticle = (req, res) => {
                         res.status(204).send();
                     }
                 });
+            }else if(result[0].user_id === userId){
+                let sql2 = ` DELETE
+                         FROM articles
+                         WHERE id = ?`;
+                pool.query(sql2, [id], function (error) {
+                    if (error) {
+                        console.log(error)
+                        res.status(500).send({
+                            error: 'Error when delete post'
+                        });
+                    } else {
+                        res.status(204).send();
+                    } 
+                });
+            }else{
+                res.status(403).send('Forbidden')
             }
         }
     });
@@ -87,12 +102,12 @@ export const deleteItem = (req, res) => {
             console.error(error)
             res.status(500).send('erreur de bdd')
         } else {
-            if (result[0].user_id !== userId || !req.session.isAdmin) {
-                res.status(403).send('Forbidden')
-            } else {
+            
+            if (req.session.isAdmin) {
+                
                 let sql2 = ` DELETE
-                             FROM items
-                             WHERE id = ?`;
+                         FROM items
+                         WHERE id = ?`;
                 pool.query(sql2, [id], function (error) {
                     if (error) {
                         console.log(error)
@@ -103,7 +118,24 @@ export const deleteItem = (req, res) => {
                         res.status(204).send();
                     }
                 });
+            }else if(result[0].user_id === userId){
+                let sql2 = ` DELETE
+                         FROM items
+                         WHERE id = ?`;
+                pool.query(sql2, [id], function (error) {
+                    if (error) {
+                        console.log(error)
+                        res.status(500).send({
+                            error: 'Error when delete post'
+                        });
+                    } else {
+                        res.status(204).send();
+                    } 
+                });
+            }else{
+                res.status(403).send('Forbidden')
             }
+            
         }
     });
 }
