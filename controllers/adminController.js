@@ -2,7 +2,7 @@ import pool from "../config/database.js";
 
 export const admin = (req, res) => {
     if (!req.session.isAdmin) {
-         res.redirect('/')
+        res.redirect('/')
     } else {
         let sql = ` SELECT *
                     FROM users`;
@@ -25,7 +25,7 @@ export const admin = (req, res) => {
 
 export const usersProfil = (req, res) => {
     if (!req.session.isAdmin) {
-         res.redirect('/')
+        res.redirect('/')
     } else {
         const id = req.params.id;
         let query = "SELECT * FROM users WHERE id = ?";
@@ -63,20 +63,18 @@ export const usersProfil = (req, res) => {
 export const deleteUser = (req, res) => {
     const id = req.params.id;
 
-    if (!req.session.isAdmin || req.session.userId !== id) {
-        res.status(403).send('Forbidden')
+    if (!req.session.isAdmin && req.session.userId !== id) {
+        res.status(403).send('Forbidden');
     } else {
-        let sql = ` DELETE
-                    FROM users
-                    WHERE id = ?`;
+        let sql = `DELETE FROM users WHERE id = ?`;
         pool.query(sql, id, function (error) {
             if (error) {
-                console.log(error)
+                console.log(error);
                 res.status(500).send({
-                    error: 'Error when delete post'
+                    error: 'Error when deleting user'
                 });
             } else {
-                res.status(204).send();
+                res.status(200).send();
             }
         });
     }

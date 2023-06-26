@@ -1,4 +1,6 @@
 import pool from "../config/database.js";
+import bcrypt from 'bcrypt';
+import xss from 'xss';
 
 export const profile = (req, res) => {
     let id = req.session.userId
@@ -138,4 +140,161 @@ export const deleteItem = (req, res) => {
             
         }
     });
+}
+
+export const profilSetting = (req,res) =>{
+    const id = req.params.id
+    if(req.session.userId !== id){
+        res.redirect('/')
+    }else{
+        let sql = `SELECT *
+                     FROM users
+                    WHERE id = ?
+        `;
+        pool.query(sql,[id], (error, user) => {
+            if(error){
+                console.error(error)
+            }else{
+                res.render('layout', {template: 'profilSetting', user:user[0]});
+            }
+        })
+    }
+}
+
+export const editProfil = (req,res) => {
+    const id = req.params.id
+    if(req.session.userId !== id){
+        res.redirect('/')
+    }else{
+        let sql = `SELECT * 
+                     FROM users
+                    WHERE id = ?
+        `;
+        pool.query(sql,[id], (error, user) =>{
+            if(error){
+                console.error(error)
+            }else{
+                res.render('layout', {template: 'editProfil', user: user[0], error: null})
+            }
+        })
+
+    }
+}
+
+export const editProfilSubmit = (req,res) => {
+    const id = req.params.id;
+    const userId = req.session.userId;
+
+    if(req.session.userId !== id){
+        res.redirect('/')
+    }else{
+        let sql = `SELECT * 
+                     FROM users
+                    WHERE id = ?
+        `;
+        pool.query(sql,[id], (error, user) =>{
+            if(error){
+                console.error(error)
+            }else{
+                const {pseudo, email , password} = req.body;
+                const safePseudo = xss(pseudo);
+                const safeEmail = xss(email);
+                const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$/;
+                const inputRegex = /^[a-zA-Z0-9\s]+$/;
+
+                if(!emailRegex.test(safeEmail)){
+                    return res.render('layout', {template: 'editProfil', user:user[0], error: "votre email n'est pas correct"})
+                }
+                if (safePseudo.length < 3 || !inputRegex.test(safePseudo)) {
+                    return res.render('layout', {template: 'editProfil', user:user[0], error: "votre pseudo n'est pas correct"})
+                }
+
+                bcrypt.compare(password, user[0].password, (error, isAllowed) => {
+                    if (isAllowed) {
+                        const editProfil = {
+                            pseudo: safePseudo,
+                            email: safeEmail,
+                        }
+                        let sql2 = 'UPDATE users SET ? WHERE id = ?';
+                        pool.query(sql2,[editProfil, userId],(error) =>{
+                            if(error){
+                                console.error(error)
+                            }else{
+                                res.redirect('/profile/' + userId)
+                            }
+                        })
+                    } else {
+                        res.render('layout', {template: 'editProfil', error: "Le mot de passe n'est pas correct"});
+                    }
+                });
+
+            }
+        })
+
+    }
+}
+
+
+export const editPassword = (req,res) =>{
+    const id = req.params.id;
+    if(req.session.userId !== id){
+        res.redirect('/')
+    }else{
+        let sql = 'SELECT * FROM users WHERE id = ?'
+        pool.query(sql,[id], (error,user)=>{
+            if(error){
+                console.error(error)
+            }else{
+                res.render('layout', {template: 'editPassword', user:user[0], error: null})
+            }
+        })
+    }
+}
+
+export const editPasswordSubmit = (req,res) =>{
+    const id = req.params.id;
+    const userId = req.session.userId
+    if(userId !== id){
+        res.redirect('/')
+    }else{
+        let sql = 'SELECT * FROM users WHERE id = ?'
+        pool.query(sql,[id], (error,user)=>{
+            if(error){
+                console.error(error)
+            }else{
+                const{oldPassword,newPassword,confirmPassword} = req.body;
+
+                bcrypt.compare(oldPassword, user[0].password, (error, isAllowed) => {
+                    if (isAllowed) {
+
+                        const safeNewPassword = xss(newPassword);
+
+                        if(safeNewPassword !== confirmPassword){
+                            res.render('layout', {template: 'editPassword', user:user[0], error: "la confirmation ne correspond pas"} )
+                        }
+                        bcrypt.hash(safeNewPassword,10, (error,hash) =>{
+                            if(error){
+                                console.error(error)
+                            }else{
+                                const newPassword = {
+                                    password: hash
+                                }
+                                let sql2 = 'UPDATE users SET ? WHERE id = ?'
+                                pool.query(sql2,[newPassword,userId], (error) =>{
+                                    if(error){
+                                        console.error(error);
+                                    }else{
+                                        res.redirect('/profile/'+ userId)
+                                    }
+                                })
+                            }
+                        });
+                    } else {
+                        res.render('layout', {template: 'editProfil', user:user[0], error: "L'ancien mot de passe n'est pas correct"});
+                    }
+                });
+
+            }
+        })
+    }
 }

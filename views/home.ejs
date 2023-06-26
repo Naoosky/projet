@@ -29,7 +29,7 @@
                 <p> Que l'aventure commence ! Kyosei laissera son empreinte dans Eden Eternal !
                 </p>
             </div>
-            <div class="mobil-hidden">
+            <div class="mobil-hidden-text">
                 <p>
                     Cher aventurier, nous sommes prêts à partager des moments inoubliables dans ce monde fantastique
                     d'Eden Eternal.
@@ -98,8 +98,8 @@
     </section>
 
     <section class="mobil-hidden">
-        <h2>Tableau des publications récentes.</h2>
-        <table class="table-home">
+        <h2>Tableau des publications et enchères récentes.</h2>
+        <table class="table-home-articles">
             <thead>
             <tr>
                 <th>Titre</th>
@@ -113,6 +113,29 @@
                     <td><a href="/articles/<%= articles[i].id %>"><%= articles[i].title %></a></td>
                     <td><%= articles[i].description.substring(0, 15) %> ...</td>
                     <td><%= articles[i].category %></td>
+                </tr>
+            <% } %>
+        </table>
+
+        <table class="table-home-items">
+            <thead>
+            <tr>
+                <th>pseudo</th>
+                <th>item</th>
+                <th>prix</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for( let i = 0; i < items.length; i++ ) { %>
+                <tr>
+                    <td><%= items[i].pseudo %></td>
+                    <td><img src="<%= items[i].url %>" alt="<%= items[i].description %>"></td>
+                    <td>
+                        <div>
+                            <p>  <%= items[i].price %> </p>
+                            <img src="/img/icon.webp" alt="piece d'or" class="img-coins">
+                        </div>
+                    </td>
                 </tr>
             <% } %>
         </table>

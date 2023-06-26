@@ -430,7 +430,6 @@ table th {
 table td a,
 table th a {
   color: #0803D2;
-  text-decoration: underline;
 }
 
 .dyslexia {
@@ -570,9 +569,12 @@ table th a {
     display: block;
     width: 100%;
   }
-  .table-home td {
+  .table-home-articles td {
     text-align: center;
     padding: 2%;
+  }
+  .table-home-items {
+    display: none;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -588,7 +590,7 @@ table th a {
   .container-home .home-welcome .home-welcome_article {
     text-align: justify;
   }
-  .container-home .home-welcome .home-welcome_article .mobil-hidden {
+  .container-home .home-welcome .home-welcome_article .mobil-hidden-text {
     margin: auto;
     padding: 0;
   }
@@ -601,9 +603,25 @@ table th a {
     text-transform: uppercase;
     margin: 2% 0;
   }
-  .container-home .mobil-hidden .table-home td {
+  .container-home .mobil-hidden table td {
     text-align: center;
     padding: 2%;
+  }
+  .container-home .mobil-hidden .table-home-items {
+    display: table;
+    margin-top: 5%;
+  }
+  .container-home .mobil-hidden .table-home-items td {
+    width: 20%;
+    padding: 1%;
+  }
+  .container-home .mobil-hidden .table-home-items td div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container-home .mobil-hidden .table-home-items td div .img-coins {
+    width: 15%;
   }
 }
 /* ************* PAGE ************* */

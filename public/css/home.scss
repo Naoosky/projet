@@ -63,11 +63,14 @@
       }
     }
   }
-  .table-home{
+  .table-home-articles{
     td{
       text-align: center;
       padding: 2%;
     }
+  }
+  .table-home-items{
+    display: none;
   }
 
 }
@@ -86,9 +89,10 @@
       .home-welcome_article {
         text-align: justify;
 
-        .mobil-hidden {
+        .mobil-hidden-text {
           margin: auto;
           padding: 0;
+
         }
       }
 
@@ -103,10 +107,29 @@
         text-transform: uppercase;
         margin: 2% 0;
       }
-      .table-home{
+      table{
         td{
           text-align: center;
           padding: 2%;
+        }
+      }
+
+
+      .table-home-items{
+        display: table;
+        margin-top: 5%;
+        td{
+          width: 20%;
+          padding: 1%;
+          div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .img-coins {
+              width: 15%
+            }
+          }
         }
       }
     }
