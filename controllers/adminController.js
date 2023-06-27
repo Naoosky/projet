@@ -62,10 +62,21 @@ export const usersProfil = (req, res) => {
 
 export const deleteUser = (req, res) => {
     const id = req.params.id;
-
-    if (!req.session.isAdmin && req.session.userId !== id) {
-        res.status(403).send('Forbidden');
-    } else {
+    const userId = req.session.userId;
+    if(userId === id){
+        let sql = `DELETE FROM users WHERE id = ?`;
+        pool.query(sql, id, function (error) {
+            if (error) {
+                console.log(error);
+                res.status(500).send({
+                    error: 'Error when deleting user'
+                });
+            } else {
+                req.session.destroy();
+                res.redirect('/')
+            }
+        });
+    }else if(req.session.isAdmin){
         let sql = `DELETE FROM users WHERE id = ?`;
         pool.query(sql, id, function (error) {
             if (error) {
@@ -77,5 +88,7 @@ export const deleteUser = (req, res) => {
                 res.status(200).send();
             }
         });
+    }else{
+        res.status(403).send('Forbidden');
     }
 }

@@ -69,6 +69,7 @@ router.get('/profile/:id', profile);
 router.get('/setting/profile/:id', profilSetting);
 router.get('/setting/edit-profile/:id', editProfil);
 router.get('/setting/edit-password/:id', editPassword);
+router.get('/delete/user/:id', deleteUser);
 router.post('/login', loginSubmit);
 router.post('/register', registerSubmit);
 router.post('/setting/edit-profile/:id', editProfilSubmit);

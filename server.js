@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
     const route = parseurl(req).pathname;
 
-    const adminProtectedRoutes = ['/administration', '/administration/articles/', '/administration/users/', '/delete/users/'];
+    const adminProtectedRoutes = ['/administration', '/administration/articles/', '/administration/users/'];
 
     const userProtectedRoutes = ['/profile/', '/delete/articles/', '/delete/items/', '/add/articles/', '/add/items/', '/edit/articles/', '/edit/items/', '/add_comment/'];
 
