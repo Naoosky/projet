@@ -193,7 +193,7 @@ export const addArticlesSubmit = (req, res) => {
                         error: 'La description doit contenir au moins 3 caractères'
                     });
                 }
-                if (category === '0') {
+                if (categories === '0') {
                     return res.render('layout', {
                         template: 'addArticles',
                         category: category,
