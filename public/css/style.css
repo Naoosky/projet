@@ -1058,6 +1058,7 @@ table th a {
 /* ************* PROFILE ************* */
 .profil-user {
   margin-top: 2%;
+  padding-bottom: 2%;
 }
 .profil-user h2 {
   text-align: center;
