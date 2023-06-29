@@ -31,7 +31,8 @@ export const searchArticles = (req, res) => {
                 FROM articles
                          INNER JOIN category_articles ON articles.category_id = category_articles.id
                          INNER JOIN users ON user_id = users.id
-                WHERE category_articles.name LIKE '%${search}%' `;
+                WHERE category_articles.name LIKE '%${search}%' 
+                ORDER BY articles.date DESC`;
     pool.query(sql, function (error, articles) {
         if (error) {
             console.error(error)

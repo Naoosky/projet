@@ -16,10 +16,17 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('../fonts/opendys/OpenDyslexic-Bold-Italic.woff') format('woff');
+  font-style: italic;
+    font-weight: bold;
+}
+
 /* ************* ROOT ************* */
 :root {
-  --border: 2px solid black;
-  --border-radius: 5px;
+  --border: 1px solid black;
+  --br: 5%;
 }
 
 /* ************* NORMALIZE ************* */
@@ -41,7 +48,6 @@ body {
 
 main {
   background-color: #FAECD7;
-  padding-bottom: 1rem;
 
   h1 {
     text-align: center;
@@ -100,7 +106,7 @@ form {
     margin-bottom: 1rem;
     padding: 0.5rem;
     border: var(--border);
-    border-radius: 5px;
+    border-radius: var(--br);
   }
 
   input[type='submit'] {
@@ -118,13 +124,12 @@ form {
     margin-bottom: 1rem;
     padding: 0.5rem;
     border: var(--border);
-    border-radius: 5px;
+    border-radius: var(--br);
   }
 }
 
 table {
   margin: 5% auto auto;
-  border: var(--border);
   border-collapse: collapse;
 
   td,

@@ -27,7 +27,7 @@ export const searchItems = (req, res) => {
                          INNER JOIN images ON image_id = images.id
                          INNER JOIN category_items ON category_id = category_items.id
                          INNER JOIN users ON user_id = users.id
-                WHERE category_items.name LIKE '%${search}%' `;
+                WHERE category_items.name LIKE '%${search}%'`;
     pool.query(sql, function (error, items) {
         if (error) {
             console.error(error)
@@ -94,7 +94,7 @@ export const addItemsSubmit = (req, res) => {
                     res.status(500).send('erreur de bdd')
                 } else {
                     let sql2 = "SELECT * FROM category_items";
-                    pool.query(sql2, function (error) {
+                    pool.query(sql2, function (error, categories) {
                         if (error) {
                             console.error(error)
                             res.status(500).send('erreur de bdd')
@@ -110,7 +110,7 @@ export const addItemsSubmit = (req, res) => {
                                     template: 'addItems',
                                     images: images,
                                     user: user[0],
-                                    category: category,
+                                    category: categories,
                                     error: 'le titre doit contenir entre 3 et 30 caractères'
                                 })
 
@@ -119,7 +119,7 @@ export const addItemsSubmit = (req, res) => {
                                     template: 'addItems',
                                     images: images,
                                     user: user[0],
-                                    category: category,
+                                    category: categories,
                                     error: 'la description doit contenir entre 3 et 255 caractères'
                                 })
 
@@ -128,16 +128,16 @@ export const addItemsSubmit = (req, res) => {
                                     template: 'addItems',
                                     images: images,
                                     user: user[0],
-                                    category: category,
+                                    category: categories,
                                     error: 'le prix doit contenir entre 1 et 10 nombre et ne peut être négatif'
                                 })
 
-                            } else if (category === "") {
+                            } else if (category === "0") {
                                 res.render('layout', {
                                     template: 'addItems',
                                     images: images,
                                     user: user[0],
-                                    category: category,
+                                    category: categories,
                                     error: 'veuillez choisir une catégorie'
                                 })
 
@@ -146,7 +146,7 @@ export const addItemsSubmit = (req, res) => {
                                     template: 'addItems',
                                     images: images,
                                     user: user[0],
-                                    category: category,
+                                    category: categories,
                                     error: 'veuillez choisir une image'
                                 })
 
