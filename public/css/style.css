@@ -403,7 +403,6 @@ form input {
   margin-bottom: 1rem;
   padding: 0.5rem;
   border: var(--border);
-  border-radius: var(--br);
 }
 form input[type=submit] {
   width: 30%;
@@ -419,7 +418,6 @@ form textarea {
   margin-bottom: 1rem;
   padding: 0.5rem;
   border: var(--border);
-  border-radius: var(--br);
 }
 
 table {
