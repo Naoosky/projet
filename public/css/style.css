@@ -23,6 +23,10 @@
 :root {
   --border: 1px solid black;
   --br: 5%;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-purple: #69459a;
+  --color-orange: #f5a623;
 }
 
 /* ************* NORMALIZE ************* */
@@ -454,6 +458,11 @@ table th a {
 .header .header-logo img {
   width: 60%;
 }
+.header .header-navigation .mobile-burger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .header .header-navigation ul {
   width: 100%;
   display: flex;
@@ -497,6 +506,9 @@ table th a {
 }
 
 @media screen and (min-width: 767px) {
+  .header .header-navigation .mobile-hidden-layout {
+    display: block;
+  }
   .header .header-logo {
     text-align: center;
   }
@@ -1057,12 +1069,37 @@ table th a {
 /* ************* PAGE ************* */
 /* ************* PROFILE ************* */
 .profil-user {
-  margin-top: 2%;
   padding-bottom: 2%;
 }
 .profil-user h2 {
   text-align: center;
   margin: 2% 0;
+}
+.profil-user .menu-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2%;
+  padding: 1%;
+  background-color: var(--color-white);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  box-shadow: 0 0 5px var(--color-black);
+}
+.profil-user .menu-profile li {
+  margin-top: 5%;
+}
+.profil-user .menu-profile li:first-child {
+  margin-top: 0;
+}
+.profil-user .menu-profile li a {
+  color: var(--color-black);
+  text-decoration: none;
+}
+.profil-user .menu-profile li a:hover {
+  color: var(--color-orange);
 }
 .profil-user .mobil-hidden .table-articles {
   text-align: center;
@@ -1102,6 +1139,16 @@ table th a {
   width: 15%;
 }
 
+@media screen and (min-width: 767px) {
+  .profil-user .menu-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .profil-user .menu-profile li {
+    margin: 0;
+  }
+}
 @media screen and (min-width: 1200px) {
   .profil-user .mobil-hidden .table-articles td {
     padding: 0.5%;

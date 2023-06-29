@@ -20,13 +20,18 @@
   font-family: 'OpenDyslexic';
   src: url('../fonts/opendys/OpenDyslexic-Bold-Italic.woff') format('woff');
   font-style: italic;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* ************* ROOT ************* */
 :root {
   --border: 1px solid black;
   --br: 5%;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-purple: #69459a;
+    --color-orange: #f5a623;
+
 }
 
 /* ************* NORMALIZE ************* */
@@ -165,6 +170,13 @@ table {
   }
 
   .header-navigation {
+
+    .mobile-burger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     ul {
       width: 100%;
       display: flex;
@@ -219,6 +231,12 @@ table {
 
 @media screen and (min-width: 767px) {
   .header {
+    .header-navigation{
+
+      .mobile-hidden-layout {
+        display: block;
+      }
+    }
     .header-logo {
       text-align: center;
 
