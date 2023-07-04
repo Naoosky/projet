@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     margin-bottom: 2%;
     padding: 1%;
     background-color: var(--color-white);
@@ -101,6 +100,9 @@
 
 @media screen and (min-width: 1200px) {
   .profil-user {
+    .menu-profile{
+      margin-bottom: 1%;
+    }
     .mobil-hidden {
       .table-articles {
         td {

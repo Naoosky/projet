@@ -1,5 +1,12 @@
+.container-form{
 
+  background-image: url('/img/fond-forum.webp');
+  background-size: cover;
+  background-position: 10% 0;
+  padding: 2% 0;
+}
 .search-form {
+  margin-top: 2%;
   padding: 5% 0 0;
 
   form {
@@ -7,6 +14,8 @@
 
     label {
       font-size: 1.5rem;
+      color: white;
+      font-weight: bold;
     }
 
     input[type='submit'] {
@@ -20,7 +29,8 @@
   .list-articles, .list-items {
     margin: auto auto 5%;
     width: 90%;
-
+    background-color: rgba(255, 255, 255, 0.39);
+    font-size: 1.2rem;
     div {
 
       display: flex;
@@ -34,13 +44,14 @@
 
       p {
         width: 50%;
-        padding: 1%;
+        padding: 2%;
         text-align: center;
         text-transform: capitalize;
         border-left: var(--border);
 
         &:first-child {
           border-left: none;
+          color: rgba(0, 0, 0, 0.8);
           font-weight: bold;
         }
 
@@ -57,11 +68,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-image: url('/img/fond-forum.webp');
-    background-size: cover;
     background-position: 0 10%;
-    padding: 2% 0;
-
 
     .search-form {
       width: 30%;
@@ -69,8 +76,6 @@
       padding-top: 2%;
       background-color: rgba(0, 0, 0, 0.24);
       label{
-        color: white;
-        font-weight: bold;
         padding-bottom: 1%;
       }
 

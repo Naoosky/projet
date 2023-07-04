@@ -652,7 +652,15 @@ table th a {
 }
 /* ************* PAGE ************* */
 /* ************* FORUM ************* */
+.container-form {
+  background-image: url("/img/fond-forum.webp");
+  background-size: cover;
+  background-position: 10% 0;
+  padding: 2% 0;
+}
+
 .search-form {
+  margin-top: 2%;
   padding: 5% 0 0;
 }
 .search-form form {
@@ -660,6 +668,8 @@ table th a {
 }
 .search-form form label {
   font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
 }
 .search-form form input[type=submit] {
   width: 50%;
@@ -669,6 +679,8 @@ table th a {
 .mobil-list .list-articles, .mobil-list .list-items {
   margin: auto auto 5%;
   width: 90%;
+  background-color: rgba(255, 255, 255, 0.39);
+  font-size: 1.2rem;
 }
 .mobil-list .list-articles div, .mobil-list .list-items div {
   display: flex;
@@ -681,13 +693,14 @@ table th a {
 }
 .mobil-list .list-articles div p, .mobil-list .list-items div p {
   width: 50%;
-  padding: 1%;
+  padding: 2%;
   text-align: center;
   text-transform: capitalize;
   border-left: var(--border);
 }
 .mobil-list .list-articles div p:first-child, .mobil-list .list-items div p:first-child {
   border-left: none;
+  color: rgba(0, 0, 0, 0.8);
   font-weight: bold;
 }
 .mobil-list .list-articles div p a, .mobil-list .list-items div p a {
@@ -699,10 +712,7 @@ table th a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-image: url("/img/fond-forum.webp");
-    background-size: cover;
     background-position: 0 10%;
-    padding: 2% 0;
   }
   .container-form .search-form {
     width: 30%;
@@ -711,8 +721,6 @@ table th a {
     background-color: rgba(0, 0, 0, 0.24);
   }
   .container-form .search-form label {
-    color: white;
-    font-weight: bold;
     padding-bottom: 1%;
   }
   .container-form .search-form form {
@@ -755,7 +763,7 @@ table th a {
     background-color: rgba(141, 81, 81, 0.77);
   }
   .container-form .mobil-hidden .table-forum .table-forum_tbody td:nth-child(2) a {
-    color: rgba(255, 255, 255, 0.6); 
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: underline;
   }
 }
@@ -1079,7 +1087,6 @@ table th a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   margin-bottom: 2%;
   padding: 1%;
   background-color: var(--color-white);
@@ -1150,6 +1157,9 @@ table th a {
   }
 }
 @media screen and (min-width: 1200px) {
+  .profil-user .menu-profile {
+    margin-bottom: 1%;
+  }
   .profil-user .mobil-hidden .table-articles td {
     padding: 0.5%;
   }

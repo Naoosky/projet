@@ -4,10 +4,10 @@
         <li><a href="/add/items/<%= user.id %>">ajouter un item</a></li>
         <li><a href="/setting/profile/<%= user.id %>">Paramètre du compte <i class="fa-solid fa-gears"></i></a></li>
     </ul>
-    <h1> <%= user.pseudo %> </h1>
+    <h1> Bonjour <%= user.pseudo %> </h1>
     <% if (articles.length > 0) { %>
         <section class="mobil-list">
-            <h2>list Articles</h2>
+            <h2>liste de tes articles</h2>
             <ul class="js-list-articles">
                 <% for( let i = 0; i < articles.length; i++ ) { %>
                     <li class="list-articles" data-id="<%= articles[i].id %>">
@@ -37,7 +37,7 @@
         </section>
 
         <section class="mobil-hidden">
-            <h2>list Articles</h2>
+            <h2>liste de tes articles</h2>
             <table class="table-articles js-table-articles">
                 <thead>
                 <tr>
@@ -68,7 +68,7 @@
 
     <% if (items.length > 0) { %>
         <section class="mobil-list">
-            <h2>list Items</h2>
+            <h2>liste de tes items</h2>
             <ul class="js-list-items">
                 <% for(let i = 0; i < items.length; i++) { %>
                     <li class="list-articles" data-id="<%= items[i].id %>">
@@ -102,7 +102,7 @@
         </section>
 
         <section class="mobil-hidden">
-            <h2>list Items</h2>
+            <h2>liste de tes items</h2>
             <table class="table-items js-table-items">
                 <thead>
                 <tr>
