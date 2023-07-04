@@ -107,7 +107,7 @@
         text-transform: capitalize;
 
         .table-forum_thead{
-          background-color: #49187e;
+          background-color: rgba(126, 24, 24, 0.89);
           color: white;
           font-weight: bold;
         }
@@ -118,7 +118,7 @@
           }
           td:nth-child(2){
             a{
-              color: #e8ba3c;
+              color: rgba(255, 255, 255, 0.6);
               text-decoration: underline;
             }
           }
