@@ -4,6 +4,7 @@
   background-size: cover;
   background-position: 10% 0;
   padding: 2% 0;
+
 }
 .search-form {
   margin-top: 2%;
@@ -71,7 +72,7 @@
     background-position: 0 10%;
 
     .search-form {
-      width: 30%;
+      width: 50%;
       margin: auto;
       padding-top: 2%;
       background-color: rgba(0, 0, 0, 0.24);
@@ -127,7 +128,6 @@
               text-decoration: underline;
             }
           }
-
         }
       }
     }
@@ -138,6 +138,7 @@
 @media screen and (min-width: 1200px) {
   .container-form{
     .search-form{
+        width: 30%;
       padding-top: 1%;
     }
 

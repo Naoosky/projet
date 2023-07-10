@@ -1,86 +1,137 @@
+.container-items {
+  background-image: url(../img/fond-forum.webp);
+  background-size: cover;
+  background-position: 0 0;
+  padding-bottom: 2%;
 
-.mobil-list {
-  img {
-    width: 40%;
+  .search-form {
+    margin-top: 0;
+    padding-top: 5%;
+    background-color: rgba(255, 255, 255, 0.2);
+
+    label {
+      font-size: 1.6rem;
+    }
   }
 
-  div:last-child {
+  .mobil-list {
     img {
-      width: 10%;
+      width: 30%;
+    }
+
+    div:last-child {
+      img {
+        width: 10%;
+      }
     }
   }
 }
 
-@media screen and (min-width: 768px) {
-  .mobil-list {
-    display: none;
-  }
-  .mobil-hidden {
-    display: block;
-    width: 100%;
 
-    table {
-      width: 95%;
+@media screen and (min-width: 768px) {
+  .container-items {
+    padding-top: 2%;
+
+    .search-form {
+      width: 50%;
       margin: auto;
 
-      td:nth-child(4) {
-        padding: 0.5% 0;
-        text-align: center;
+      label {
+        color: black;
       }
+    }
 
-      td:last-child {
-        width: 15%;
+    .mobil-list {
+      display: none;
+    }
 
-        div {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+    .mobil-hidden {
+      display: block;
+      width: 100%;
 
-          .img-coins {
-            width: 20%
+      table {
+        width: 95%;
+        margin: 2% auto auto;
+        text-align: center;
+        text-transform: uppercase;
+
+        thead {
+          background-color: rgba(126, 24, 24, 0.89);
+          color: white;
+          font-weight: bold;
+        }
+
+        tbody {
+          font-weight: bold;
+
+          tr {
+            background-color: rgba(141, 81, 81, 0.77);
+
+            td:nth-child(4) {
+              padding: 0.5% 0;
+              text-align: center;
+            }
+
+            td:last-child {
+              width: 15%;
+
+              div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .img-coins {
+                  width: 20%
+                }
+              }
+            }
           }
         }
+
+        img {
+          width: 50%;
+        }
+
       }
-
-      img {
-        width: 50%;
-      }
-
-
     }
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .mobil-hidden {
-    table {
-      td, th {
-        padding: 0.5%;
-      }
+  .container-items {
+    .mobil-hidden {
+      table {
+        td, th {
+          padding: 0.5%;
+        }
 
-      td:nth-child(4) {
-        padding: 0;
-        text-align: center;
-      }
+        td:nth-child(4) {
+          padding: 0;
+          text-align: center;
+        }
 
-      img {
-        width: 25%;
-      }
+        img {
+          width: 25%;
+        }
 
-      .img-coins {
-        width: 15%
+        .img-coins {
+          width: 15%
+        }
       }
     }
-  }
-  .search-form {
-    margin-top: 2%;
 
-    form {
-      margin: auto;
+    .search-form {
+      padding-top: 2%;
+      width: 30%;
+      margin-bottom: 2%;
 
-      input[type='submit'] {
-        width: 30%;
-        margin-bottom: 2%;
+      form {
+        margin: auto;
+
+        input[type='submit'] {
+          width: 30%;
+          margin-bottom: 2%;
+        }
       }
     }
   }
@@ -89,7 +140,7 @@
 /* ************* PAGE ************* */
 /* ************* ADD ITEMS ************* */
 
-.page-add-item,.page-edit-item {
+.page-add-item, .page-edit-item {
   width: 90%;
   margin: auto;
   padding-top: 2%;

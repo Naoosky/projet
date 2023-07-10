@@ -1,71 +1,71 @@
-<h1>Tableau des enchères</h1>
+<div class="container-items">
+    <section class="search-form">
+        <form method="post" action="/search/items">
+            <label for="search">Chercher une catégorie</label>
+            <select name="search" id="search" required>
+                <option value="e">Sélectionnez une catégorie</option>
+                <option value="Gems">Gemmes</option>
+                <option value="Enchantes">Enchantes</option>
+                <option value="Glyphes">Glyphes</option>
+            </select>
+            <input type="submit" value="Rechercher">
+        </form>
+    </section>
 
-<section class="search-form">
-    <form method="post" action="/search/items">
-        <label for="search">Catégorie</label>
-        <select name="search" id="search" required>
-            <option value="e">Sélectionnez une catégorie</option>
-            <option value="Gems">Gemmes</option>
-            <option value="Enchantes">Enchantes</option>
-            <option value="Glyphes">Glyphes</option>
-        </select>
-        <input type="submit" value="Rechercher">
-    </form>
-</section>
-
-<section class="mobil-list">
-    <h2>liste des enchères</h2>
-    <ul>
-        <% for(let i = 0; i < items.length; i++) { %>
-            <li class="list-articles">
-                <div>
-                    <p>Pseudo : </p>
-                    <p><%= items[i].pseudo %></p>
-                </div>
-                <div>
-                    <p>Item : </p>
-                    <p><%= items[i].title.substring(0, 15) %></p>
-                </div>
-                <div>
-                    <p>Description : </p>
-                    <p><%= items[i].content.substring(0, 15) %>...</p>
-                </div>
-                <div>
-                    <p>Image : </p>
-                    <p><img src="<%= items[i].url %>" alt=" <%= items[i].description %>"></p>
-                </div>
-                <div>
-                    <p> Prix : </p>
-                    <p><%= items[i].price %> <img src="/img/icon.webp" alt="Pièce d'or"></p>
-                </div>
-            </li>
-        <% } %>
-    </ul>
-</section>
-
-<section class="mobil-hidden">
-    <h2>tableau des enchères</h2>
-    <table>
-        <thead>
-        <tr>
-            <th>Pseudo</th>
-            <th>Item</th>
-            <th>Description</th>
-            <th>Image</th>
-            <th>Prix</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% for(let i = 0; i < items.length; i++){ %>
-        <tr>
-            <td><%= items[i].pseudo %></td>
-            <td><%= items[i].title.substring(0, 15) %></td>
-            <td><%= items[i].content.substring(0, 15) %>...</td>
-            <td><img src="<%= items[i].url %>" alt=" <%= items[i].description %>"></td>
-            <td>
-                <div><p><%= items[i].price %></p><img src="/img/icon.webp" alt="Pièce d'or" class="img-coins"></div>
-            </td>
+    <section class="mobil-list">
+        <h2>liste des enchères</h2>
+        <ul>
+            <% for(let i = 0; i < items.length; i++) { %>
+                <li class="list-articles">
+                    <div>
+                        <p>Pseudo : </p>
+                        <p><%= items[i].pseudo %></p>
+                    </div>
+                    <div>
+                        <p>Item : </p>
+                        <p><%= items[i].title.substring(0, 15) %></p>
+                    </div>
+                    <div>
+                        <p>Description : </p>
+                        <p><%= items[i].content.substring(0, 15) %>...</p>
+                    </div>
+                    <div>
+                        <p>Image : </p>
+                        <p><img src="<%= items[i].url %>" alt=" <%= items[i].description %>"></p>
+                    </div>
+                    <div>
+                        <p> Prix : </p>
+                        <p><%= items[i].price %> <img src="/img/icon.webp" alt="Pièce d'or"></p>
+                    </div>
+                </li>
             <% } %>
-        </tbody>
-    </table>
-</section>
+        </ul>
+    </section>
+
+    <section class="mobil-hidden">
+        <h2>tableau des enchères</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Prix</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i = 0; i < items.length; i++){ %>
+            <tr>
+                <td><%= items[i].pseudo %></td>
+                <td><%= items[i].title.substring(0, 15) %></td>
+                <td><%= items[i].content.substring(0, 15) %>...</td>
+                <td><img src="<%= items[i].url %>" alt=" <%= items[i].description %>"></td>
+                <td>
+                    <div><p><%= items[i].price %></p><img src="/img/icon.webp" alt="Pièce d'or" class="img-coins"></div>
+                </td>
+                <% } %>
+            </tbody>
+        </table>
+    </section>
+</div>

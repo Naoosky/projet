@@ -530,72 +530,71 @@ table th a {
 }
 /* ************* PAGE ************* */
 /* ************* HOME ************* */
-.titre-h1 {
+.container-home {
+  padding-bottom: 2%;
+}
+.container-home .titre-h1 {
   display: none;
 }
-
-.home-welcome {
+.container-home .home-welcome {
   width: 100%;
   margin: auto;
   padding-top: 5%;
 }
-.home-welcome h2 {
+.container-home .home-welcome h2 {
   width: 100%;
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 5%;
 }
-.home-welcome .home-welcome_article {
+.container-home .home-welcome .home-welcome_article {
   text-align: justify;
 }
-.home-welcome .home-welcome_article .mobil-hidden-text {
+.container-home .home-welcome .home-welcome_article .mobil-hidden-text {
   display: none;
 }
-.home-welcome .home-welcome_article p {
+.container-home .home-welcome .home-welcome_article p {
   margin: auto auto 5%;
   width: 90%;
 }
-.home-welcome .home-welcome_article img {
+.container-home .home-welcome .home-welcome_article img {
   width: 100%;
 }
-
-.mobil-hidden h2, .mobil-list h2 {
+.container-home .mobil-hidden h2, .container-home .mobil-list h2 {
   width: 100%;
   text-align: center;
   text-transform: uppercase;
   margin: 5% 0;
 }
 
-.table-home {
-  width: 100%;
-  margin: auto;
-  border: var(--border);
-  border-collapse: collapse;
-}
-.table-home td, .table-home th {
-  border: var(--border);
-  padding: 1%;
-}
-
 @media screen and (min-width: 768px) {
-  .titre-h1 {
+  .container-home .titre-h1 {
     display: block;
   }
-  .home-welcome .home-welcome_article {
+  .container-home .home-welcome .home-welcome_article {
     text-align: inherit;
   }
-  .home-welcome .home-welcome_article .mobil-text-home {
+  .container-home .home-welcome .home-welcome_article .mobil-text-home {
     display: none;
   }
-  .home-welcome .home-welcome_article .mobil-hidden-text {
+  .container-home .home-welcome .home-welcome_article .mobil-hidden-text {
     display: block;
     width: 100%;
   }
-  .table-home-articles td {
+  .container-home .mobil-list {
+    display: none;
+  }
+  .container-home .mobil-hidden {
+    display: block;
+  }
+  .container-home .mobil-hidden .table-home-articles {
+    width: 100%;
+  }
+  .container-home .mobil-hidden .table-home-articles td {
     text-align: center;
     padding: 2%;
   }
-  .table-home-items {
+  .container-home .mobil-hidden .table-home-items {
     display: none;
   }
 }
@@ -715,7 +714,7 @@ table th a {
     background-position: 0 10%;
   }
   .container-form .search-form {
-    width: 30%;
+    width: 50%;
     margin: auto;
     padding-top: 2%;
     background-color: rgba(0, 0, 0, 0.24);
@@ -769,6 +768,7 @@ table th a {
 }
 @media screen and (min-width: 1200px) {
   .container-form .search-form {
+    width: 30%;
     padding-top: 1%;
   }
   .mobil-hidden {
@@ -946,65 +946,104 @@ table th a {
 }
 /* ************* PAGE ************* */
 /* ************* AUCTION ************* */
-.mobil-list img {
-  width: 40%;
+.container-items {
+  background-image: url(../img/fond-forum.webp);
+  background-size: cover;
+  background-position: 0 0;
+  padding-bottom: 2%;
 }
-.mobil-list div:last-child img {
+.container-items .search-form {
+  margin-top: 0;
+  padding-top: 5%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.container-items .search-form label {
+  font-size: 1.6rem;
+}
+.container-items .mobil-list img {
+  width: 30%;
+}
+.container-items .mobil-list div:last-child img {
   width: 10%;
 }
 
 @media screen and (min-width: 768px) {
-  .mobil-list {
+  .container-items {
+    padding-top: 2%;
+  }
+  .container-items .search-form {
+    width: 50%;
+    margin: auto;
+  }
+  .container-items .search-form label {
+    color: black;
+  }
+  .container-items .mobil-list {
     display: none;
   }
-  .mobil-hidden {
+  .container-items .mobil-hidden {
     display: block;
     width: 100%;
   }
-  .mobil-hidden table {
+  .container-items .mobil-hidden table {
     width: 95%;
-    margin: auto;
+    margin: 2% auto auto;
+    text-align: center;
+    text-transform: uppercase;
   }
-  .mobil-hidden table td:nth-child(4) {
+  .container-items .mobil-hidden table thead {
+    background-color: rgba(126, 24, 24, 0.89);
+    color: white;
+    font-weight: bold;
+  }
+  .container-items .mobil-hidden table tbody {
+    font-weight: bold;
+  }
+  .container-items .mobil-hidden table tbody tr {
+    background-color: rgba(141, 81, 81, 0.77);
+  }
+  .container-items .mobil-hidden table tbody tr td:nth-child(4) {
     padding: 0.5% 0;
     text-align: center;
   }
-  .mobil-hidden table td:last-child {
+  .container-items .mobil-hidden table tbody tr td:last-child {
     width: 15%;
   }
-  .mobil-hidden table td:last-child div {
+  .container-items .mobil-hidden table tbody tr td:last-child div {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .mobil-hidden table td:last-child div .img-coins {
+  .container-items .mobil-hidden table tbody tr td:last-child div .img-coins {
     width: 20%;
   }
-  .mobil-hidden table img {
+  .container-items .mobil-hidden table img {
     width: 50%;
   }
 }
 @media screen and (min-width: 1200px) {
-  .mobil-hidden table td, .mobil-hidden table th {
+  .container-items .mobil-hidden table td, .container-items .mobil-hidden table th {
     padding: 0.5%;
   }
-  .mobil-hidden table td:nth-child(4) {
+  .container-items .mobil-hidden table td:nth-child(4) {
     padding: 0;
     text-align: center;
   }
-  .mobil-hidden table img {
+  .container-items .mobil-hidden table img {
     width: 25%;
   }
-  .mobil-hidden table .img-coins {
+  .container-items .mobil-hidden table .img-coins {
     width: 15%;
   }
-  .search-form {
-    margin-top: 2%;
+  .container-items .search-form {
+    padding-top: 2%;
+    width: 30%;
+    margin-bottom: 2%;
   }
-  .search-form form {
+  .container-items .search-form form {
     margin: auto;
   }
-  .search-form form input[type=submit] {
+  .container-items .search-form form input[type=submit] {
     width: 30%;
     margin-bottom: 2%;
   }
