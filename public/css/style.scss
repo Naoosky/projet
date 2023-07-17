@@ -25,12 +25,13 @@
 
 /* ************* ROOT ************* */
 :root {
+  --bold: bold;
   --border: 1px solid black;
   --br: 5%;
-    --color-white: #FFFFFF;
-    --color-black: #000000;
-    --color-purple: #69459a;
-    --color-orange: rgba(255, 91, 2, 0.64);
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-purple: #69459a;
+  --color-orange: rgba(255, 91, 2, 0.64);
 
 }
 
@@ -52,7 +53,7 @@ body {
 }
 
 main {
-  background-color: #FAECD7;
+  background-color: rgba(220, 179, 121, 0.72);
 
   h1 {
     text-align: center;
@@ -88,7 +89,7 @@ legend {
   text-align: center;
   text-transform: uppercase;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: var(--bold);
   margin-bottom: 1rem;
 }
 
@@ -103,7 +104,7 @@ form {
     width: 90%;
     margin-bottom: 0.5rem;
     text-align: center;
-    font-weight: bold;
+    font-weight: var(--bold);
   }
 
   input {
@@ -116,7 +117,7 @@ form {
   input[type='submit'] {
     width: 30%;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: var(--bold);
     cursor: pointer;
   }
 
@@ -189,7 +190,7 @@ table {
           color: white;
           padding: 1rem;
           font-size: 1.5rem;
-          font-weight: bold;
+          font-weight: var(--bold);
           text-transform: uppercase;
 
           &:hover {

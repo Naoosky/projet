@@ -1,11 +1,12 @@
 .profil-user {
   padding-bottom: 2%;
+
   h2 {
     text-align: center;
     margin: 2% 0;
   }
 
-  .menu-profile{
+  .menu-profile {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,15 +17,19 @@
     text-transform: uppercase;
     font-size: 1.2rem;
     box-shadow: 0 0 5px var(--color-black);
-    li{
+
+    li {
       margin-top: 5%;
-      &:first-child{
+
+      &:first-child {
         margin-top: 0;
       }
+
       a {
         color: var(--color-black);
         text-decoration: none;
-        &:hover{
+
+        &:hover {
           color: var(--color-orange);
         }
       }
@@ -85,69 +90,100 @@
   }
 }
 
-@media screen and (min-width: 767px){
-  .profil-user{
+@media screen and (min-width: 767px) {
+  .profil-user {
     .menu-profile {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      li{
+
+      li {
         margin: 0;
       }
     }
-  }
-}
 
-@media screen and (min-width: 1200px) {
-  .profil-user {
-    .menu-profile{
-      margin-bottom: 1%;
+    .mobil-list {
+      display: none;
     }
+
     .mobil-hidden {
-      .table-articles {
-        td {
-          padding: 0.5%;
+      display: block;
+      table{
+        width: 100%;
+        margin: 2% auto auto;
+        text-align: center;
+        text-transform: capitalize;
+        font-weight: var(--bold);
 
-          &:nth-child(3), &:nth-child(4), &:nth-child(1) {
-            width: 1%;
+        thead {
+          background-color: rgba(33, 3, 3, 0.89);
+          color: white;
+        }
+        tbody{
+          tr{
+            background-color: rgba(72, 55, 55, 0.45);
           }
+        }
+      }
 
-          &:nth-child(2) {
-            width: 2%;
+      .table-articles {
+        tbody {
+          tr {
+            td {
+              text-align: center;
+              padding: 2%;
+            }
           }
         }
       }
 
       .table-items {
-        td {
-          width: 3%;
-          padding: 0.5%;
+        tbody {
+          tr {
+            td {
+              width: 3%;
+              padding: 1%;
 
-          img {
-            width: 15%;
-          }
+              img {
+                width: 30%;
+              }
 
-          &:nth-child(2) {
-            width: 20%;
-          }
+              &:nth-child(2) {
+                width: 20%;
+              }
 
-          &:nth-child(5) {
-            width: 10%;
-          }
+              &:nth-child(5) {
+                width: 10%;
+              }
 
-          &:nth-child(4) {
-            div {
-              display: flex;
-              justify-content: center;
-              align-items: center;
+              &:nth-child(4) {
+                div {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
 
-              .img-coins {
-                width: 6%
+                  .img-coins {
+                    width: 20%
+                  }
+                }
               }
             }
           }
         }
       }
+    }
+  }
+}
+
+
+@media screen and (min-width: 1200px) {
+  .profil-user {
+    .menu-profile {
+      margin-bottom: 1%;
+    }
+
+    .mobil-hidden {
+      margin: auto;
     }
   }
 }
@@ -166,30 +202,30 @@
   article {
 
     .list-infos {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2%;
 
-        .list-edit {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .btn-edit {
-            margin-left: 2%;
-            }
-        }
-    }
-
-    .list-edit {
+      .list-edit {
         display: flex;
         justify-content: center;
         align-items: center;
 
         .btn-edit {
-            margin-left: 2%;
+          margin-left: 2%;
         }
+      }
+    }
+
+    .list-edit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .btn-edit {
+        margin-left: 2%;
+      }
     }
   }
 

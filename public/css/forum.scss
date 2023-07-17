@@ -1,14 +1,11 @@
 .container-form{
-
-  background-image: url('/img/fond-forum.webp');
-  background-size: cover;
-  background-position: 10% 0;
   padding: 2% 0;
 
 }
 .search-form {
-  margin-top: 2%;
-  padding: 5% 0 0;
+  margin-top: 0;
+  padding-top: 5%;
+  background-color: rgba(0, 0, 0, 0.2);
 
   form {
     padding: 0;
@@ -16,7 +13,7 @@
     label {
       font-size: 1.5rem;
       color: white;
-      font-weight: bold;
+      font-weight: var(--bold);
     }
 
     input[type='submit'] {
@@ -27,6 +24,11 @@
 }
 
 .mobil-list {
+  h2{
+    text-align: center;
+    text-transform: uppercase;
+    margin: 5% 0;
+  }
   .list-articles, .list-items {
     margin: auto auto 5%;
     width: 90%;
@@ -53,7 +55,7 @@
         &:first-child {
           border-left: none;
           color: rgba(0, 0, 0, 0.8);
-          font-weight: bold;
+          font-weight: var(--bold);
         }
 
         a {
@@ -101,7 +103,7 @@
       h2 {
         color: black;
         font-size: 1.8rem;
-        font-weight: bold;
+        font-weight: var(--bold);
         text-align: center;
         text-transform: uppercase;
         margin-top: 1%;
@@ -111,20 +113,20 @@
         margin: 2% auto auto;
         text-align: center;
         text-transform: capitalize;
+        font-weight: var(--bold);
 
         .table-forum_thead{
-          background-color: rgba(126, 24, 24, 0.89);
+          background-color: rgba(33, 3, 3, 0.89);
           color: white;
-          font-weight: bold;
+
         }
         .table-forum_tbody{
-          font-weight: bold;
           tr{
-            background-color: rgba(141, 81, 81, 0.77);
+            background-color: rgba(72, 55, 55, 0.45);
           }
           td:nth-child(2){
             a{
-              color: rgba(255, 255, 255, 0.6);
+              color: rgb(255, 234, 129);
               text-decoration: underline;
             }
           }

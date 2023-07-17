@@ -21,6 +21,7 @@
 }
 /* ************* ROOT ************* */
 :root {
+  --bold: bold;
   --border: 1px solid black;
   --br: 5%;
   --color-white: #FFFFFF;
@@ -351,7 +352,7 @@ body {
 }
 
 main {
-  background-color: #FAECD7;
+  background-color: rgba(220, 179, 121, 0.72);
 }
 main h1 {
   text-align: center;
@@ -385,7 +386,7 @@ legend {
   text-align: center;
   text-transform: uppercase;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: var(--bold);
   margin-bottom: 1rem;
 }
 
@@ -400,7 +401,7 @@ form label {
   width: 90%;
   margin-bottom: 0.5rem;
   text-align: center;
-  font-weight: bold;
+  font-weight: var(--bold);
 }
 form input {
   width: 90%;
@@ -411,7 +412,7 @@ form input {
 form input[type=submit] {
   width: 30%;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: var(--bold);
   cursor: pointer;
 }
 form textarea {
@@ -474,7 +475,7 @@ table th a {
   color: white;
   padding: 1rem;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: var(--bold);
   text-transform: uppercase;
 }
 .header .header-navigation ul li a:hover {
@@ -548,7 +549,8 @@ table th a {
   margin-bottom: 5%;
 }
 .container-home .home-welcome .home-welcome_article {
-  text-align: justify;
+  text-align: center;
+  font-size: 1.4rem;
 }
 .container-home .home-welcome .home-welcome_article .mobil-hidden-text {
   display: none;
@@ -588,11 +590,23 @@ table th a {
     display: block;
   }
   .container-home .mobil-hidden .table-home-articles {
+    font-weight: var(--bold);
     width: 100%;
   }
-  .container-home .mobil-hidden .table-home-articles td {
+  .container-home .mobil-hidden .table-home-articles thead {
+    background-color: rgba(33, 3, 3, 0.89);
+    color: white;
+  }
+  .container-home .mobil-hidden .table-home-articles tbody tr {
+    background-color: rgba(72, 55, 55, 0.45);
+  }
+  .container-home .mobil-hidden .table-home-articles tbody tr td {
     text-align: center;
     padding: 2%;
+  }
+  .container-home .mobil-hidden .table-home-articles tbody tr td a {
+    color: rgb(255, 234, 129);
+    text-decoration: underline;
   }
   .container-home .mobil-hidden .table-home-items {
     display: none;
@@ -636,31 +650,41 @@ table th a {
     display: table;
     margin-top: 5%;
   }
-  .container-home .mobil-hidden .table-home-items td {
+  .container-home .mobil-hidden .table-home-items thead {
+    background-color: rgba(33, 3, 3, 0.89);
+    color: white;
+  }
+  .container-home .mobil-hidden .table-home-items tbody tr {
+    background-color: rgba(72, 55, 55, 0.45);
+    width: 25%;
+  }
+  .container-home .mobil-hidden .table-home-items tbody tr td {
+    text-align: center;
     width: 20%;
     padding: 1%;
   }
-  .container-home .mobil-hidden .table-home-items td div {
+  .container-home .mobil-hidden .table-home-items tbody tr td img {
+    width: 25%;
+  }
+  .container-home .mobil-hidden .table-home-items tbody tr td div {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .container-home .mobil-hidden .table-home-items td div .img-coins {
-    width: 15%;
+  .container-home .mobil-hidden .table-home-items tbody tr td div .img-coins {
+    width: 10%;
   }
 }
 /* ************* PAGE ************* */
 /* ************* FORUM ************* */
 .container-form {
-  background-image: url("/img/fond-forum.webp");
-  background-size: cover;
-  background-position: 10% 0;
   padding: 2% 0;
 }
 
 .search-form {
-  margin-top: 2%;
-  padding: 5% 0 0;
+  margin-top: 0;
+  padding-top: 5%;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .search-form form {
   padding: 0;
@@ -668,13 +692,18 @@ table th a {
 .search-form form label {
   font-size: 1.5rem;
   color: white;
-  font-weight: bold;
+  font-weight: var(--bold);
 }
 .search-form form input[type=submit] {
   width: 50%;
   margin-top: 2%;
 }
 
+.mobil-list h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 5% 0;
+}
 .mobil-list .list-articles, .mobil-list .list-items {
   margin: auto auto 5%;
   width: 90%;
@@ -700,7 +729,7 @@ table th a {
 .mobil-list .list-articles div p:first-child, .mobil-list .list-items div p:first-child {
   border-left: none;
   color: rgba(0, 0, 0, 0.8);
-  font-weight: bold;
+  font-weight: var(--bold);
 }
 .mobil-list .list-articles div p a, .mobil-list .list-items div p a {
   text-decoration: underline;
@@ -739,7 +768,7 @@ table th a {
   .container-form .mobil-hidden h2 {
     color: black;
     font-size: 1.8rem;
-    font-weight: bold;
+    font-weight: var(--bold);
     text-align: center;
     text-transform: uppercase;
     margin-top: 1%;
@@ -749,20 +778,17 @@ table th a {
     margin: 2% auto auto;
     text-align: center;
     text-transform: capitalize;
+    font-weight: var(--bold);
   }
   .container-form .mobil-hidden .table-forum .table-forum_thead {
-    background-color: rgba(126, 24, 24, 0.89);
+    background-color: rgba(33, 3, 3, 0.89);
     color: white;
-    font-weight: bold;
-  }
-  .container-form .mobil-hidden .table-forum .table-forum_tbody {
-    font-weight: bold;
   }
   .container-form .mobil-hidden .table-forum .table-forum_tbody tr {
-    background-color: rgba(141, 81, 81, 0.77);
+    background-color: rgba(72, 55, 55, 0.45);
   }
   .container-form .mobil-hidden .table-forum .table-forum_tbody td:nth-child(2) a {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgb(255, 234, 129);
     text-decoration: underline;
   }
 }
@@ -947,15 +973,12 @@ table th a {
 /* ************* PAGE ************* */
 /* ************* AUCTION ************* */
 .container-items {
-  background-image: url(../img/fond-forum.webp);
-  background-size: cover;
-  background-position: 0 0;
-  padding-bottom: 2%;
+  padding: 2% 0;
 }
 .container-items .search-form {
   margin-top: 0;
   padding-top: 5%;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .container-items .search-form label {
   font-size: 1.6rem;
@@ -984,6 +1007,12 @@ table th a {
   .container-items .mobil-hidden {
     display: block;
     width: 100%;
+    font-weight: var(--bold);
+  }
+  .container-items .mobil-hidden h2 {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 2% 0;
   }
   .container-items .mobil-hidden table {
     width: 95%;
@@ -992,15 +1021,11 @@ table th a {
     text-transform: uppercase;
   }
   .container-items .mobil-hidden table thead {
-    background-color: rgba(126, 24, 24, 0.89);
+    background-color: rgba(33, 3, 3, 0.89);
     color: white;
-    font-weight: bold;
-  }
-  .container-items .mobil-hidden table tbody {
-    font-weight: bold;
   }
   .container-items .mobil-hidden table tbody tr {
-    background-color: rgba(141, 81, 81, 0.77);
+    background-color: rgba(72, 55, 55, 0.45);
   }
   .container-items .mobil-hidden table tbody tr td:nth-child(4) {
     padding: 0.5% 0;
@@ -1194,40 +1219,58 @@ table th a {
   .profil-user .menu-profile li {
     margin: 0;
   }
+  .profil-user .mobil-list {
+    display: none;
+  }
+  .profil-user .mobil-hidden {
+    display: block;
+  }
+  .profil-user .mobil-hidden table {
+    width: 100%;
+    margin: 2% auto auto;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: var(--bold);
+  }
+  .profil-user .mobil-hidden table thead {
+    background-color: rgba(33, 3, 3, 0.89);
+    color: white;
+  }
+  .profil-user .mobil-hidden table tbody tr {
+    background-color: rgba(72, 55, 55, 0.45);
+  }
+  .profil-user .mobil-hidden .table-articles tbody tr td {
+    text-align: center;
+    padding: 2%;
+  }
+  .profil-user .mobil-hidden .table-items tbody tr td {
+    width: 3%;
+    padding: 1%;
+  }
+  .profil-user .mobil-hidden .table-items tbody tr td img {
+    width: 30%;
+  }
+  .profil-user .mobil-hidden .table-items tbody tr td:nth-child(2) {
+    width: 20%;
+  }
+  .profil-user .mobil-hidden .table-items tbody tr td:nth-child(5) {
+    width: 10%;
+  }
+  .profil-user .mobil-hidden .table-items tbody tr td:nth-child(4) div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profil-user .mobil-hidden .table-items tbody tr td:nth-child(4) div .img-coins {
+    width: 20%;
+  }
 }
 @media screen and (min-width: 1200px) {
   .profil-user .menu-profile {
     margin-bottom: 1%;
   }
-  .profil-user .mobil-hidden .table-articles td {
-    padding: 0.5%;
-  }
-  .profil-user .mobil-hidden .table-articles td:nth-child(3), .profil-user .mobil-hidden .table-articles td:nth-child(4), .profil-user .mobil-hidden .table-articles td:nth-child(1) {
-    width: 1%;
-  }
-  .profil-user .mobil-hidden .table-articles td:nth-child(2) {
-    width: 2%;
-  }
-  .profil-user .mobil-hidden .table-items td {
-    width: 3%;
-    padding: 0.5%;
-  }
-  .profil-user .mobil-hidden .table-items td img {
-    width: 15%;
-  }
-  .profil-user .mobil-hidden .table-items td:nth-child(2) {
-    width: 20%;
-  }
-  .profil-user .mobil-hidden .table-items td:nth-child(5) {
-    width: 10%;
-  }
-  .profil-user .mobil-hidden .table-items td:nth-child(4) div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .profil-user .mobil-hidden .table-items td:nth-child(4) div .img-coins {
-    width: 6%;
+  .profil-user .mobil-hidden {
+    margin: auto;
   }
 }
 /* ************* PAGE ************* */

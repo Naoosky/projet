@@ -1,5 +1,6 @@
 .container-home {
   padding-bottom: 2%;
+
   .titre-h1 {
     display: none;
   }
@@ -17,7 +18,8 @@
     }
 
     .home-welcome_article {
-      text-align: justify;
+      text-align: center;
+      font-size: 1.4rem;
 
       .mobil-hidden-text {
         display: none;
@@ -66,17 +68,37 @@
         }
       }
     }
-    .mobil-list{
-        display: none;
+
+    .mobil-list {
+      display: none;
     }
-    .mobil-hidden{
-        display: block;
+
+    .mobil-hidden {
+      display: block;
 
       .table-home-articles {
+        font-weight: var(--bold);
         width: 100%;
-        td {
-          text-align: center;
-          padding: 2%;
+
+        thead {
+          background-color: rgba(33, 3, 3, 0.89);
+          color: white;
+        }
+
+        tbody {
+          tr {
+            background-color: rgba(72, 55, 55, 0.45);
+
+            td {
+              text-align: center;
+              padding: 2%;
+
+              a {
+                color: rgb(255, 234, 129);
+                text-decoration: underline;
+              }
+            }
+          }
         }
       }
 
@@ -140,23 +162,36 @@
         display: table;
         margin-top: 5%;
 
-        td {
-          width: 20%;
-          padding: 1%;
+        thead {
+          background-color: rgba(33, 3, 3, 0.89);
+          color: white;
+        }
 
-          div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        tbody {
+          tr {
+            background-color: rgba(72, 55, 55, 0.45);
+            width: 25%;
+            td {
+              text-align: center;
+              width: 20%;
+              padding: 1%;
 
-            .img-coins {
-              width: 15%
+              img{
+                width: 25%;
+              }
+              div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .img-coins {
+                  width: 10%
+                }
+              }
             }
           }
         }
       }
     }
   }
-
-
 }

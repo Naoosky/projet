@@ -1,13 +1,10 @@
 .container-items {
-  background-image: url(../img/fond-forum.webp);
-  background-size: cover;
-  background-position: 0 0;
-  padding-bottom: 2%;
+  padding: 2% 0;
 
   .search-form {
     margin-top: 0;
     padding-top: 5%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
 
     label {
       font-size: 1.6rem;
@@ -48,6 +45,13 @@
     .mobil-hidden {
       display: block;
       width: 100%;
+      font-weight: var(--bold);
+
+      h2{
+        text-align: center;
+        text-transform: uppercase;
+        margin: 2% 0;
+      }
 
       table {
         width: 95%;
@@ -56,16 +60,14 @@
         text-transform: uppercase;
 
         thead {
-          background-color: rgba(126, 24, 24, 0.89);
+          background-color: rgba(33, 3, 3, 0.89);
           color: white;
-          font-weight: bold;
         }
 
         tbody {
-          font-weight: bold;
 
           tr {
-            background-color: rgba(141, 81, 81, 0.77);
+            background-color: rgba(72, 55, 55, 0.45);
 
             td:nth-child(4) {
               padding: 0.5% 0;
