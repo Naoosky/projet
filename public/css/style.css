@@ -1275,34 +1275,72 @@ table th a {
 }
 /* ************* PAGE ************* */
 /* ************* EditProfil ************* */
+.profil-setting {
+  font-size: 1.2rem;
+  padding-bottom: 2%;
+}
 .profil-setting h2 {
   width: 100%;
   text-align: center;
   margin-bottom: 2%;
 }
-.profil-setting article .list-infos {
+.profil-setting nav .list-infos {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 2%;
+  border-bottom: var(--border);
 }
-.profil-setting article .list-infos .list-edit {
+.profil-setting nav .list-infos li {
+  margin: 1% 0;
+}
+.profil-setting nav .list-edit {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
-.profil-setting article .list-infos .list-edit .btn-edit {
-  margin-left: 2%;
+.profil-setting nav .list-edit li {
+  margin: 2% 0;
 }
-.profil-setting article .list-edit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.profil-setting nav .list-edit li a {
+  font-weight: bold;
+  text-transform: uppercase;
 }
-.profil-setting article .list-edit .btn-edit {
-  margin-left: 2%;
+.profil-setting nav .list-edit li a:hover {
+  color: var(--color-black);
 }
 
+@media screen and (min-width: 767px) {
+  .profil-setting nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .profil-setting nav .list-infos {
+    width: 50%;
+    border-bottom: none;
+  }
+  .profil-setting nav .list-edit {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .profil-setting nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profil-setting nav .list-infos {
+    width: 100%;
+    border-bottom: var(--border);
+  }
+  .profil-setting nav .list-edit {
+    width: 100%;
+  }
+  .profil-setting nav .list-edit li {
+    margin: 1% 0;
+  }
+}
 /* ************* PAGE ************* */
 /* ************* CONNEXION ************* */
 .page-connect, .page-register {
