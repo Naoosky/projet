@@ -15,7 +15,7 @@ export const registerSubmit = function (req, res) {
     const {email, pseudo, password, confirmPassword} = req.body;
 
     // Regular expressions for email (valid format) and pseudo (no special characters)
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$/;
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
     const inputRegex = /^[a-zA-Z0-9\s]+$/;
 
     // Protection against XSS (Cross-Site Scripting) vulnerabilities
