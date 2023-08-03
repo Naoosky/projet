@@ -1420,4 +1420,15 @@ table th a {
   padding: 0.5rem;
 }
 
+/* ************* PAGE ************* */
+/* ************* NOT FOUND ************* */
+.image-not-found {
+  width: 100%;
+  height: 75vh;
+}
+.image-not-found img {
+  width: 100%;
+  height: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */

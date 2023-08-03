@@ -81,7 +81,7 @@ router.delete('/delete/users/:id', deleteUser);
 
 router.get('/privacyPolicy', privacyPolicy);
 router.all('/*', (req, res) => {
-    res.status(404).render('notFound');
+    res.status(404).render('layout', {template: 'notFound'});
 });
 
 
