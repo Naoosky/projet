@@ -1,3 +1,15 @@
+##.env
+
+- Crée un fichier .env a la racine du projet
+- Ajouter c'est parametre :
+- DB_HOST=
+  DB_USER=
+  DB_PASSWORD=
+  DB_NAME=
+  SECRET_KEY=
+
+## Kyosei
+
 Guilde Eden Eternal Kyosei : développement d'un site d'information, d'échange et d'enchères entre les membres de la
 guilde.
 
