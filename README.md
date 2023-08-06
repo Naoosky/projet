@@ -1,4 +1,4 @@
-##.env
+## .env
 
 - Crée un fichier .env a la racine du projet
 - Ajouter c'est parametre :
