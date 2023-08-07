@@ -1368,6 +1368,9 @@ table th a {
   padding-top: 1rem;
   text-align: center;
 }
+.container-administration .mobil-list {
+  padding-bottom: 2%;
+}
 .container-administration .mobil-list h2 {
   margin-bottom: 2%;
 }
@@ -1420,6 +1423,37 @@ table th a {
   padding: 0.5rem;
 }
 
+@media screen and (min-width: 768px) {
+  .container-administration .mobil-list {
+    display: none;
+  }
+  .container-administration .mobil-hidden {
+    display: block;
+    margin: auto;
+    padding-bottom: 2%;
+  }
+  .container-administration .mobil-hidden h2 {
+    margin: 2% 0;
+  }
+  .container-administration .mobil-hidden table {
+    width: 95%;
+    margin: 2% auto auto;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: var(--bold);
+  }
+  .container-administration .mobil-hidden table thead {
+    background-color: rgba(33, 3, 3, 0.89);
+    color: white;
+  }
+  .container-administration .mobil-hidden table tbody tr {
+    background-color: rgba(72, 55, 55, 0.45);
+  }
+  .container-administration .mobil-hidden .table-articles tbody tr td {
+    text-align: center;
+    padding: 2%;
+  }
+}
 /* ************* PAGE ************* */
 /* ************* NOT FOUND ************* */
 .image-not-found {

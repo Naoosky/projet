@@ -4,6 +4,7 @@
   text-align: center;
 
   .mobil-list {
+    padding-bottom: 2%;
     h2{
       margin-bottom: 2%;
     }
@@ -68,3 +69,50 @@
   }
 
 }
+
+@media screen and (min-width: 768px) {
+  .container-administration {
+    .mobil-list {
+      display: none;
+      }
+    .mobil-hidden{
+      display:block;
+      margin: auto;
+      padding-bottom: 2%;
+      h2 {
+        margin: 2% 0;
+      }
+
+      table {
+        width: 95%;
+        margin: 2% auto auto;
+        text-align: center;
+        text-transform: capitalize;
+        font-weight: var(--bold);
+
+        thead {
+          background-color: rgba(33, 3, 3, 0.89);
+          color: white;
+        }
+
+        tbody {
+          tr {
+            background-color: rgba(72, 55, 55, 0.45);
+          }
+        }
+      }
+
+      .table-articles {
+        tbody {
+          tr {
+            td {
+              text-align: center;
+              padding: 2%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
