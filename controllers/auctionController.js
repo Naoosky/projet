@@ -44,7 +44,7 @@ export const searchItems = (req, res) => {
 export const addItems = (req, res) => {
     let userId = req.session.userId;
 
-    if (!id) {
+    if (!userId) {
         res.redirect('/login');
     } else {
         let sql = "SELECT * FROM images";
@@ -162,7 +162,7 @@ export const addItemsSubmit = (req, res) => {
                                     price: safePrice,
                                     category_id: category,
                                     image_id: image,
-                                    user_id: id
+                                    user_id: userId
                                 };
 
                                 let sql3 = `INSERT INTO items
@@ -172,7 +172,7 @@ export const addItemsSubmit = (req, res) => {
                                         console.error(error)
                                         res.status(500).send('erreur de bdd')
                                     } else {
-                                        res.redirect('/profile/' + id);
+                                        res.redirect('/profile/' + userId);
                                     }
                                 });
                             }
